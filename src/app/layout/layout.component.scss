@@ -1,0 +1,78 @@
+layout {
+    display: flex;
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    /* Base styles for individual layouts */
+    > * {
+        position: relative;
+        display: flex;
+        flex: 1 1 auto;
+        width: 100%;
+    }
+
+    /* Base styles for components that load as a route */
+    router-outlet {
+
+        + * {
+            position: relative;
+            display: flex;
+            flex: 1 1 auto;
+            width: 100%;
+        }
+    }
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+
+    .breadcrumb-item {
+        border-radius: 0.2em;
+        font-size: 0.8em;
+        width: auto;
+        height: auto;
+        margin-right: 4px;
+        background-color: rgb(255, 255, 255);
+        transform: skew(-25deg, 0deg);
+        padding: 0em 0.5em;
+        box-sizing: content-box;
+        border:1px solid #acacac;
+        color: lightslategrey;
+    }
+    .breadcrumb-item-alter {
+        background-color: #00134e;
+        color: #fff;
+        border-right: 4px solid #7c8294;
+    }
+  
+    .breadcrumb-arrow {
+      font-size: 16px; // Tamaño de fuente para la flecha
+    }
+  }
+
+$duration: 0.75s;
+$skewAngle: -25deg;
+$blurAmount: 2px;
+.rectangle {
+  opacity: 0;
+  animation: slideIn $duration forwards;
+  animation-delay: 0.3s; // Delay para cada rectángulo
+}
+
+@keyframes slideIn {
+  from {
+    backdrop-filter: grayscale(0.8) blur($blurAmount) saturate(0);
+    transform: translateX(-50px) skew($skewAngle, 0deg);
+    opacity: 0;
+  }
+  to {
+    backdrop-filter: grayscale(0) blur(0) saturate(1);
+    transform: translateX(0) skew($skewAngle, 0deg);
+    opacity: 1;
+  }
+}
+
+  

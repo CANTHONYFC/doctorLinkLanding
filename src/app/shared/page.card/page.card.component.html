@@ -1,0 +1,30 @@
+<div class="flex flex-col flex-auto min-w-0">
+    <!-- Main -->
+    <div class="flex-auto p-2" [ngClass]="classForm">
+        <!-- Header -->
+        <div class="flex flex-col flex-auto justify-between">
+            <!-- Title -->
+            <app-page-header class="w-full" [titleAditionalApp]="titleAditionalApp" [title]="title"
+                [titleClass]="titleClass"></app-page-header>
+            <!-- SEARCH and ADD actions -->
+            <div class="flex flex-col my-2">
+                <ng-container *ngTemplateOutlet="searchApp"></ng-container>
+            </div>
+            <mat-progress-bar class="mb-2" *ngIf="showLoadSearch" mode="indeterminate"></mat-progress-bar>
+            <!-- table list -->
+            <div class="relative mat-elevation-z4 overflow-auto w-500" [hidden]="list.length==0">
+                <ng-container *ngTemplateOutlet="tableApp"></ng-container>
+                <mat-paginator [length]="paginator.count" [pageSize]="paginator.parameter?.size"
+                    [pageSizeOptions]="paginator.options" (page)="setPageSizeOptions($event)" showFirstLastButtons>
+                </mat-paginator>
+
+            </div>
+            <div *ngIf="list.length==0">
+                <div class="placeholder-container text-center">
+                    <mat-icon svgIcon="heroicons_outline:information-circle" class="icon-size-14"></mat-icon><br />
+                    <h3>{{message}}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

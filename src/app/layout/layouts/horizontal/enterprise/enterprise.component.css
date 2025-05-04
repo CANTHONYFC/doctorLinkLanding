@@ -1,0 +1,16 @@
+.main-content{
+    min-height: 80vh;
+}
+.small-icon svg {
+    transform: scale(0.7);
+}
+body.light .mat-menu-item .mat-icon-no-color, body.light .mat-menu-submenu-icon, body .light .mat-menu-item .mat-icon-no-color, body .light .mat-menu-submenu-icon {
+    color: #6c9bdf !important;
+}
+.colorblue{
+    color: #6c9bdf !important;
+}
+::ng-deep .customizerHeader {
+    height: 8rem !important;
+}
+

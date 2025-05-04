@@ -1,0 +1,229 @@
+<div class="flex flex-col flex-auto items-center sm:justify-center min-w-0 md:p-8 shadowmCustomizationBody">
+    <div class="flex md:w-full md:max-w-7xl sm:rounded-2xl sm:shadow overflow-hidden sm:bg-card"
+         style="height: 100% !important;">
+        <div class="w-full sm:w-auto py-8 px-4 sm:p-12 md:p-16">
+            <div class="w-full max-w-90 sm:w-90 mx-auto sm:mx-0">
+                <!-- Logo -->
+                <div class="mx-auto customaizeImageLogin">
+                    <img class="w-full" src="assets/images/logo/logo.png" alt="NDP">
+                </div>
+                <div class="flex md:w-full md:max-w-7xl sm:rounded-2xl sm:shadow overflow-hidden sm:bg-card shadowmCustomization"
+                     >
+                    <div class="w-full sm:w-auto py-8 px-4 sm:p-12 md:p-6">
+                        <div class="w-full mx-auto sm:mx-0">
+                            <!-- Title -->
+                            <div class="mt-8 text-4xl font-extrabold tracking-tight leading-tight"
+                                 style="color: var(--app-claro-neutro-color) !important;text-align: center">Iniciar
+                                 Sesión
+                            </div>
+
+                            <div *ngIf="false" class="flex items-baseline mt-0.5 font-medium">
+                                <div>Don't have an account?</div>
+                                <a
+                                    class="ml-1 text-primary-500 hover:underline"
+                                    [routerLink]="['/sign-up']">sign up
+                                </a>
+                            </div>
+
+                            <!-- Alert -->
+                            <fuse-alert
+                                class="mt-8 -mb-4"
+                                *ngIf="alert.show"
+                                [appearance]="'outline'"
+                                [showIcon]="false"
+                                [type]="alert.type"
+                                [@shake]="alert.type === 'error'">
+                                {{ alert.message }}
+                            </fuse-alert>
+
+                            <!-- Sign in form -->
+                            <form
+                                class="mt-8"
+                                [formGroup]="signInForm"
+                                #signInNgForm="ngForm">
+
+                                <!-- Email field -->
+                                <mat-form-field class="w-full fondo-blanco" appearance="outline">
+                                    <mat-label>Dirección de correo electrónico</mat-label>
+                                    <input
+                                        id="email"
+                                        matInput
+                                        [formControlName]="'email'">
+                                    <mat-error *ngIf="signInForm.get('email').hasError('required')">
+                                        Dirección de correo electrónico es requerida
+                                    </mat-error>
+                                    <mat-error *ngIf="signInForm.get('email').hasError('email')">
+                                        Por favor, introduce una dirección de correo electrónico válida
+                                    </mat-error>
+                                </mat-form-field>
+
+                                <!-- Password field -->
+                                <mat-form-field class="w-full" appearance="outline">
+                                    <mat-label>Contraseña</mat-label>
+                                    <input
+                                        id="password"
+                                        matInput
+                                        type="password"
+                                        [formControlName]="'password'"
+                                        #passwordField>
+                                    <button
+                                        mat-icon-button
+                                        type="button"
+                                        (click)="passwordField.type === 'password' ? passwordField.type = 'text' : passwordField.type = 'password'"
+                                        matSuffix>
+                                        <mat-icon
+                                            class="icon-size-5"
+                                            *ngIf="passwordField.type === 'password'"
+                                            [svgIcon]="'heroicons_solid:eye'"></mat-icon>
+                                        <mat-icon
+                                            class="icon-size-5"
+                                            *ngIf="passwordField.type === 'text'"
+                                            [svgIcon]="'heroicons_solid:eye-off'"></mat-icon>
+                                    </button>
+                                    <mat-error>
+                                        Contraseña es requerida
+                                    </mat-error>
+                                </mat-form-field>
+
+                                <!-- Actions -->
+                                <div *ngIf="false" class="inline-flex items-end justify-between w-full mt-1.5">
+                                    <mat-checkbox
+                                        [color]="'primary'"
+                                        [formControlName]="'rememberMe'">
+                                        Remember me
+                                    </mat-checkbox>
+                                    <a
+                                        class="text-md font-medium text-primary-500 hover:underline"
+                                        [routerLink]="['/forgot-password']">Forgot password?
+                                    </a>
+                                </div>
+                                <div class="inline-flex items-end justify-between w-full mt-1.5">
+                                    <mat-checkbox color="accent" class="text-md font-medium mcb"
+                                                  [color]="'primary'"
+                                                  [formControlName]="'rememberMe'">
+                                        Remember me
+                                    </mat-checkbox>
+                                    <a color="accent"
+                                       class="text-md font-medium  hover:underline"
+                                       [routerLink]="['/forgot-password']">Forgot password?
+                                    </a>
+                                </div>
+                                <button
+                                    class="fuse-mat-button-large w-full mt-6 customizeButtonLogin"
+                                    mat-flat-button
+                                    [color]="'primary'"
+                                    [disabled]="signInForm.disabled"
+                                    (click)="getRefreshToken()"
+                                    style="background-color: white !important;">
+                                    <svg version="1.1" style="width: 23px;padding-right: 2px"
+                                         xmlns="http://www.w3.org/2000/svg"
+                                         viewBox="0 0 48 48"
+                                         class="LgbsSe-Bz112c">
+                                        <g>
+                                            <path fill="#EA4335"
+                                                  d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
+                                            <path fill="#4285F4"
+                                                  d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path>
+                                            <path fill="#FBBC05"
+                                                  d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path>
+                                            <path fill="#34A853"
+                                                  d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
+                                            <path fill="none" d="M0 0h48v48H0z"></path>
+                                        </g>
+                                    </svg>
+                                    <span *ngIf="!signInForm.disabled">
+                                     Iniciar sesión
+                                    </span>
+
+                                    <mat-progress-spinner
+                                        *ngIf="signInForm.disabled"
+                                        [diameter]="24"
+                                        [mode]="'indeterminate'"></mat-progress-spinner>
+                                </button>
+
+                                <!-- Submit button -->
+                                <button
+                                    class="fuse-mat-button-large w-full mt-6 customInicioButton"
+                                    mat-flat-button
+                                    [color]="'primary'"
+                                    [disabled]="signInForm.disabled"
+                                    (click)="eventSubmit()"
+                                >
+                    <span *ngIf="!signInForm.disabled">
+                        Iniciar sesión
+                    </span>
+
+                                    <mat-progress-spinner
+                                        *ngIf="signInForm.disabled"
+                                        [diameter]="24"
+                                        [mode]="'indeterminate'"></mat-progress-spinner>
+                                </button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div
+            class="relative hidden md:flex flex-auto items-center
+            justify-center w-1/2 h-full p-16 lg:px-28 overflow-hidden dark:border-l split-div"
+        style="padding-top:2rem  !important;padding-left: 0rem !important;padding-right: 2rem !important;"
+        >
+            <!-- Background - @formatter:off -->
+        <!-- Rings -->
+        <svg class="absolute inset-0 pointer-events-none" style="color: var(--app-white-color);"
+             viewBox="0 0 960 540" width="100%" height="100%" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+            <g class=" opacity-25" fill="none" stroke="currentColor" stroke-width="100">
+                <circle r="234" cx="196" cy="23"></circle>
+                <circle r="234" cx="790" cy="491"></circle>
+            </g>
+        </svg>
+        <!-- Dots -->
+        <svg class="absolute -top-16 -right-16 " style="color: var(--app-white-color);"
+             viewBox="0 0 220 192" width="220" height="192" fill="none">
+            <defs>
+                <pattern id="837c3e70-6c3a-44e6-8854-cc48c737b659" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <rect x="0" y="0" width="4" height="4" fill="currentColor"></rect>
+                </pattern>
+            </defs>
+            <rect width="220" height="192" fill="url(#837c3e70-6c3a-44e6-8854-cc48c737b659)"></rect>
+        </svg>
+        <!-- @formatter:on -->
+            <!-- Content -->
+            <div class="z-10 relative w-full max-w-4xl">
+                <div class="mx-auto ">
+                    <img class="w-full" src="assets/images/Doctora4.png" alt="NDP">
+<!--                    <img class="w-full" src="assets/images/medicaLogin.png"  style="padding-left: 5% !important;" alt="NDP">-->
+                </div>
+                <div class="text-7xl font-bold leading-none text-gray-100 text-right">
+                    <div>Bienvenido!</div>
+                </div>
+                <div class="mt-6 text-lg tracking-tight leading-6 text-right" style="color: var(--app-white-color);">
+                    Únase a nosotros y comience a sentirte mejor.
+                </div>
+                <div class="flex items-center justify-end ">
+                    <div class="flex flex-0 items-center -space-x-1.5">
+                        <img
+                            class="flex-0 w-10 h-10 rounded-full ring-4 ring-offset-1 ring-gray-800 ring-offset-gray-800 object-cover"
+                            src="assets/images/avatars/female-18.jpg">
+                        <img
+                            class="flex-0 w-10 h-10 rounded-full ring-4 ring-offset-1 ring-gray-800 ring-offset-gray-800 object-cover"
+                            src="assets/images/avatars/female-11.jpg">
+                        <img
+                            class="flex-0 w-10 h-10 rounded-full ring-4 ring-offset-1 ring-gray-800 ring-offset-gray-800 object-cover"
+                            src="assets/images/avatars/male-09.jpg">
+                        <img
+                            class="flex-0 w-10 h-10 rounded-full ring-4 ring-offset-1 ring-gray-800 ring-offset-gray-800 object-cover"
+                            src="assets/images/avatars/male-16.jpg">
+                    </div>
+                    <div class="ml-4 font-medium tracking-tight" style="color: var(--app-white-color);">Más de 17k
+                        personas
+                        nos acompañan, es tu turno
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>

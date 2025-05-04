@@ -1,0 +1,189 @@
+<div class="flex flex-col border-2 border-accent">
+    <!-- Header -->
+    <div class="flex flex-0 items-center justify-between h-16 pr-3 sm:pr-5 pl-6 sm:pl-8 bg-accent">
+        <!-- Title -->
+        <div class="text-2xl font-extrabold tracking-tight leading-none w-full text-center text-white">{{
+            'listado de Artículos' | uppercase}}</div>
+        <button mat-icon-button (click)="_dialogRef.close()" [tabIndex]="-1">
+            <mat-icon class="text-white" [svgIcon]="'heroicons_outline:x'"></mat-icon>
+        </button>
+    </div>
+    <form class="p-2" (submit)="search()" autocomplete="off" [formGroup]="filterItemForm">
+
+        <div fxLayout="row wrap">
+
+            <!--<div class="p-1" fxFlex="100" fxFlex.xl="60" fxFlex.lg="60" fxFlex.md="60" fxFlex.sm="60" fxLayout="column"
+                *ngIf="!isNc">
+                <mat-form-field appearance="fill" class="fuse-mat-dense fuse-mat-no-subscript w-full">
+                    <mat-label>Almacén</mat-label>
+                    <mat-select formControlName="warehouseStore" (ngModelChange)='search()'>
+                        <mat-option [value]="''" *ngIf="warehouseStoreList.length>2">{{ 'Todos' | uppercase}}
+                        </mat-option>
+                        <mat-option [value]="item.warehouse"
+                            *ngFor="let item of warehouseStoreList">{{item.warehouseName | uppercase}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="p-1" fxFlex="100" fxFlex.xl="40" fxFlex.lg="40" fxFlex.md="40" fxFlex.sm="40" fxLayout="column"
+                *ngIf="!isNc">
+                <mat-form-field appearance="fill" class="fuse-mat-dense fuse-mat-no-subscript w-full">
+                    <mat-label>Tipo</mat-label>
+                    <mat-select formControlName="type">
+                        <mat-option [value]="item.value" *ngFor="let item of typeList">{{ item.name | uppercase}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>-->
+
+            <div class="p-1" fxFlex="100" fxFlex.xl="100" fxFlex.lg="100" fxFlex.md="100" fxFlex.sm="100"
+                fxLayout="column">
+                <div class="flex flex-row">
+                    <mat-form-field appearance="fill" class="fuse-mat-dense fuse-mat-no-subscript flex-auto">
+                        <mat-icon class="icon-size-5 cursor-pointer" matPrefix [svgIcon]="'heroicons_solid:search'">
+                        </mat-icon>
+                        <mat-label>Filtrar</mat-label>
+                        <input (ngModelChange)='changed($event)' matInput class="sm:p-2" placeholder="Buscar"
+                            [formControlName]="'filter'" [autocomplete]="'off'">
+                        <mat-progress-spinner matSuffix class="flex-end" *ngIf="showLoadSearchItem" [diameter]="24"
+                            [mode]="'indeterminate'">
+                        </mat-progress-spinner>
+                    </mat-form-field>
+                    <div class="p-1 mt-auto">
+                        <app-button-card [parameters]="buttons" class="flex flex-row items-center"></app-button-card>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+    <div class="flex flex-col flex-auto p-2 pt-1">
+        <div class="flex flex-col flex-auto shadow-xl overflow-hidden sm:overflow-y-auto bg-card ">
+            <ng-container *ngIf="itemList.length > 0; else noProducts">
+                <div class="grid" matItemResponsive>
+                    <!-- Header -->
+                    <div class="thead-item">
+                        <div
+                            class="mat-header-row flex sm:flex-row flex-col z-10 sticky top-0 gap-4 py-4 px-6 md:px-8 shadow text-md font-semibold text-secondary bg-gray-200 dark:bg-black dark:bg-opacity-5">
+                            <div class="items-center border-r w-20 font-bold text-accent">
+                                Código
+                            </div>
+                            <div class="items-center border-r w-full font-bold text-accent">Descripción</div>
+                            <div class="items-center w-12 font-bold text-accent">Opciones</div>
+                        </div>
+                    </div>
+                    <!-- Rows -->
+                    <div class="tbody-item">
+                        <ng-container *ngFor="let element of itemList; trackBy: trackByFn">
+                            <div class="mat-row flex sm:flex-row flex-col hover:bg-gray-100 items-center gap-2 py-3 px-4 sm:px-8 border-b"
+                                [ngClass]="{'cursor-pointer': element.isMiscellaneous=='N'}"
+                                [class.bg-green-200]="findItem(element.itemCode) && element.isMiscellaneous == 'N'"
+                                (click)="element.isMiscellaneous=='N'?addItemSelected(element):null">
+                                <div class="mat-cell sm:border-r text-sm w-20 text-right px-1 h-full items-center">
+                                    {{element.itemCode}}
+                                </div>
+                                <div class="mat-cell text-sm w-full">
+                                    <div>
+                                        <p>{{element.name}}</p>
+                                        <p class="flex flex-row"><span class="mr-1 flex items-center">
+                                                <mat-icon class="icon-size-3"
+                                                    [svgIcon]="'heroicons_outline:collection'"></mat-icon>
+                                                <small>Existencias: {{getStock(element)}}</small>
+                                            </span>
+                                            <span  *ngIf="false" class="mr-1 flex items-center">
+                                                <mat-icon class="icon-size-3"
+                                                    [svgIcon]="'mat_solid:monetization_on'"></mat-icon>
+                                                <small>Precio:
+                                                    {{(element.priceEntities.length>0?element.priceEntities[0].price:'0')
+                                                    |
+                                                    number:'1.2-2'}}</small>
+                                            </span>
+                                            <span *ngIf="false" class="mr-1 flex items-center">
+                                                <mat-icon class="icon-size-3"
+                                                    [svgIcon]="'mat_solid:bookmark'"></mat-icon><small>Unidad:
+                                                    {{element.salesUnit}}</small>
+                                            </span>
+                                            <span class="mr-1 flex items-center" *ngIf="element.porDet">
+                                                <mat-icon class="icon-size-3"
+                                                    [svgIcon]="'mat_solid:bookmark'"></mat-icon>
+                                                <small>Detracción:
+                                                    {{element.porDet}}%</small>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="mat-cell items-center w-12 sm:border-l">
+                                    <app-button-card [parameters]="element.actions" class="flex flex-row items-center">
+                                    </app-button-card>
+                                </div>
+                            </div>
+                            <div class="grid mat-row">
+                                <ng-container *ngIf="itemSelected?.itemCode === element.itemCode">
+                                    <ng-container
+                                        *ngTemplateOutlet="rowDetailsTemplate; context: {$implicit: element}"></ng-container>
+                                </ng-container>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+        <div class="flex flex-row">
+            <ng-container *ngFor="let item of itemListSelectedIsMiscellaneous('N')">
+                <div
+                    class="flex items-center justify-center px-2 m-1.5 rounded-full leading-9 text-gray-500 bg-gray-100 dark:text-gray-300 dark:bg-gray-700">
+                    <span
+                        class="text-sm font-medium whitespace-nowrap">{{item.modelCode?item.modelCode:item.itemCode}}</span>
+                    <button mat-icon-button (click)="deleteItemSelected(item)" class="cursor-pointer">
+                        <mat-icon class="mat-warn icon-size-4" [svgIcon]="'heroicons_outline:x'"></mat-icon>
+                    </button>
+                </div>
+            </ng-container>
+        </div>
+        <!-- Actions -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-end px-4 p-3">
+            <div class="flex items-center">
+                <app-button-card *ngIf="itemList" [parameters]="buttonsFooter"
+                    class="flex flex-row items-center"></app-button-card>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #noProducts>
+    <div class="p-8 sm:p-16 border-t text-2xl font-semibold tracking-tight text-center">
+        <mat-icon svgIcon="heroicons_outline:information-circle" class="icon-size-8"></mat-icon><br />
+        <h3>No se encontraron registros!</h3>
+    </div>
+</ng-template>
+
+<ng-template #rowDetailsTemplate let-product>
+    <div class="border border-2 overflow-hidden">
+        <div class="flex sm:flex-row flex-col items-center gap-2 py-3 px-6 md:px-8 border-b">
+            <div class="border-r text-xs w-20 pr-2 sm:pr-0">{{'BUSCADOR'}}</div>
+            <div class="items-center w-full">
+                <div class="w-full">
+                    <mat-form-field
+                        class="fuse-mat-dense fuse-mat-emphasized-affix fuse-mat-no-subscript w-full h-12 -mt-5">
+                        <mat-icon *ngIf="!showLoadSearchItemChildren" class="icon-size-4 cursor-pointer" matSuffix
+                            (click)="searchItemModel(filterChildren.value)"
+                            [svgIcon]="'heroicons_solid:search'"></mat-icon>
+                        <input matInput class="p-0 h-8" (input)='searchItemModel(filterChildren.value)' #filterChildren>
+                        <mat-progress-spinner matSuffix *ngIf="showLoadSearchItemChildren" [diameter]="24"
+                            [mode]="'indeterminate'">
+                        </mat-progress-spinner>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="items-center sm:w-10"></div>
+        </div>
+        <div class="bg-gray-50 hover:bg-gray-100" *ngFor="let element of itemChildrenList; trackBy: trackByFn">
+            <div class="flex sm:flex-row flex-col items-center gap-2 py-3 px-6 md:px-8 border-b cursor-pointer"
+                [class.bg-green-200]="findItemAndModel(element.modelCode,element.itemCode)"
+                (click)="addModelItemSelected(element)">
+                <div class="mat-cell border-r text-right px-1 text-xs w-20">{{element.modelCode}}</div>
+                <div class="mat-cell text-left px-1 w-full text-xs">{{element.modelName}}</div>
+                <div class="mat-cell items-center w-10"></div>
+            </div>
+        </div>
+    </div>
+</ng-template>

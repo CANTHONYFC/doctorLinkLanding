@@ -1,0 +1,39 @@
+body  .mat-form-field-flex{
+    background-color: white;
+    border-radius: 4px; /* Opcional, para bordes redondeados */
+    padding: 5px; /* Opcional, para espaciado interno */
+}
+.customaizeImageLogin   {
+    width: 12rem;
+    height: 8rem;
+    margin: 0 auto;
+    display: block;
+}
+.customizeButtonLogin {
+    background-color: var(--app-white-color) !important;
+    color: black !important;
+    border: 1px solid rgba(var(--fuse-border-rgb), var(--tw-border-opacity))
+}
+mat-checkbox.mcb{
+    color: var(--app-white-color);
+}
+/*a {*/
+/*    color: var(--app-white-color) !important;*/
+/*}*/
+@media (min-width: 960px) {
+    body  .md\:max-w-7xl {
+        max-width: 90rem !important;
+    }
+}
+
+.split-div {
+    background: linear-gradient(to bottom right, white 37%, var(--app-resalt-1-color) 34%);
+    background-size: 100% 135%;
+    background-repeat: no-repeat;
+}
+.shadowmCustomization{
+    height: 100% !important;background: linear-gradient(135deg, var(--app-color-botton), var(--app-main-color));padding: 1rem !important;
+}
+.shadowmCustomizationBody{
+    background: linear-gradient(135deg, var(--app-color-botton), var(--app-main-color));padding: 1rem !important;
+}

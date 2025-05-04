@@ -1,0 +1,64 @@
+<div class="relative flex flex-col w-full h-full">
+    <!-- Dismiss button -->
+    <ng-container *ngIf="data.dismissible">
+        <div class="absolute top-0 right-0 pt-4 pr-4">
+            <button mat-icon-button [matDialogClose]="undefined">
+                <mat-icon class="text-secondary" [svgIcon]="'heroicons_outline:x'"></mat-icon>
+            </button>
+        </div>
+    </ng-container>
+    <form (submit)="eventSubmit()" [formGroup]="credentialForm">
+        <!-- Content -->
+        <div class="flex flex-col  flex-auto  p-8 pb-6 sm:pb-8">
+            <ng-container *ngIf="data.title || data.message">
+                <div class="flex flex-col items-center sm:items-start mt-4 sm:mt-0 space-y-1 text-center sm:text-left">
+                    <!-- Title -->
+                    <ng-container *ngIf="data.title">
+                        <div class="text-xl leading-6 font-medium" [innerHTML]="data.title"></div>
+                    </ng-container>
+                    <!-- Alert -->
+                    <fuse-alert class="my-2 w-full" *ngIf="alert.show" [appearance]="'soft'" [dismissible]="true"
+                        [dismissed]="false" [name]="'alertCredential'" [type]="alert.type">
+                        {{alert.message}}
+                    </fuse-alert>
+                    <!-- Message -->
+                    <mat-form-field class="w-full">
+                        <mat-label>{{data.message}}</mat-label>
+                        <input #passField class="sm:p-2" matInput placeholder="*******" [formControlName]="'pass'"
+                            maxlength="60">
+                        <button mat-icon-button type="button"
+                            (click)="passField.type === 'password' ? passField.type = 'text' : passField.type = 'password'"
+                            matSuffix>
+                            <mat-icon class="icon-size-5" *ngIf="passField.type === 'password'"
+                                [svgIcon]="'heroicons_solid:eye'"></mat-icon>
+                            <mat-icon class="icon-size-5" *ngIf="passField.type === 'text'"
+                                [svgIcon]="'heroicons_solid:eye-off'"></mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+            </ng-container>
+        </div>
+        <!-- Actions -->
+        <ng-container *ngIf="data.actions.confirm.show || data.actions.cancel.show">
+            <div
+                class="flex items-center justify-center sm:justify-end px-6 py-4 space-x-3 bg-gray-50 dark:bg-black dark:bg-opacity-10">
+                <!-- Cancel -->
+                <ng-container *ngIf="data.actions.cancel.show">
+                    <button type="button" mat-stroked-button [matDialogClose]="'cancelled'">
+                        {{data.actions.cancel.label}}
+                    </button>
+                </ng-container>
+                <!-- Confirm -->
+                <ng-container *ngIf="data.actions.confirm.show">
+                    <button type="submit" mat-flat-button [color]="data.actions.confirm.color"
+                        [disabled]="!credentialForm.valid">
+                        <span *ngIf="!credentialForm.disabled">
+                            {{data.actions.confirm.label}}</span>
+                        <mat-progress-spinner *ngIf="credentialForm.disabled" [diameter]="24" [mode]="'indeterminate'">
+                        </mat-progress-spinner>
+                    </button>
+                </ng-container>
+            </div>
+        </ng-container>
+    </form>
+</div>

@@ -1,0 +1,21 @@
+<ng-container *ngFor="let item of parameters" class="w-full">
+    <button [type]="'button'" [matTooltip]="item.tooltip" mat-mini-fab [color]="'primary'" [disabled]="item.disabled"
+        (click)="item?.action()" [ngClass]="item?.class" *ngIf="item.shown && item.type=='mat-mini-fab'">
+        <mat-icon *ngIf="item.icon" [svgIcon]="item?.icon" [class]="'sm:icon-size-6 icon-size-4'"></mat-icon>
+        <span *ngIf="item.title?true:false" class="ml-2 mr-1 sm:flex" [ngClass]="{'hidden': item.icon}">{{item?.title}}</span>
+        <mat-progress-spinner *ngIf="item.loading" [diameter]="24" [mode]="'indeterminate'">
+        </mat-progress-spinner>
+    </button>
+    <button [type]="'button'" [matTooltip]="item.tooltip" mat-flat-button [color]="'primary'" [disabled]="item.disabled"
+        (click)="item?.action()" [ngClass]="item?.class" *ngIf="item.shown && item.type=='mat-flat-button'">
+        <mat-icon *ngIf="item.icon" [svgIcon]="item?.icon" [class]="item.title?'icon-size-4':'sm:icon-size-6 icon-size-4'"></mat-icon>
+        <span *ngIf="item.title?true:false" class="ml-2 mr-1 sm:flex" [ngClass]="{'hidden': item.icon}">{{item?.title}}</span>
+        <mat-progress-spinner *ngIf="item.loading" [diameter]="24" [mode]="'indeterminate'">
+        </mat-progress-spinner>
+    </button>
+    <button [type]="'button'" [matTooltip]="item.tooltip" mat-icon-button [disabled]="item.disabled"
+        (click)="item?.action()" [ngClass]="item?.class" *ngIf="item.shown && item.type=='mat-icon-button'">
+        <mat-icon *ngIf="item.icon" [svgIcon]="item?.icon" [class]="item.classIcon"></mat-icon>
+        <span *ngIf="item.title?true:false" class="ml-2 mr-1 sm:flex" [ngClass]="{'hidden': item.icon}">{{item?.title}}</span>
+    </button>
+</ng-container>

@@ -1,0 +1,97 @@
+<!-- Loading bar -->
+<fuse-loading-bar></fuse-loading-bar>
+
+<!-- Navigation -->
+<fuse-vertical-navigation class="dark bg-orange-500 print:hidden" style="background-color: #00134E !important;"
+    [mode]="isScreenSmall ? 'over' : 'side'" [name]="'mainNavigation'" [navigation]="navigation.default"
+    [opened]="!isScreenSmall">
+    <!-- Navigation header hook -->
+    <ng-container fuseVerticalNavigationContentHeader>
+        <div class="flex items-center w-full p-4">
+            <!-- Logo -->
+            <div class="flex items-center justify-center">
+                <img class="w-full" src="assets/images/logo/logo.png">
+            </div>
+
+        </div>
+        <!-- User -->
+        <div class="flex flex-col items-center w-full p-4">
+            <div class="flex-0 w-16 h-16 rounded-full overflow-hidden">
+                <img class="w-full h-full rounded-full" *ngIf="user.avatar" [src]="user.avatar" alt="User avatar">
+                <mat-icon class="icon-size-14" *ngIf="!user.avatar" [svgIcon]="'heroicons_solid:user-circle'">
+                </mat-icon>
+            </div>
+            <div class="w-full whitespace-nowrap text-ellipsis overflow-hidden text-center leading-normal font-medium">
+                {{user.name}}
+            </div>
+            <div
+                class="w-full mt-0.5 whitespace-nowrap text-ellipsis overflow-hidden text-center text-md leading-normal font-medium">
+                {{user.email}}
+            </div>
+            <div style="color: #05EB8D !important;"
+                class="w-full mt-0.5 whitespace-nowrap overflow-ellipsis overflow-hidden text-center text-md leading-normal font-medium text-white">
+                {{companySelected?.businessName || ''}}
+            </div>
+            <div
+                class="w-full mt-0.5 whitespace-nowrap overflow-ellipsis overflow-hidden text-center text-md leading-normal font-medium text-white">
+                {{branchSelected?.storeName || ''}}
+            </div>
+            <div
+                class="w-full mt-0.5 whitespace-nowrap overflow-ellipsis overflow-hidden text-center text-md leading-normal font-medium text-white">
+                {{branchSelected?branchSelected.name:''}}
+            </div>
+        </div>
+    </ng-container>
+    <!-- Navigation footer hook -->
+    <ng-container fuseVerticalNavigationContentFooter *ngIf="false">
+        <div class="flex flex-0 items-center justify-center h-16 pr-6 pl-2 mt-2 mb-4 opacity-12">
+            <img class="max-w-36" src="assets/images/logo/logo_chico.png">
+        </div>
+    </ng-container>
+</fuse-vertical-navigation>
+
+<!-- Wrapper -->
+<div class="flex flex-col flex-auto w-full min-w-0">
+
+    <!-- Header -->
+    <div
+        class="relative flex flex-0 items-center w-full h-16 px-4 md:px-6 z-49 shadow dark:shadow-none dark:border-b bg-card dark:bg-transparent print:hidden">
+        <!-- Navigation toggle button -->
+        <button mat-icon-button (click)="toggleNavigation('mainNavigation')">
+            <mat-icon [svgIcon]="'heroicons_outline:menu'"></mat-icon>
+        </button>
+        <!-- Components -->
+        <div class="flex items-center pl-2 ml-auto space-x-0.5 sm:space-x-2">
+            <fuse-fullscreen class="hidden md:block"></fuse-fullscreen>
+            <button mat-menu-item (click)="signOut()">
+                <mat-icon matTooltip="SALIR" [svgIcon]="'heroicons_outline:logout'"></mat-icon>
+            </button>
+        </div>
+    </div>
+
+    <div class="breadcrumb" style="padding: 0em 0.5em;
+    margin-top: 0.4em;
+    margin-bottom: 0.1em" *ngIf="false">
+    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home" style="margin-right: 0.3em;"></mat-icon>
+
+        <ng-container *ngFor="let part of splitAndFormatRoute(rutaActual); let last = last; let i = index">
+            <span class="rectangle breadcrumb-item" [ngClass]="{'breadcrumb-item-alter': last}">
+                {{ part }}
+            </span>
+        </ng-container>
+    </div>
+
+
+    <!-- Content -->
+    <div class="flex flex-col flex-auto">
+        <!-- *ngIf="true" hack is required here for router-outlet to work correctly.
+             Otherwise, layout changes won't be registered and the view won't be updated! -->
+        <router-outlet *ngIf="true"></router-outlet>
+    </div>
+
+    <!-- Footer -->
+    <!--<div class="relative flex flex-0 items-center justify-start w-full h-14 px-4 md:px-6 z-49 border-t bg-card dark:bg-transparent print:hidden">
+        <span class="font-medium text-secondary">Fuse &copy; {{currentYear}}</span>
+    </div>-->
+
+</div>
