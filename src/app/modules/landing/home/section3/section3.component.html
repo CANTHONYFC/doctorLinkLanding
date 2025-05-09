@@ -1,25 +1,17 @@
-<section class="bg-gradient-to-r from-teal-500 to-teal-300 py-16">
-    <div class="max-w-7xl mx-auto text-center text-white">
-      <p class="text-xl mb-6">Instituciones que confían en nosotros:</p>
-      <div class="flex justify-center space-x-8">
+<section class="bg-gradient-to-b from-[#0dc3b2] to-[#f0fdfa] py-16">
+  <div class="max-w-7xl mx-auto text-center text-white">
+    <p class="text-3xl mb-6 text-gray-800 font-bold">Instituciones que confían en nosotros:</p>
+    <div class="relative overflow-hidden">
+      <div class="flex animate-slide">
         <!-- Logo 1 -->
-        <img src="https://framerusercontent.com/images/YnNE8DhqnlCvD8tlFj3UcpkCCaw.png?scale-down-to=512" alt="Logo 1" class="h-12 opacity-80 hover:opacity-100 transition">
-        
-        <!-- Logo 2 -->
-        <img src="https://framerusercontent.com/images/53v1oxDQuQNp8Y76yEz4aEQJ3Fg.png" alt="Logo 2" class="h-12 opacity-80 hover:opacity-100 transition">
-        
-        <!-- Logo 3 -->
-        <img src="https://framerusercontent.com/images/kfuQ1NgPLlh8gDK3XDb83iPZelc.png" alt="Logo 3" class="h-12 opacity-80 hover:opacity-100 transition">
-        
-        <!-- Logo 4 -->
-        <img src="https://framerusercontent.com/images/9L8S8EhqIxrlCxEYaL68MaI8fI.png" alt="Logo 4" class="h-12 opacity-80 hover:opacity-100 transition">
-        
-        <!-- Logo 5 -->
-        <img src="https://framerusercontent.com/images/JDdzy6yJ4eHIJSXQP0lbdRJ9gJ0.png" alt="Logo 5" class="h-12 opacity-80 hover:opacity-100 transition">
-        
-        <!-- Logo 6 -->
-        <img src="https://framerusercontent.com/images/YnlYEw5fdbsHeWlSFrYcYpr3qIE.png?scale-down-to=512" alt="Logo 6" class="h-12 opacity-80 hover:opacity-100 transition">
+        <div class="flex-none w-1/5 p-4" *ngFor="let logo of logos">
+          <img [src]="logo.src" [alt]="logo.alt" class="h-12 opacity-80 hover:opacity-100 transition-all duration-500">
+        </div>
+        <!-- Repetir logos para que el carrusel sea continuo -->
+        <div class="flex-none w-1/5 p-4" *ngFor="let logo of logos">
+          <img [src]="logo.src" [alt]="logo.alt" class="h-12 opacity-80 hover:opacity-100 transition-all duration-500">
+        </div>
       </div>
     </div>
-  </section>
-  
+  </div>
+</section>

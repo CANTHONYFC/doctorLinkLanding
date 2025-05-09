@@ -1,0 +1,17 @@
+/* carousel.component.css */
+
+/* Definir la animación del movimiento continuo */
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-slide {
+  display: flex;
+  animation: slide 15s linear infinite; /* Ajusta el tiempo según la velocidad */
+}
+
