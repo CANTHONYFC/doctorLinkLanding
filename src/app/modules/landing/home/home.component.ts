@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, HostListener, ViewEncapsulation } from '@angular/core';
 
 @Component({
     selector     : 'landing-home',
@@ -7,11 +7,5 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 export class LandingHomeComponent
 {
-    /**
-     * Constructor
-     */
-    constructor()
-    {
-      // TODO document why this constructor is empty
-    }
+  
 }
