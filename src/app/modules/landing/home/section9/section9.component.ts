@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./section9.component.scss']
 })
 export class Section9Component {
+    yearlyBilling: boolean = true;
 
 }

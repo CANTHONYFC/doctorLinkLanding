@@ -7,5 +7,5 @@ import { Component, HostListener, ViewEncapsulation } from '@angular/core';
 })
 export class LandingHomeComponent
 {
-  
+
 }

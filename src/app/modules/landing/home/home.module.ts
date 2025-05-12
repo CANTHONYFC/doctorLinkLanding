@@ -18,6 +18,7 @@ import { Section8Component } from './section8/section8.component';
 import { Section3Component } from './section3/section3.component';
 import { Section4Component } from './section4/section4.component';
 import { Section7Component } from './section7/section7.component';
+import { Section5Component } from './section5/section5.component';
 
 @NgModule({
     declarations: [
@@ -31,7 +32,8 @@ import { Section7Component } from './section7/section7.component';
         Section8Component,
         Section3Component,
         Section4Component,
-        Section7Component
+        Section7Component,
+        Section5Component
     ],
     imports: [
         RouterModule.forChild(landingHomeRoutes),
@@ -40,7 +42,7 @@ import { Section7Component } from './section7/section7.component';
         SharedModule,
         MatToolbarModule,
         MatMenuModule,
-        MatDividerModule
+        MatDividerModule,
     ]
 })
 export class LandingHomeModule {

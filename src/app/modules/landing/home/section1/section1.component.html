@@ -5,13 +5,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 
-<div class="bg-teal-50 p-8">
+<div class=" p-8">
   <div class="max-w-3xl mx-auto text-center">
-    <h1 class="text-8xl font-bold text-gray-900 font-pacifico">
+    <h1 class="text-8xl font-bold text-gray-900 font-pacifico animate-zoomOnLoad">
       No has estudiado medicina para 
       <span class="text-teal-400">perder los papeles.</span>
     </h1>
-    <p class="mt-6 text-3xl text-gray-600 ">
+    <p class="mt-6 text-3xl text-gray-600">
       Doctoc es la solución para gestionar tu centro de salud. 
       Automatiza historias clínicas, citas y finanzas desde una plataforma única.
     </p>
@@ -26,5 +26,26 @@
   /* Aplicar la fuente Pacifico */
   .font-pacifico {
     font-family: "Pacifico", cursive;
+  }
+
+  /* Definir la animación zoom */
+  @keyframes zoomEffect {
+    0% {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Clase para aplicar la animación en el h1 al cargar */
+  .animate-zoomOnLoad {
+    animation: zoomEffect 1s ease-out forwards;
   }
 </style>
