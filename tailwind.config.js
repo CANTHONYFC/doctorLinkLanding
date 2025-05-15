@@ -85,12 +85,21 @@ const config = {
             '9xl' : '6rem',
             '10xl': '8rem'
         },
-        screens : {
-            sm: '600px',
-            md: '960px',
-            lg: '1280px',
-            xl: '1440px'
-        },
+            screens: {
+            smartphone: '360px',       // Smartphones pequeños
+            smatphonet: '400px',       // Smartphones medianos
+            sm: '600px',               // Tamaño base pequeño
+            tablet: '768px',           // Tablets
+            laptop: '1024px',          // Laptops
+            md: '960px',               // Mediano
+            lg: '1280px',              // (Ya cubierto por "desktop", puede eliminarse)
+            xl: '1440px',              // Extra grande
+            xlargedesktop: '1600px',   // Muy grande
+            xxlargedesktop: '1800px',  // Extra extra grande
+            xxxldesktop: '1920px',     // Ultra grande
+            xxxxldesktop: '2560px'     // Ultra ultra grande
+            },
+
         extend  : {
             animation               : {
                 'spin-slow': 'spin 3s linear infinite'

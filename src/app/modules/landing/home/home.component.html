@@ -1,21 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body class="bg-gradient-to-b from-[#1bc5b2] via-[#000000] to-[#000000] h-full min-h-screen">
-  <app-nav></app-nav>
-  <app-section1></app-section1>
-  <app-section2></app-section2>
-  <app-section3></app-section3>
-  <app-section4></app-section4>
-  <app-section5></app-section5>
-  <app-section7></app-section7>
-  <app-section8></app-section8>
-  <app-section9></app-section9>
-  <app-section10></app-section10>
-  <app-footer></app-footer>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <!--class="bg-gradient-to-b from-[#1bc5b2] via-[#000000] to-[#000000] h-full min-h-screen"-->
+    <body>
+        <app-nav></app-nav>
+        <div
+            class="w-full bg-gradient-to-t from-teal-50 from- via-teal-500 via- to-teal-600 to-"
+        >
+            <app-section1></app-section1>
+            <app-section2></app-section2>
+        </div>
+
+        <div
+            class="w-full bg-gradient-to-b from-teal-50 from- via-teal-500 via- to-teal-800 to-"
+        >
+            <app-section3></app-section3>
+            <app-section4></app-section4>
+        </div>
+        <div
+            class="bg-gradient-to-t from-slate-900 from- via-teal-900 via- to-teal-800 to-"
+        >
+            <app-section5></app-section5>
+        </div>
+
+        <div
+            class="bg-gradient-to-b from-slate-900 from- via-teal-900 via- to-slate-900 to-"
+        >
+            <app-section7></app-section7>
+        </div>
+
+        <app-section8></app-section8>
+        <div
+            class="bg-gradient-to-b from-slate-900 from- via-slate-900 via- to-black to-"
+        >
+            <app-section9></app-section9>
+        </div>
+
+        <div class="bg-black">
+          <app-section10></app-section10>
+        </div>
+        <div class="bg-black">
+            <app-footer></app-footer>
+        </div>
+    </body>
 </html>
