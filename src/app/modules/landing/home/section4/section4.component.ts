@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener, Renderer2, ViewChild } from '@angular/core';
 
 @Component({
     selector: 'app-section4',
@@ -6,29 +6,38 @@ import { Component } from '@angular/core';
     styleUrls: ['./section4.component.scss'],
 })
 export class Section4Component {
-  ngOnInit() {
-    this.observeElements();
+ @ViewChild('gridContainer') gridContainer!: ElementRef<HTMLDivElement>;
+  observer!: IntersectionObserver;
+
+  constructor(private renderer: Renderer2) {}
+
+  ngAfterViewInit() {
+    this.observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Cuando el grid aparece en pantalla
+            this.renderer.addClass(this.gridContainer.nativeElement, 'animate');
+          } else {
+            // Cuando el grid sale de pantalla (oculto)
+            this.renderer.removeClass(this.gridContainer.nativeElement, 'animate');
+          }
+        });
+      },
+      {
+        root: null, // viewport
+        threshold: 0.1 // 10% visible para activar
+      }
+    );
+
+    if (this.gridContainer && this.gridContainer.nativeElement) {
+      this.observer.observe(this.gridContainer.nativeElement);
+    }
   }
 
-  observeElements() {
-    // Seleccionamos todos los elementos con la clase 'animate__fadeInUp'
-    const elements = document.querySelectorAll('.animate__fadeInUp');
-
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        // Si el elemento entra en el viewport
-        if (entry.isIntersecting) {
-          // Añadimos la clase de animación combinada
-          entry.target.classList.add('animate__fadeInUpZoom');
-          // Deja de observar el elemento una vez haya sido visible
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.5 // El elemento debe estar al 50% visible
-    });
-
-    // Comenzamos a observar los elementos
-    elements.forEach(element => observer.observe(element));
+  ngOnDestroy() {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
   }
 }

@@ -23,6 +23,11 @@ export const appRoutes: Route[] = [
                     import('app/modules/landing/home/home.module').then(m => m.LandingHomeModule)
             },
             {
+                path: 'nosotros',
+                loadChildren: () =>
+                    import('app/modules/landing/nosotros/nosotros.module').then(m => m.LandingNosotrosModule)
+            },
+            {
                 path: 'confirmation-required',
                 loadChildren: () =>
                     import('app/modules/auth/confirmation-required/confirmation-required.module')

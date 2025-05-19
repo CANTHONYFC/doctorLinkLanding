@@ -4,7 +4,14 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
-    </head>
+   
+  <!-- Agregar Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Acme&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+</head>
+
     <!--class="bg-gradient-to-b from-[#1bc5b2] via-[#000000] to-[#000000] h-full min-h-screen"-->
     <body>
         <app-nav></app-nav>
@@ -12,39 +19,40 @@
             class="w-full bg-gradient-to-b from-slate-900 from-0% via-slate-900 via-50% to-teal-800 to-100%"
         >
             <app-section1></app-section1>
-            <app-section2></app-section2>
         </div>
 
         <div
             class="w-full bg-gradient-to-t from-slate-900 from-0% via-slate-900 via-50% to-teal-800 to-100%"
         >
-            <app-section3></app-section3>
-            <app-section4></app-section4>
-        </div>
+                    <app-section2></app-section2>
+
+    </div>
         <div
             class="bg-gradient-to-b from-slate-900 from-0% via-slate-900 via-75% to-slate-900 to-100%"
         >
-            <app-section5></app-section5>
-        </div>
+                            <app-section3></app-section3>
+
+    </div>
 
         <div
             class="bg-gradient-to-b from-slate-900 from- via-teal-900 via- to-slate-900 to-"
-        >
-            <app-section7></app-section7>
-        </div>
+        ></div>
 
-        <app-section8></app-section8>
         <div
             class="bg-gradient-to-b from-slate-900 from- via-slate-900 via- to-black to-"
-        >
-            <app-section9></app-section9>
-        </div>
+        ></div>
 
         <div class="bg-black">
-          <app-section10></app-section10>
+            <app-section10></app-section10>
+
         </div>
         <div class="bg-black">
             <app-footer></app-footer>
         </div>
     </body>
 </html>
+<style>
+      .font-pacifico {
+    font-family: "Pacifico", cursive;
+  }
+</style>

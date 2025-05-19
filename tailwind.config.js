@@ -97,6 +97,11 @@ const config = {
             xlargedesktop: '1600px',   // Muy grande
             xxlargedesktop: '1800px',  // Extra extra grande
             xxxldesktop: '1920px',     // Ultra grande
+            xxxlgdesktop: '1950px',     // Ultra grande
+            xxxlggdesktop: '2025px',     // Ultra grande
+            xxxlgggdesktop: '2180px',     // Ultra grande
+            xxxlggggdesktop: '2250px',     // Ultra grande
+            xxxlgggggdesktop: '2350px',     // Ultra grande
             xxxxldesktop: '2560px'     // Ultra ultra grande
             },
 
