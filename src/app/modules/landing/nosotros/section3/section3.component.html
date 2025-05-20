@@ -1,43 +1,58 @@
-<div class="max-w-7xl mx-auto px-6 py-10 relative" #container>
-  <div
-    #flexContainer
-    class="flex flex-row gap-12 relative w-full"
-    style="position: relative;"
-  >
-    <!-- Placeholder que ocupa el espacio de la columna izquierda -->
+<div class="max-w-7xl mx-auto px-6 py-10 relative mb-10" #container>
     <div
-      *ngIf="leftColStyle.position === 'fixed' || leftColStyle.position === 'absolute'"
-      style="width: 24rem; flex-shrink: 0;"
-      aria-hidden="true"
-    ></div>
-
-    <!-- Columna izquierda -->
-    <div
-      #leftCol
-      [ngStyle]="leftColStyle"
-      class="bg-white p-6 rounded-xl shadow flex-shrink-0"
-      style="width: 24rem;"
+        #flexContainer
+        class="flex flex-row gap-12 relative w-full"
+        style="position: relative"
     >
-      <h2 class="text-3xl font-serif font-semibold mb-4">Nuestros valores</h2>
-      <p class="text-gray-600">
-        Empoderamos a los médicos para que brinden la mejor atención a sus pacientes.
-      </p>
-    </div>
+        <!-- Placeholder que ocupa el espacio de la columna izquierda -->
+        <!-- Placeholder que ocupa el espacio de la columna izquierda -->
+        <div
+            *ngIf="
+                leftColStyle.position === 'fixed' ||
+                leftColStyle.position === 'absolute'
+            "
+            style="width: 42rem; flex-shrink: 0"
+            aria-hidden="true"
+        ></div>
 
-    <!-- Columna derecha -->
-    <div
-      #rightCol
-      class="space-y-8"
-      style="flex-grow: 1; min-width: 0; max-width: calc(100% - 24rem - 3rem);"
-    >
-      <div
-        *ngFor="let valor of valores"
-        class="bg-white rounded-xl p-6 shadow-md"
-      >
-        <div class="mb-4 text-teal-600 text-xl">♥</div>
-        <h3 class="font-bold text-xl mb-2">{{ valor.titulo }}</h3>
-        <p class="text-gray-800 leading-relaxed">{{ valor.descripcion }}</p>
-      </div>
+        <!-- Columna izquierda -->
+        <!-- Columna izquierda -->
+        <div
+            #leftCol
+            [ngStyle]="leftColStyle"
+            class="p-6 rounded-xl shadow flex-shrink-0 w-[41rem]"
+        >
+            <div class="w-full">
+                <h2 class="text-7xl text-white font-serif font-semibold mb-4">
+                    Nuestros valores
+                </h2>
+                <p class="text-gray-300 text-3xl">
+                    Empoderamos a los médicos para que brinden la mejor atención
+                    a sus pacientes.
+                </p>
+            </div>
+        </div>
+
+        <!-- Columna derecha -->
+        <div
+            #rightCol
+            class="space-y-8"
+            style="
+                flex-grow: 1;
+                min-width: 0;
+                max-width: calc(100% - 24rem - 3rem);
+            "
+        >
+            <div
+                *ngFor="let valor of valores"
+                class="bg-white rounded-xl p-6 shadow-md"
+            >
+                <div class="mb-4 text-teal-600 text-7xl">♥</div>
+                <h3 class="font-bold text-5xl mb-2 ml-2">{{ valor.titulo }}</h3>
+                <p class="text-gray-800 leading-relaxed text-3xl">
+                    {{ valor.descripcion }}
+                </p>
+            </div>
+        </div>
     </div>
-  </div>
 </div>

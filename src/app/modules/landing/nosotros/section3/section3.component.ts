@@ -25,21 +25,18 @@ export class Section3Component implements AfterViewInit {
         'Nuestra plataforma está diseñada para el cuidado de la salud moderna, pensando tanto en los profesionales de la salud como en sus pacientes.',
     },
     {
-      titulo: 'Valor 3',
-      descripcion: 'Descripción del valor 3.',
+      titulo: 'Empatía',
+      descripcion: 'Tratamos de ver el mundo desde la perspectiva de los médicos/pacientes y crear un trabajo que encaje en sus vidas y se adapte a sus necesidades.',
     },
     {
-      titulo: 'Valor 4',
-      descripcion: 'Descripción del valor 4.',
+      titulo: 'Consentimiento es clave',
+      descripcion: 'Derecho a saber que, cuando y como usamos su información. Privado, secreto, discreto, pertenencia, diferente.',
     },
     {
-      titulo: 'Valor 5',
-      descripcion: 'Descripción del valor 5.',
+      titulo: 'Colaboración',
+      descripcion: 'Sabemos que es mejor trabajar en conjunto con otras personas y buscar combinar sus fortalezas complementarias.',
     },
-    {
-      titulo: 'Valor 6',
-      descripcion: 'Descripción del valor 6.',
-    },
+
   ];
 
   @ViewChild('leftCol') leftCol!: ElementRef;
@@ -86,7 +83,7 @@ export class Section3Component implements AfterViewInit {
     const limit = containerBottom - leftHeight - 80; // offset top 80px
 
     if (scrollY >= limit) {
-      // Posición absoluta pegada al final del contenedor (relativo a flexContainer)
+      // Pegado al final del contenedor
       this.leftColStyle = {
         position: 'absolute',
         top: `${rightHeight - leftHeight}px`,
@@ -96,7 +93,7 @@ export class Section3Component implements AfterViewInit {
         pointerEvents: 'auto',
       };
     } else if (scrollY >= containerTop - 80) {
-      // Posición fija con left absoluto (relativo al viewport)
+      // Posición fija mientras hace scroll
       const flexContainerRect = this.flexContainer.nativeElement.getBoundingClientRect();
       const flexContainerLeftAbs = flexContainerRect.left;
 
@@ -109,15 +106,18 @@ export class Section3Component implements AfterViewInit {
         pointerEvents: 'auto',
       };
     } else {
-      // Oculto hasta llegar a la posición del scroll (para que no aparezca al inicio)
+      // ⚠️ CAMBIA esta parte para que sea visible desde el inicio
+      // Antes estaba como oculto: visibility: hidden
+      // Ahora se mantiene en posición absoluta arriba
       this.leftColStyle = {
-        position: 'static',
-        top: undefined,
-        left: undefined,
+        position: 'absolute',
+        top: '0px',
+        left: `${this.leftOriginalLeft}px`,
         width: '24rem',
-        visibility: 'hidden',
-        pointerEvents: 'none',
+        visibility: 'visible',
+        pointerEvents: 'auto',
       };
     }
   }
+
 }
