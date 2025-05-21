@@ -31,6 +31,13 @@ export const appRoutes: Route[] = [
                         (m) => m.LandingPreciosModule
                     ),
             },
+               {
+                path: 'historia-clinica',
+                loadChildren: () =>
+                    import('app/modules/landing/hclinica/hclinica.module').then(
+                        (m) => m.LandingHclinicaModule
+                    ),
+            },
             {
                 path: 'nosotros',
                 loadChildren: () =>
