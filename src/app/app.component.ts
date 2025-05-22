@@ -25,7 +25,7 @@ export class AppComponent
              )
              .subscribe((event) =>
                  this.titleService.setTitle(
-                     event['title'] ? event['title'] : 'SKINCENTER'
+                     event['title'] ? event['title'] : 'DoctorLink'
                  )
              );
      }

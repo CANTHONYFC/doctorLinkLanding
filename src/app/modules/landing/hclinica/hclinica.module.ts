@@ -14,6 +14,7 @@ import { NavComponent } from './nav/nav.component';
 import { Section1Component } from './section1/section1.component';
 import { Section2Component } from './section2/section2.component';
 import { FooterComponent } from './footer/footer.component';
+import { Section3Component } from './section3/section3.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { FooterComponent } from './footer/footer.component';
         Section1Component,
         Section2Component,
         FooterComponent,
+        Section3Component,
 
 
     ],
