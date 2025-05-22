@@ -12,6 +12,8 @@ import { LandingHclinicaComponent } from './hclinica.component';
 import { landingHclinicaRoutes } from './hclinicia.routing';
 import { NavComponent } from './nav/nav.component';
 import { Section1Component } from './section1/section1.component';
+import { Section2Component } from './section2/section2.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -19,6 +21,8 @@ import { Section1Component } from './section1/section1.component';
         LandingHclinicaComponent,
         NavComponent,
         Section1Component,
+        Section2Component,
+        FooterComponent,
 
 
     ],
