@@ -26,4 +26,13 @@ export class NavComponent {
             this.isFuncionesOpen = false;
         }
     }
+
+    isMobileFuncionesOpen = false;
+
+
+
+    toggleMobileFunciones() {
+    this.isMobileFuncionesOpen = !this.isMobileFuncionesOpen;
+    }
+
 }
