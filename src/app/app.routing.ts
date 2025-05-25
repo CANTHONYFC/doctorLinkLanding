@@ -38,6 +38,13 @@ export const appRoutes: Route[] = [
                         (m) => m.LandingHclinicaModule
                     ),
             },
+                {
+                path: 'agenda',
+                loadChildren: () =>
+                    import('app/modules/landing/agenda/agenda.module').then(
+                        (m) => m.LandingAgendaModule
+                    ),
+            },
             {
                 path: 'nosotros',
                 loadChildren: () =>
