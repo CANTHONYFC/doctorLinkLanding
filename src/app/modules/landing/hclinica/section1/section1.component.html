@@ -1,13 +1,33 @@
-<div class="flex flex-col items-center justify-center text-center py-16 px-4">
-    <h1 class="lg:text-8xl md:text-5xl sm:text-3xl font-serif font-bold mb-4 text-white">
-        Por fin una historia clínica moderna.
-    </h1>
-    <p class="text-gray-300 max-w-xl mb-8 text-xl">
-        DoctorLink es una historia clínica electrónica diseñada para ayudarte a pasar más tiempo con tus pacientes y
-        menos con tu computadora.
-    </p>
-    <button
-        class="bg-teal-500 hover:bg-teal-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition-shadow duration-300">
-        Regístrate
-    </button>
-</div>
+    <div class="flex flex-col items-center justify-center text-center py-16 px-4">
+        <h1 class="lg:text-8xl md:text-5xl sm:text-3xl font-serif font-bold mb-4 text-white animate-zoomOnLoad">
+            Por fin una historia clínica moderna.
+        </h1>
+        <p class="text-gray-300 max-w-xl mb-8 text-xl">
+            DoctorLink es una historia clínica electrónica diseñada para ayudarte a pasar más tiempo con tus pacientes y
+            menos con tu computadora.
+        </p>
+        <button
+            class="bg-teal-500 hover:bg-teal-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition-shadow duration-300">
+            Regístrate
+        </button>
+    </div>
+   <style>
+        @keyframes zoomEffect {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .animate-zoomOnLoad {
+            animation: zoomEffect 1s ease-out forwards;
+        }
+    </style>

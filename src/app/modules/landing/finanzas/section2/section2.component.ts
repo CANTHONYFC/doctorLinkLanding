@@ -1,13 +1,13 @@
 import { Component, AfterViewInit, ViewChildren, ElementRef, QueryList, HostListener } from '@angular/core';
 
 @Component({
-  selector: 'app-section3',
-  templateUrl: './section3.component.html',
-  styleUrls: ['./section3.component.scss']
+  selector: 'app-section2',
+  templateUrl: './section2.component.html',
+  styleUrls: ['./section2.component.scss']
 })
-export class Section3Component {
- @ViewChildren('card') cards!: QueryList<ElementRef>;
-  visibleCards: boolean[] = Array(8).fill(false);
+export class Section2Component {
+@ViewChildren('card') cards!: QueryList<ElementRef>;
+  visibleCards: boolean[] = [false, false, false, false];
 
   ngAfterViewInit() {
     this.checkVisibility();
@@ -23,7 +23,6 @@ export class Section3Component {
       const rect = card.nativeElement.getBoundingClientRect();
       const windowHeight = window.innerHeight || document.documentElement.clientHeight;
 
-      // Condición para saber si está visible en pantalla (puedes ajustar el margen)
       if (rect.top <= windowHeight * 0.9 && rect.bottom >= 0) {
         this.visibleCards[index] = true;
       }

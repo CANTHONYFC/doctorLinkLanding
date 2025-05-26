@@ -1,53 +1,78 @@
-<div class="  py-12 px-4 sm:px-6 lg:px-8">
+  <div class="py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
 
-        <!-- Tarjeta 1 -->
-        <div class="bg-[#f0f3f4] rounded-xl p-10 shadow-md">
-            <h3 class="text-xl font-bold mb-2">Encuentra a tus pacientes en segundos.</h3>
-            <p class="text-gray-600 mb-4">
-                Toda la información de tus pacientes está a un solo clic. Desde ver la última atención a revisar los
-                antecedentes de tu paciente, todo está ahí y es fácil de encontrar.
-            </p>
-            <div class="px-24">
-                <div class="bg-white rounded-lg p-4 shadow-inner">
-                <input type="text" placeholder="Buscar..." class="w-full p-2 mb-2 border border-gray-300 rounded">
-                <ul class="text-sm text-gray-800">
-                    <li class="py-1">Ana Banana</li>
-                    <li class="py-1">Andres Bracamonte</li>
-                    <li class="py-1 bg-blue-100 rounded">Berta Harper</li>
-                    <li class="py-1">Carlos Aliaga</li>
-                </ul>
-            </div>
-            </div>
+      <!-- Tarjeta 1 -->
+      <div class="bg-[#f0f3f4] rounded-xl p-10 shadow-md animate-zoom delay-1">
+        <h3 class="text-xl font-bold mb-2">Encuentra a tus pacientes en segundos.</h3>
+        <p class="text-gray-600 mb-4">
+          Toda la información de tus pacientes está a un solo clic...
+        </p>
+        <div class="px-24">
+          <div class="bg-white rounded-lg p-4 shadow-inner">
+            <input type="text" placeholder="Buscar..." class="w-full p-2 mb-2 border border-gray-300 rounded">
+            <ul class="text-sm text-gray-800">
+              <li class="py-1">Ana Banana</li>
+              <li class="py-1">Andres Bracamonte</li>
+              <li class="py-1 bg-blue-100 rounded">Berta Harper</li>
+              <li class="py-1">Carlos Aliaga</li>
+            </ul>
+          </div>
         </div>
+      </div>
 
-        <!-- Tarjeta 2 -->
-        <div class="bg-[#f0f3f4] rounded-xl  shadow-md">
-            <h3 class="text-xl font-bold mb-2 px-10 pt-10">Podrás enviar recetas médicas en solo un click.</h3>
-            <p class="text-gray-600 mb-4 px-10">
-                Crea tu propia receta con los datos de tu consultorio y envíala a tus pacientes, por correo o WhatsApp.
-            </p>
-            <img src="https://i.imgur.com/nQeHQPb.png" alt="" class="px-28">
-        </div>
+      <!-- Tarjeta 2 -->
+      <div class="bg-[#f0f3f4] rounded-xl shadow-md animate-zoom delay-2">
+        <h3 class="text-xl font-bold mb-2 px-10 pt-10">Podrás enviar recetas médicas en solo un click.</h3>
+        <p class="text-gray-600 mb-4 px-10">
+          Crea tu propia receta con los datos de tu consultorio...
+        </p>
+        <img src="https://i.imgur.com/nQeHQPb.png" alt="" class="px-28">
+      </div>
 
-        <!-- Tarjeta 3 -->
-        <div class="bg-[#f0f3f4] rounded-xl  shadow-md">
-            <h3 class="text-xl font-bold px-10 pt-10 mb-2">Tus pacientes estarán siempre contigo.</h3>
-            <p class="text-gray-600 px-10">
-                Puedes acceder y administrar los registros médicos de tus pacientes en cualquier momento y en cualquier
-                lugar. Ya sea en tu consultorio o de viaje.
-            </p>
-            <img src="https://framerusercontent.com/images/1iRKmgXs7WoZ3GH0h0PgfdSflsE.png?scale-down-to=1024" alt="" class="mt-16">
-        </div>
+      <!-- Tarjeta 3 -->
+      <div class="bg-[#f0f3f4] rounded-xl shadow-md animate-zoom delay-3">
+        <h3 class="text-xl font-bold px-10 pt-10 mb-2">Tus pacientes estarán siempre contigo.</h3>
+        <p class="text-gray-600 px-10">
+          Puedes acceder y administrar los registros médicos en cualquier momento...
+        </p>
+        <img src="https://framerusercontent.com/images/1iRKmgXs7WoZ3GH0h0PgfdSflsE.png?scale-down-to=1024" alt="" class="mt-16">
+      </div>
 
-        <!-- Tarjeta 4 -->
-        <div class="bg-[#f0f3f4] rounded-xl p-6 shadow-md">
-            <h3 class="text-xl font-bold mb-2">Podrás agregar plantillas personalizadas.</h3>
-            <p class="text-gray-600">
-                Podrás agregar tus propias plantillas médicas y atender más rápido a tus pacientes. DoctorLink se puede
-                adaptar a cualquier médico.
-            </p>
-            <img src="https://framerusercontent.com/images/tk9NE0UpIcjQmqE2QwENDidHw.webp?scale-down-to=512" class="sm:px-24 lg:px-10 mt-5" alt="">
-        </div>
+      <!-- Tarjeta 4 -->
+      <div class="bg-[#f0f3f4] rounded-xl p-6 shadow-md animate-zoom delay-4">
+        <h3 class="text-xl font-bold mb-2">Podrás agregar plantillas personalizadas.</h3>
+        <p class="text-gray-600">
+          Podrás agregar tus propias plantillas médicas...
+        </p>
+        <img src="https://framerusercontent.com/images/tk9NE0UpIcjQmqE2QwENDidHw.webp?scale-down-to=512"
+             class="sm:px-24 lg:px-10 mt-5" alt="">
+      </div>
+
     </div>
-</div>
+  </div>
+
+ <style>
+  @keyframes zoomEffect {
+    0% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-zoom {
+    animation: zoomEffect 1.5s ease-out forwards; /* antes era 0.8s */
+  }
+
+  .delay-1 { animation-delay: 0.2s; }
+  .delay-2 { animation-delay: 0.4s; }
+  .delay-3 { animation-delay: 0.6s; }
+  .delay-4 { animation-delay: 0.8s; }
+</style>

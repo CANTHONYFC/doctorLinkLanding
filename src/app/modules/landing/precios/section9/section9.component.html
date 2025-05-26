@@ -1,9 +1,10 @@
 <div class="px-6 py-24 sm:py-32 lg:px-8">
-    <div class="mx-auto max-w-7xl text-center">
-        <h1 class="mt-2 text-7xl font-semibold text-white font-pacifico">
-            Precios y planes
-        </h1>
-    </div>
+    <div class="mx-auto max-w-7xl text-center animate-fade-slide-down">
+  <h1 class="mt-2 text-7xl font-semibold text-white font-pacifico">
+    Precios y planes
+  </h1>
+</div>
+
     <p
         class="mx-auto mt-6 max-w-2xl text-center text-2xl font-medium text-pretty text-white sm:text-xl/8"
     >
@@ -159,3 +160,21 @@
         <h2>***Precios no incluyen IGV.</h2>
     </div>
 </div>
+
+<style>
+    @keyframes fadeSlideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-slide-down {
+  animation: fadeSlideDown 1s ease forwards;
+}
+
+</style>

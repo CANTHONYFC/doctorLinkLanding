@@ -1,4 +1,4 @@
-<section class="text-center py-16 ">
+<section class="text-center py-16 animate-fade-slide-up">
   <h1 class="text-4xl md:text-8xl font-bold text-white leading-tight mb-4 font-pacifico">
     Libera a tu equipo del teléfono<br>y ponlo frente a los pacientes
   </h1>
@@ -27,3 +27,23 @@
     Regístrate
   </button>
 </section>
+
+
+<style>
+  @keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-slide-up {
+  animation: fadeSlideUp 1s ease forwards;
+  opacity: 0;
+}
+
+</style>

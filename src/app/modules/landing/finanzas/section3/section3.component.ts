@@ -6,7 +6,7 @@ import { Component, AfterViewInit, ViewChildren, ElementRef, QueryList, HostList
   styleUrls: ['./section3.component.scss']
 })
 export class Section3Component {
- @ViewChildren('card') cards!: QueryList<ElementRef>;
+  @ViewChildren('card') cards!: QueryList<ElementRef>;
   visibleCards: boolean[] = Array(8).fill(false);
 
   ngAfterViewInit() {

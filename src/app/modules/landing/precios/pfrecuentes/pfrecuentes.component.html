@@ -1,23 +1,32 @@
-<h2 class="text-4xl font-bold text-center mb-8 text-white">
+<h2
+    #animElem
+    class="text-4xl font-bold text-center mb-8 text-white"
+    [class.animate-fade-slide-up]="visibleElements[0]"
+>
     Preguntas frecuentes
 </h2>
 
-<div class="sm:max-w-lg  lg:max-w-5xl w-full bg-white/80 rounded-xl p-6 shadow-lg mx-auto mb-26">
+<div
+    class="sm:max-w-lg lg:max-w-5xl w-full bg-white/80 rounded-xl p-6 shadow-lg mx-auto mb-26"
+>
     <div class="space-y-4">
-        <!-- Item 1 -->
-        <details class="group rounded-lg">
+        <details
+            #animElem
+            class="group rounded-lg"
+            [class.animate-fade-slide-up]="visibleElements[1]"
+        >
             <summary
                 class="flex items-center cursor-pointer list-none font-semibold text-gray-900 text-2xl mb-5"
             >
                 <span
                     class="mr-3 transition-transform duration-300 group-open:rotate-45"
-                >+</span
+                    >+</span
                 >
                 <span>¿Puedo cancelar mi cuenta en cualquier momento?</span>
             </summary>
             <p class="text-gray-700 text-xl mt-2">
-                Con el plan mensual, si decide que DoctorLink Health no es la mejor
-                plataforma de EHR para usted, puede cancelar su cuenta sin
+                Con el plan mensual, si decide que DoctorLink Health no es la
+                mejor plataforma de EHR para usted, puede cancelar su cuenta sin
                 penalización. Con el plan anual, una vez finalizado el período
                 de compromiso de 12 meses, puede optar por no renovar. En
                 cualquier caso, incluso le devolveremos todos los datos de su
@@ -26,17 +35,20 @@
             </p>
         </details>
 
-        <!-- Item 2 abierto -->
-        <details class="group rounded-lg">
+        <details
+            #animElem
+            class="group rounded-lg"
+            [class.animate-fade-slide-up]="visibleElements[2]"
+        >
             <summary
-                class="flex items-center cursor-pointer list-none font-semibold text-gray-900  text-2xl mb-5"
+                class="flex items-center cursor-pointer list-none font-semibold text-gray-900 text-2xl mb-5"
             >
                 <span
                     class="mr-3 transition-transform duration-300 group-open:rotate-45 rotate-45"
-                >×</span
+                    >×</span
                 >
                 <span
-                >¿Cómo cobran a los nuevos usuarios agregados a la cuenta
+                    >¿Cómo cobran a los nuevos usuarios agregados a la cuenta
                     principal?</span
                 >
             </summary>
@@ -47,17 +59,20 @@
             </p>
         </details>
 
-        <!-- Item 3 -->
-        <details class="group rounded-lg">
+        <details
+            #animElem
+            class="group rounded-lg"
+            [class.animate-fade-slide-up]="visibleElements[3]"
+        >
             <summary
                 class="flex items-center cursor-pointer list-none font-semibold text-gray-900 text-2xl mb-5"
             >
                 <span
                     class="mr-3 transition-transform duration-300 group-open:rotate-45"
-                >+</span
+                    >+</span
                 >
                 <span
-                >¿Ofrecen una versión de prueba del software para que los
+                    >¿Ofrecen una versión de prueba del software para que los
                     médicos puedan probarlo antes de comprarlo?</span
                 >
             </summary>
@@ -75,17 +90,20 @@
             </p>
         </details>
 
-        <!-- Item 4 -->
-        <details class="group rounded-lg">
+        <details
+            #animElem
+            class="group rounded-lg"
+            [class.animate-fade-slide-up]="visibleElements[4]"
+        >
             <summary
                 class="flex items-center cursor-pointer list-none font-semibold text-gray-900 text-2xl mb-5"
             >
                 <span
                     class="mr-3 transition-transform duration-300 group-open:rotate-45"
-                >+</span
+                    >+</span
                 >
                 <span
-                >¿Qué sucede si necesito ayuda y es fuera del horario
+                    >¿Qué sucede si necesito ayuda y es fuera del horario
                     comercial habitual?</span
                 >
             </summary>
@@ -98,25 +116,28 @@
                 siguiente día laboral. Sin embargo, si su problema es urgente,
                 le responderemos dentro de los 30 minutos, independientemente de
                 la hora o el día. Un problema urgente se divide en tres
-                categorías: <br/>
-                -No puede acceder a DoctorLink. <br/>-Los datos dentro de DoctorLink
-                parecen ser incorrectos y pueden afectar la atención del
-                paciente. <br/>-El sistema no responde y afecta su capacidad
-                para cuidar a sus pacientes.
+                categorías: <br />
+                -No puede acceder a DoctorLink. <br />-Los datos dentro de
+                DoctorLink parecen ser incorrectos y pueden afectar la atención
+                del paciente. <br />-El sistema no responde y afecta su
+                capacidad para cuidar a sus pacientes.
             </p>
         </details>
 
-        <!-- Item 5 abierto -->
-        <details class="group rounded-lg">
+        <details
+            #animElem
+            class="group rounded-lg"
+            [class.animate-fade-slide-up]="visibleElements[5]"
+        >
             <summary
-                class="flex items-center cursor-pointer list-none font-semibold text-gray-900  text-2xl mb-5"
+                class="flex items-center cursor-pointer list-none font-semibold text-gray-900 text-2xl mb-5"
             >
                 <span
                     class="mr-3 transition-transform duration-300 group-open:rotate-45 rotate-45"
-                >×</span
+                    >×</span
                 >
                 <span
-                >¿Hay cargos adicionales por servicios de instalación o
+                    >¿Hay cargos adicionales por servicios de instalación o
                     soporte técnico?</span
                 >
             </summary>
@@ -133,6 +154,7 @@
         </details>
     </div>
 </div>
+
 <style>
     details > summary {
         font-size: 1.5rem; /* tamaño base */
@@ -141,5 +163,21 @@
 
     details[open] > summary {
         font-size: 1.65rem !important; /* fuerza el tamaño cuando está abierto */
+    }
+
+    @keyframes fadeSlideUp {
+        0% {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fade-slide-up {
+        animation: fadeSlideUp 0.8s ease forwards;
+        opacity: 0;
     }
 </style>

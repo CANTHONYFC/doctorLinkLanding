@@ -1,0 +1,86 @@
+<div class="py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+
+    <div #card class="bg-[#f4f9fa] rounded-xl p-10 shadow-md"
+         [class.animate-fade-slide-up]="visibleCards[0]">
+      <h3 class="text-xl font-bold mb-2">
+        Crea una relación de precios.
+      </h3>
+      <p class="text-gray-600 mb-4">
+        Configura tu lista de precios según los servicios o productos que utilices y vendas.
+      </p>
+      <div class="relative h-64 sm:px-24 lg:px-12 overflow-hidden rounded-lg">
+        <img
+          src="https://i.imgur.com/Z63ADPK.png"
+          alt=""
+          class="absolute top-0 left-0 w-full h-full object-contain"
+        />
+      </div>
+    </div>
+
+    <div #card class="bg-[#f2f8f9] rounded-xl shadow-md"
+         [class.animate-fade-slide-up]="visibleCards[1]">
+      <h3 class="text-xl font-bold mb-2 px-10 pt-10">
+        Podrás enviar recetas médicas en solo un click.
+      </h3>
+      <p class="text-gray-600 mb-4 px-10">
+        Crea tu propia receta con los datos de tu consultorio y envíala a tus pacientes, por correo o WhatsApp.
+      </p>
+      <img
+        src="https://i.imgur.com/OThVgB7.png"
+        alt=""
+        class="sm:px-5 sm:mt-15 sm:h-64"
+      />
+    </div>
+
+    <div #card class="bg-[#e3eeef] rounded-xl p-6 shadow-md"
+         [class.animate-fade-slide-up]="visibleCards[2]">
+      <h3 class="text-xl font-bold mb-2">
+        Tendrás un control de los pendientes de pago.
+      </h3>
+      <p class="text-gray-600">
+        Podrás registrar todos los cargos según el servicio que le das a tus pacientes.
+      </p>
+      <img
+        src="https://i.imgur.com/ql5LNNn.png"
+        alt=""
+        class="sm:px-16 -mb-6"
+      />
+    </div>
+
+    <div #card class="bg-[#f0f8f9] rounded-xl shadow-md"
+         [class.animate-fade-slide-up]="visibleCards[3]">
+      <h3 class="text-xl font-bold px-10 pt-10 mb-2">
+        Controlarás tus inventarios de productos. (Próximamente).
+      </h3>
+      <p class="text-gray-600 px-10">
+        Nunca vuelvas a perder de vista tus productos.
+      </p>
+      <img
+        src="https://i.imgur.com/SaWcprJ.png"
+        alt=""
+        class="mt-8 sm:px-16"
+      />
+    </div>
+
+  </div>
+</div>
+
+
+<style>
+    @keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-slide-up {
+  animation: fadeSlideUp 1s ease forwards;
+}
+
+</style>

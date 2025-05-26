@@ -1,60 +1,82 @@
 <div class="sm:px-6 sm:mb-10">
-    <div class="max-w-5xl  grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 gap-6  mx-auto">
-    <!-- Tarjeta 1 -->
-    <div class="bg-white rounded-xl shadow-md p-6">
-        <div class="text-3xl text-teal-500 mb-2">🔒</div>
-        <h3 class="font-bold sm:text-xl">Cifrado de punta a punta.</h3>
-        <p class="text-gray-600 text-sm">DoctorLink cumple con las normas y las mejores prácticas de la industria.</p>
+  <div class="max-w-5xl grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 gap-6 mx-auto">
+
+    <div #card class="bg-white rounded-xl shadow-md p-6"
+         [class.animate-fade-slide-up]="visibleCards[0]">
+      <div class="text-3xl text-teal-500 mb-2">🔒</div>
+      <h3 class="font-bold sm:text-xl">Cifrado de punta a punta.</h3>
+      <p class="text-gray-600 text-sm">DoctorLink cumple con las normas y las mejores prácticas de la industria.</p>
     </div>
 
-    <!-- Tarjeta 2 -->
-    <div class="bg-white rounded-xl shadow-md p-6">
-        <div class="text-3xl text-teal-500 mb-2">🌐</div>
-        <h3 class="font-bold sm:text-xl">En todos tus dispositivos</h3>
-        <p class="text-gray-600 text-sm">Atiende a un paciente desde cualquier lugar y a cualquier hora.</p>
+    <div #card class="bg-white rounded-xl shadow-md p-6"
+         [class.animate-fade-slide-up]="visibleCards[1]">
+      <div class="text-3xl text-teal-500 mb-2">🌐</div>
+      <h3 class="font-bold sm:text-xl">En todos tus dispositivos</h3>
+      <p class="text-gray-600 text-sm">Atiende a un paciente desde cualquier lugar y a cualquier hora.</p>
     </div>
 
-    <!-- Tarjeta 3 -->
-    <div class="bg-white rounded-xl shadow-md p-6">
-        <div class="text-3xl text-teal-500 mb-2">💬</div>
-        <h3 class="font-bold sm:text-xl">Envía recetas a tus pacientes</h3>
-        <p class="text-gray-600 text-sm">Podrás enviar recetas por correo o WhatsApp.</p>
+    <div #card class="bg-white rounded-xl shadow-md p-6"
+         [class.animate-fade-slide-up]="visibleCards[2]">
+      <div class="text-3xl text-teal-500 mb-2">💬</div>
+      <h3 class="font-bold sm:text-xl">Envía recetas a tus pacientes</h3>
+      <p class="text-gray-600 text-sm">Podrás enviar recetas por correo o WhatsApp.</p>
     </div>
 
-    <!-- Tarjeta 4 -->
-    <div class="bg-white rounded-xl shadow-md p-6">
-        <div class="text-3xl text-teal-500 mb-2">🖼️</div>
-        <h3 class="font-bold sm:text-xl">Carga cualquier imagen</h3>
-        <p class="text-gray-600 text-sm">Carga las imágenes que quieras en tu consulta.</p>
+    <div #card class="bg-white rounded-xl shadow-md p-6"
+         [class.animate-fade-slide-up]="visibleCards[3]">
+      <div class="text-3xl text-teal-500 mb-2">🖼️</div>
+      <h3 class="font-bold sm:text-xl">Carga cualquier imagen</h3>
+      <p class="text-gray-600 text-sm">Carga las imágenes que quieras en tu consulta.</p>
     </div>
 
-    <!-- Tarjeta 5 -->
-    <div class="bg-white rounded-xl shadow-md p-6">
-        <div class="text-3xl text-teal-500 mb-2">☁️</div>
-        <h3 class="font-bold sm:text-xl">Pacientes ilimitados</h3>
-        <p class="text-gray-600 text-sm">En DoctorLink no hay límites para tus pacientes.</p>
+    <div #card class="bg-white rounded-xl shadow-md p-6"
+         [class.animate-fade-slide-up]="visibleCards[4]">
+      <div class="text-3xl text-teal-500 mb-2">☁️</div>
+      <h3 class="font-bold sm:text-xl">Pacientes ilimitados</h3>
+      <p class="text-gray-600 text-sm">En DoctorLink no hay límites para tus pacientes.</p>
     </div>
 
-    <!-- Tarjeta 6 -->
-    <div class="bg-white rounded-xl shadow-md p-6">
-        <div class="text-3xl text-teal-500 mb-2">💬</div>
-        <h3 class="font-bold sm:text-xl">Soporte de primer nivel</h3>
-        <p class="text-gray-600 text-sm">Atención 24/7 dedicado para tu clínica.</p>
+    <div #card class="bg-white rounded-xl shadow-md p-6"
+         [class.animate-fade-slide-up]="visibleCards[5]">
+      <div class="text-3xl text-teal-500 mb-2">💬</div>
+      <h3 class="font-bold sm:text-xl">Soporte de primer nivel</h3>
+      <p class="text-gray-600 text-sm">Atención 24/7 dedicado para tu clínica.</p>
     </div>
 
-    <!-- Tarjeta 7 -->
-    <div class="bg-white rounded-xl shadow-md p-6">
-        <div class="text-3xl text-teal-500 mb-2">⬆️</div>
-        <h3 class="font-bold sm:text-xl">Siempre actualizado</h3>
-        <p class="text-gray-600 text-sm">Mejoras y actualizaciones automáticas.</p>
+    <div #card class="bg-white rounded-xl shadow-md p-6"
+         [class.animate-fade-slide-up]="visibleCards[6]">
+      <div class="text-3xl text-teal-500 mb-2">⬆️</div>
+      <h3 class="font-bold sm:text-xl">Siempre actualizado</h3>
+      <p class="text-gray-600 text-sm">Mejoras y actualizaciones automáticas.</p>
     </div>
 
-    <!-- Tarjeta 8 -->
-    <div class="bg-white rounded-xl shadow-md p-6">
-        <div class="text-3xl text-teal-500 mb-2">📄</div>
-        <h3 class="font-bold sm:text-xl">Archivos</h3>
-        <p class="text-gray-600 text-sm">Sube archivos en PDF, .doc y otros que quieras en tu consulta.</p>
+    <div #card class="bg-white rounded-xl shadow-md p-6"
+         [class.animate-fade-slide-up]="visibleCards[7]">
+      <div class="text-3xl text-teal-500 mb-2">📄</div>
+      <h3 class="font-bold sm:text-xl">Archivos</h3>
+      <p class="text-gray-600 text-sm">Sube archivos en PDF, .doc y otros que quieras en tu consulta.</p>
     </div>
+
+  </div>
 </div>
 
-</div>
+
+<style>
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-slide-up {
+  animation: fadeSlideUp 0.8s ease forwards;
+  opacity: 0; /* empieza invisible */
+}
+
+
+</style>
