@@ -13,7 +13,7 @@ export class PasarelaComponent {
       name: 'Plan Básico',
       anualPrice: 29,
       mensualPrice: 33,
-      methods: ['Transferencia bancaria', 'Tarjeta de crédito/débito'],
+      methods: ['Tarjeta', 'PayPal', 'Transferencia bancaria'],
       description: 'Pago mediante transferencia bancaria o tarjeta de crédito/débito.'
     },
     gold: {
@@ -27,7 +27,7 @@ export class PasarelaComponent {
       name: 'Plan Premium',
       anualPrice: 59,
       mensualPrice: 69,
-      methods: ['PayPal', 'Tarjeta', 'Transferencia', 'Criptomonedas'],
+      methods: ['Tarjeta', 'PayPal', 'Transferencia bancaria'],
       description: 'Pago con todos los métodos disponibles, incluyendo PayPal, tarjeta, transferencia y criptomonedas.'
     }
   };
@@ -45,5 +45,7 @@ export class PasarelaComponent {
 
   paymentMode: 'mensual' | 'anual' = 'mensual';
 
+
+  
 }
 

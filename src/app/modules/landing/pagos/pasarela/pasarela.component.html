@@ -12,7 +12,7 @@
     </div>
 
     <!-- Tabs mensual/anual -->
-    <div class="flex justify-center mb-6 space-x-4">
+    <div class="flex justify-center mb-6 space-x-4 text-2xl">
         <button
             (click)="paymentMode = 'mensual'"
             [ngClass]="{
@@ -37,9 +37,9 @@
         </button>
     </div>
 
-    <div class="flex flex-col md:flex-row md:space-x-8 w-full md:px-64">
+    <div class="flex flex-col md:flex-row md:space-x-8 w-full md:px-80">
         <!-- Lista de planes -->
-        <div class="space-y-6 md:flex md:flex-col md:space-y-6 md:w-2/3 w-full">
+        <div class="space-y-6 md:flex md:flex-col md:space-y-6 md:w-1/2 w-full">
             <!-- Plan Básico -->
             <div
                 (click)="selectPlan('basico')"
@@ -98,7 +98,7 @@
 
                     <!-- Derecha: lista de características -->
                     <ul
-                        class="text-gray-700 text-sm space-y-3 list-disc list-inside max-w-lg"
+                        class="text-gray-700 text-sm space-y-1 list-disc list-inside max-w-lg"
                     >
                         <li>Un usuario</li>
                         <li>5mil pacientes</li>
@@ -168,7 +168,7 @@
 
                     <!-- Derecha: lista de características -->
                     <ul
-                        class="text-gray-700 text-sm space-y-3 list-disc list-inside max-w-lg"
+                        class="text-gray-700 text-sm space-y-1 list-disc list-inside max-w-lg"
                     >
                         <li>3 usuarios</li>
                         <li>Ilimitado</li>
@@ -211,7 +211,7 @@
                             </h2>
                         </div>
 
-                             <div class="flex items-center space-x-2">
+                        <div class="flex items-center space-x-2">
                             <span
                                 class="text-8xl font-extrabold text-teal-700 leading-none"
                                 >59</span
@@ -246,7 +246,7 @@
 
                     <!-- Derecha: lista de características -->
                     <ul
-                        class="text-gray-700 text-sm space-y-3 list-disc list-inside max-w-lg"
+                        class="text-gray-700 text-sm space-y-1 list-disc list-inside max-w-lg"
                     >
                         <li>5 usuarios</li>
                         <li>Ilimitados</li>
@@ -265,40 +265,84 @@
 
         <!-- Método de pago al lado derecho -->
         <div
-            class="mt-6 md:mt-0 md:w-1/3 w-full bg-white rounded-lg p-6 shadow-md flex flex-col justify-center min-h-[280px]"
+            class="mt-6 md:mt-0 md:w-1/2 w-full bg-white rounded-xl p-6 shadow-lg flex flex-col justify-center min-h-[400px] relative"
         >
+            <!-- Header rojo con importe pendiente -->
+            <ng-container *ngIf="selectedPlan; else noPlanSelectedHeader">
+                <div
+                    class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-48 bg-gradient-to-b from-[#12c2ae] to-[#12c2ae] rounded-lg text-white text-center py-3 shadow-md"
+                >
+                    <p class="text-xs uppercase font-semibold mb-1">
+                        Pendiente de pago
+                    </p>
+                    <p class="text-3xl font-extrabold">
+                        $ {{
+                            paymentMode === "anual"
+                                ? plans[selectedPlan].anualPrice
+                                : plans[selectedPlan].mensualPrice
+                        }} USD
+                    </p>
+                    <p class="text-xs mt-1">
+                        Pedido: <span class="font-semibold">22354487</span
+                        ><br />
+                        Fecha: <span class="font-semibold">- - -</span>
+                    </p>
+                </div>
+            </ng-container>
+
+            <ng-template #noPlanSelectedHeader>
+                <div
+                    class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-48 bg-gray-200 rounded-lg text-center py-3 shadow-md"
+                >
+                    <p
+                        class="text-xs uppercase font-semibold mb-1 text-gray-600"
+                    >
+                        Pendiente de pago
+                    </p>
+                    <p class="text-3xl font-extrabold text-gray-400">--</p>
+                    <p class="text-xs mt-1 text-gray-400">
+                        Pedido: --<br />
+                        Fecha: --
+                    </p>
+                </div>
+            </ng-template>
+
             <h3
-                class="font-semibold text-xl mb-4 text-teal-800 border-b border-teal-600 pb-2"
+                class="mt-20 font-semibold text-xl mb-6 text-gray-800 border-b border-gray-300 pb-3 text-center"
             >
                 Método de Pago
             </h3>
 
             <ng-container *ngIf="selectedPlan; else noPlanSelected">
-                <div class="mb-4">
-                    <p class="font-semibold">{{ plans[selectedPlan].name }}</p>
-                    <p *ngIf="paymentMode === 'anual'">
+                <div class="mb-4 text-center">
+                    <p class="font-semibold text-lg text-gray-700">
+                        {{ plans[selectedPlan].name }}
+                    </p>
+                    <p *ngIf="paymentMode === 'anual'" class="text-gray-600">
                         Precio anual:
-                        <span class="text-teal-700 font-bold"
+                        <span class="text-red-600 font-bold"
                             >${{ plans[selectedPlan].anualPrice }}</span
                         >
                         USD
                     </p>
-                    <p *ngIf="paymentMode === 'mensual'">
+                    <p *ngIf="paymentMode === 'mensual'" class="text-gray-600">
                         Precio mensual:
-                        <span class="text-teal-700 font-bold"
+                        <span class="text-red-600 font-bold"
                             >${{ plans[selectedPlan].mensualPrice }}</span
                         >
                         USD
                     </p>
                 </div>
 
-                <div class="mb-4">
-                    <label for="paymentMethod" class="block font-semibold mb-1"
+                <div class="mb-6">
+                    <label
+                        for="paymentMethod"
+                        class="block font-semibold mb-2 text-gray-700"
                         >Selecciona método de pago:</label
                     >
                     <select
                         id="paymentMethod"
-                        class="w-full border border-gray-300 rounded-md p-2"
+                        class="w-full border border-gray-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500"
                         [(ngModel)]="selectedPaymentMethod"
                     >
                         <option value="" disabled selected>
@@ -313,7 +357,7 @@
                     </select>
                 </div>
 
-                <div *ngIf="selectedPaymentMethod" class="text-gray-700">
+                <div *ngIf="selectedPaymentMethod" class="text-gray-700 mb-6">
                     <p>
                         <strong>Detalle:</strong>
                         {{ plans[selectedPlan].description }}
@@ -327,10 +371,30 @@
                         {{ paymentMode | titlecase }}
                     </p>
                 </div>
+
+                <button
+                    class="bg-[#12c2ae] hover:bg-[#0f766e] text-white font-semibold rounded-lg py-3 w-full transition"
+                    type="button"
+                >
+                    PAGAR
+                </button>
+
+                <label class="flex items-center mt-4 text-gray-600 text-xs">
+                    <input
+                        type="checkbox"
+                        class="form-checkbox h-4 w-4 text-red-600"
+                        checked
+                    />
+                    <span class="ml-2"
+                        >He leído y acepto la política de privacidad.</span
+                    >
+                </label>
             </ng-container>
 
             <ng-template #noPlanSelected>
-                <p class="text-gray-700 text-base min-h-[150px]">
+                <p
+                    class="text-gray-600 text-center text-sm min-h-[150px] pt-20"
+                >
                     Selecciona un plan para ver el método de pago.
                 </p>
             </ng-template>
