@@ -38,6 +38,13 @@ export const appRoutes: Route[] = [
                         (m) => m.LandingHclinicaModule
                     ),
             },
+               {
+                path: 'pagos',
+                loadChildren: () =>
+                    import('app/modules/landing/pagos/pagos.module').then(
+                        (m) => m.LandingPagosModule
+                    ),
+            },
                    {
                 path: 'finanzas',
                 loadChildren: () =>
