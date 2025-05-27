@@ -19,6 +19,7 @@ import { Section3Component } from './section3/section3.component';
 import { Section4Component } from './section4/section4.component';
 import { Section7Component } from './section7/section7.component';
 import { Section5Component } from './section5/section5.component';
+import { Section5aComponent } from './section5a/section5a.component';
 
 @NgModule({
     declarations: [
@@ -33,7 +34,8 @@ import { Section5Component } from './section5/section5.component';
         Section3Component,
         Section4Component,
         Section7Component,
-        Section5Component
+        Section5Component,
+        Section5aComponent
     ],
     imports: [
         RouterModule.forChild(landingHomeRoutes),
