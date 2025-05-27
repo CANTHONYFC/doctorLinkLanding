@@ -1,156 +1,171 @@
 <div class="px-6 py-24 sm:py-16 lg:px-8">
     <div class="mx-auto max-w-7xl text-center animate-fade-slide-down">
-  <h1 class="mt-2 text-7xl font-semibold text-white font-pacifico">
-    Precios y planes
-  </h1>
-</div>
+        <h1 class="mt-2 text-7xl font-semibold text-white font-pacifico">
+            Precios y planes
+        </h1>
+    </div>
 
+    <!-- Tabs -->
+    <div
+        class="flex justify-center mt-6 text-lg font-semibold rounded-md border border-gray-300 overflow-hidden w-max mx-auto"
+    >
+        <button
+            (click)="setPlanPeriod('mensual')"
+            [ngClass]="
+                planPeriod === 'mensual'
+                    ? 'bg-teal-400 text-white'
+                    : 'bg-white text-black hover:text-teal-600'
+            "
+            class="px-6 py-2 transition-colors duration-300 whitespace-nowrap"
+        >
+            Mensual
+        </button>
+        <button
+            (click)="setPlanPeriod('anual')"
+            [ngClass]="
+                planPeriod === 'anual'
+                    ? 'bg-teal-400 text-white'
+                    : 'bg-white text-black hover:text-teal-600'
+            "
+            class="px-8 py-2 transition-colors duration-300 whitespace-nowrap"
+        >
+            Anual
+        </button>
+    </div>
+
+    <!-- Texto de acompañamiento -->
     <p
         class="mx-auto mt-6 max-w-2xl text-center text-2xl font-medium text-pretty text-white sm:text-xl/8"
     >
         El mejor compañero tecnológico, a el mejor precio.
     </p>
+
+    <!-- Grid de planes -->
     <div
         class="lg:mx-auto mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center gap-x-6 sm:mt-20 md:w-full md:px-64"
     >
-        <!-- Primer div -->
+        <!-- Plan Básico -->
         <div class="rounded-3xl bg-gray-300 p-4 ring-1 ring-gray-900/10 py-5">
-            <h3 id="tier-hobby" class="text-base/7 font-bold text-black">
-                Lite
+            <h3 id="tier-basic" class="text-base/7 font-bold text-black">
+                Plan Básico
             </h3>
             <p class="mt-4 flex items-baseline gap-x-2">
-                <span class="text-5xl font-bold tracking-tight text-green-500"
-                    >S/.35</span
+                <span
+                    class="text-5xl font-bold tracking-tight text-[#00bea8]"
+                    >{{
+                        prices.basico[planPeriod]
+                            | currency : "USD" : "symbol" : "1.0-0"
+                    }}</span
                 >
             </p>
-            <p class="text-xs text-gray-600">
-                Por mes, facturado S/ 420 anualmente
-            </p>
-
-            <br /><span class="text-sm font-semibold"
-                >Lo básico para tu consultorio</span
-            ><br />
+            <p class="text-xs text-gray-600">Por mes</p>
             <br />
+            <span class="text-sm font-semibold"></span>
+            <br /><br />
             <ul class="leading-loose">
-                <li>✔️ Historia clínica</li>
-                <li>✔️ Agenda Médica</li>
-                <li>✔️ Pacientes ilimitados</li>
-                <li>✔️ 50 atenciones al mes</li>
-                <li>✔️ Soporte por correo</li>
-            </ul>
-            <br />
-            <button routerLink="/pagos"
-                class="bg-gray-400 text-black font-semibold py-2 lg:px-10 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 sm:w-full tablet:w-full"
-            >
-                Empieza ahora
-            </button>
-        </div>
-
-        <!-- Segundo div 
-        <div
-            class="rounded-3xl bg-gray-300 p-4 ring-1 ring-gray-900/10 py-5 sm:mt-5 tablet:mt-5"
-        >
-            <h3 id="tier-hobby" class="text-base/7 font-bold text-black">
-                Standard
-            </h3>
-            <p class="mt-4 flex items-baseline gap-x-2">
-                <span class="text-5xl font-bold tracking-tight text-blue-600"
-                    >S/89</span
-                >
-            </p>
-            <p class="text-xs text-gray-600">
-                Por mes, facturado S/ 1068 anualmente
-            </p>
-            <br /><span class="text-sm font-semibold"
-                >Todo lo de Lite más... </span
-            ><br />
-            <br />
-            <ul class="leading-loose">
-                <li>✔️ Atenciones ilimitadas</li>
-                <li>✔️ Soporte de imágenes y archivos</li>
-                <li>✔️ Pacientes ilimitados</li>
-                <li>✔️ Envío de recetas por WhatsApp</li>
-                <li>✔️ Envío de recetas por Mail</li>
-                <li>✔️ Soporte por chat</li>
+                <li>✔️ Un usuario</li>
+                <li>✔️ 5mil pacientes</li>
+                <li>✔️ Marketing: Segmentación inteligente</li>
+                <li>✔️ Agenda pacientes</li>
+                <li>✔️ Actualizaciones gratuitas</li>
             </ul>
             <br />
             <button
-                class="bg-gray-400 text-black font-semibold py-2 lg:px-10 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 sm:w-full tablet:w-full"
-            >
-                Empieza ahora
-            </button>
-        </div>
--->
-        <!-- Tercer div -->
-        <div
-            class="relative rounded-3xl bg-white shadow-2xl ring-1 ring-gray-900/10 p-3 py-5 sm:mt-5 tablet:mt-5"
-        >
-            <h3 id="tier-enterprise" class="text-base/7 font-bold text-black">
-                Pro
-            </h3>
-            <p class="mt-4 flex items-baseline gap-x-2">
-                <span class="text-5xl font-bold tracking-tight text-[#00bea8]"
-                    >S/125</span
-                >
-            </p>
-            <p class="text-xs text-gray-600">
-                Por mes, facturado S/ 1500 anualmente
-            </p>
-            <br /><span class="text-sm font-semibold"
-                >Todo lo de Standard más...... </span
-            ><br /><br />
-            <ul class="leading-loose">
-                <li>
-                    ✔️ Transcripción IA: Habla con tu paciente y DoctorLink
-                    trascribe la historia**s
-                </li>
-                <li>✔️ Perfil de enfermera y asistente</li>
-                <li>✔️ Agenda de pacientes online</li>
-                <li>✔️ Registro de ingresos y egresos</li>
-                <li>✔️ Almacenamiento ilimitado</li>
-                <li>✔️ Recordatorios de cita</li>
-                <li>✔️ Soporte prioritario</li>
-            </ul>
-            <br /><br />
-            <button routerLink="/pagos"
+                routerLink="/pagos"
                 class="bg-gray-400 text-black font-semibold py-2 lg:px-10 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 sm:w-full tablet:w-full"
             >
                 Empieza ahora
             </button>
         </div>
 
+        <!-- Plan Pro -->
+        <div
+            class="relative rounded-3xl bg-white shadow-2xl ring-1 ring-gray-900/10 p-3 py-5 sm:mt-5 tablet:mt-5"
+        >
+            <h3 id="tier-pro" class="text-base/7 font-bold text-black">
+                Plan Gold
+            </h3>
+            <p class="mt-4 flex items-baseline gap-x-2">
+                <span
+                    class="text-5xl font-bold tracking-tight text-[#00bea8]"
+                    >{{
+                        prices.pro[planPeriod]
+                            | currency : "$" : "symbol" : "1.0-0"
+                    }}</span
+                >
+            </p>
+            <p class="text-xs text-gray-600">Por mes</p>
+            <br />
+            <span class="text-sm font-semibold"></span>
+            <br /><br />
+            <ul class="leading-loose">
+                <li>✔️ 3 Usuarios</li>
+                <li>✔️ Ilimitado</li>
+                <li>✔️ Soporte de imágenes y archivos</li>
+                <li>✔️ Marketing: Segmentación de cliente</li>
+                <li>✔️ Agenda pacientes</li>
+                <li>✔️ Actualizaciones gratuitas y automaticas</li>
+            </ul>
+            <br /><br />
+            <button
+                routerLink="/pagos"
+                class="bg-gray-400 text-black font-semibold py-2 lg:px-10 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 sm:w-full tablet:w-full"
+            >
+                Empieza ahora
+            </button>
+        </div>
+
+        <!-- Plan Enterprise -->
+        <!-- Plan Enterprise -->
         <div
             class="rounded-3xl bg-gray-300 p-4 ring-1 ring-gray-900/10 py-5 sm:mt-5 tablet:mt-5"
         >
-            <h3 id="tier-hobby" class="text-base/7 font-bold text-black">
-                Enterprise
+            <h3 id="tier-enterprise" class="text-base/7 font-bold text-black">
+                Plan Premium
             </h3>
             <p class="mt-4 flex items-baseline gap-x-2">
-                <span class="text-4xl font-bold tracking-tight text-purple-600"
-                    >Contactanos</span
-                >
+                <span class="text-5xl font-bold tracking-tight text-[#00bea8]">
+                    {{
+                        prices.enterprise[planPeriod]
+                            | currency : "$" : "symbol" : "1.0-0"
+                    }}
+                </span>
             </p>
             <p class="text-xs text-gray-600">
-                Recomendado para centros médicos con alto volumen de pacientes y
-                médicos.
+                Por mes
+                {{
+                    planPeriod === "anual"
+                        ? "facturado S/ " + prices.enterprise.anualFacturado
+                        : ""
+                }}
             </p>
-            <br /><span class="text-sm font-semibold"
-                >Todo lo de Pro más... </span
-            ><br /><br />
-            <ul class="leading-loose">
-                <li>✔️ Capacitación personalizada</li>
-                <li>✔️ Descuentos por volumen</li>
-                <li>✔️ Configuración a la medida</li>
-                <li>✔️ Soporte prioritario</li>
-            </ul>
+            <br />
+            <span class="text-sm font-semibold"></span>
             <br /><br />
-            <button routerLink="/pagos"
+            <ul class="leading-loose">
+                <li>✔️ 5 usuarios</li>
+                <li>✔️ Ilimitados</li>
+                <li>✔️ Agenda pacientes</li>
+                <li>✔️ Envia 200 recordatorios whatsapp</li>
+                <li>✔️ Marketing: Segmentación de cliente</li>
+                <li>✔️ Soporte de imagenes y archivos</li>
+                <li>✔️ App para pacientes</li>
+                <li>✔️ Modulo inventario</li>
+                <li>✔️ Soporte prioritario</li>
+                <li>✔️ Actualizaciones gratuitas y automaticas</li>
+                <li></li>
+            </ul>
+
+            <br /><br />
+            <button
+                routerLink="/pagos"
                 class="bg-gray-400 text-black font-semibold py-2 lg:px-10 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 sm:w-full tablet:w-full"
             >
                 Empieza ahora
             </button>
         </div>
     </div>
+
     <div class="px-10 mt-10 text-3xl text-gray-300">
         <h2>*Se pueden adquirir usuarios adicionales a un costo de S/.25.</h2>
         <h2>
@@ -163,18 +178,17 @@
 
 <style>
     @keyframes fadeSlideDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+        0% {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 
-.animate-fade-slide-down {
-  animation: fadeSlideDown 1s ease forwards;
-}
-
+    .animate-fade-slide-down {
+        animation: fadeSlideDown 1s ease forwards;
+    }
 </style>
