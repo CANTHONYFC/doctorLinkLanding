@@ -38,6 +38,13 @@ export const appRoutes: Route[] = [
                         (m) => m.LandingHclinicaModule
                     ),
             },
+                {
+                path: 'politicas',
+                loadChildren: () =>
+                    import('app/modules/landing/politicas/politicas.module').then(
+                        (m) => m.LandingPoliticasModule
+                    ),
+            },
                {
                 path: 'pagos',
                 loadChildren: () =>
