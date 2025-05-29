@@ -171,13 +171,14 @@
                                             #passCtrl="ngModel"
                                             name="password"
                                             required
-                                            minlength="8"
+                                            minlength="10"
+                                            maxlength="13"
                                             pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&._-]).{8,}$"
                                             placeholder="Ingrese su nueva contraseña"
                                             [(ngModel)]="password"
                                             autocomplete="new-password"
                                         >
- 
+
                                         <!-- Botón de ojito -->
                                         <button
                                             mat-icon-button
@@ -194,7 +195,10 @@
                                             La contraseña es obligatoria.
                                         </mat-error>
                                         <mat-error *ngIf="passCtrl.errors?.['minlength']">
-                                            La contraseña debe tener al menos 8 caracteres.
+                                            La contraseña debe tener al menos 10 caracteres.
+                                        </mat-error>
+                                        <mat-error *ngIf="passCtrl.errors?.['minlength']">
+                                            La contraseña debe tener como maximo 13 caracteres.
                                         </mat-error>
                                         <mat-error *ngIf="passCtrl.errors?.['pattern']">
                                             Debe incluir mayúsculas, minúsculas, números y caracteres especiales.
