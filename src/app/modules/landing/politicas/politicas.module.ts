@@ -9,12 +9,13 @@ import { MatDividerModule } from '@angular/material/divider';
 
 import { LandingPoliticasComponent } from './politicas.component';
 import { landingPoliticasRoutes } from './politicas.routing';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
     declarations: [
         LandingPoliticasComponent,
-
+        FooterComponent
 
 
     
