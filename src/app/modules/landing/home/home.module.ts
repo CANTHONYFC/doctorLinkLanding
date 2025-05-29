@@ -20,6 +20,7 @@ import { Section4Component } from './section4/section4.component';
 import { Section7Component } from './section7/section7.component';
 import { Section5Component } from './section5/section5.component';
 import { Section5aComponent } from './section5a/section5a.component';
+import { FidelizaComponent } from './fideliza/fideliza.component';
 
 @NgModule({
     declarations: [
@@ -35,7 +36,8 @@ import { Section5aComponent } from './section5a/section5a.component';
         Section4Component,
         Section7Component,
         Section5Component,
-        Section5aComponent
+        Section5aComponent,
+        FidelizaComponent
     ],
     imports: [
         RouterModule.forChild(landingHomeRoutes),
