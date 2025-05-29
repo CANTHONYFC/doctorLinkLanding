@@ -1,10 +1,25 @@
 <!--<div class="bg-gradient-to-b from-[#f0fdfa] to-[#00bfae] flex items-center justify-center">-->
-  <div class="flex items-center justify-center">
-  <div class="w-full max-w-7xl lg:px-32 md:px-20 sm:px-26">
-    <img src="https://framerusercontent.com/images/ThE1Pcg8f4sTiMW1VsnOsIp4CE.png" alt="Imagen" class="animate-zoomImageOnLoad">
+
+
+
+<!--<div class="bg-gradient-to-b from-[#f0fdfa] to-[#00bfae] flex items-center justify-center">-->
+<div class="flex items-center justify-center">
+  <div class="w-full max-w-7xl lg:px-32 md:px-20 sm:px-26 video-wrapper">
+    <video
+      src="../../../../../assets/video/DR. LINKY FINAL (VIDEO).mp4"
+      autoplay
+      muted
+      controls
+      class="video-fade"
+    ></video>
   </div>
 </div>
 
+  <div class="flex items-center justify-center">
+  <div class="w-full max-w-7xl lg:px-32 md:px-20 sm:px-26">
+    <img src="../../../../../assets/images/dashboard.png" alt="Imagen" class="animate-zoomImageOnLoad">
+  </div>
+</div>
 <style>
   /* Definir la animación zoom para la imagen */
   @keyframes zoomImageEffect {
@@ -26,4 +41,31 @@
   .animate-zoomImageOnLoad {
     animation: zoomImageEffect 1s ease-out forwards;
   }
+
+  .video-wrapper {
+    display: inline-block;
+  }
+
+.video-fade {
+  width: 100%;
+  border-radius: 20px;
+
+  -webkit-mask-image:
+    linear-gradient(to top, transparent 0%, black 20%),
+    linear-gradient(to bottom, transparent 0%, black 20%),
+    linear-gradient(to left, transparent 0%, black 20%),
+    linear-gradient(to right, transparent 0%, black 20%);
+  mask-image:
+    linear-gradient(to top, transparent 0%, black 20%),
+    linear-gradient(to bottom, transparent 0%, black 20%),
+    linear-gradient(to left, transparent 0%, black 20%),
+    linear-gradient(to right, transparent 0%, black 20%);
+  
+  mask-composite: intersect;
+  -webkit-mask-composite: destination-in;
+
+  object-fit: cover;
+  display: block;
+}
+
 </style>
