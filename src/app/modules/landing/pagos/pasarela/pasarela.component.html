@@ -116,22 +116,23 @@
         <div
             class="col-span-12 md:col-span-5 bg-white rounded-xl p-6 shadow-lg flex flex-col justify-center
              min-h-[400px] relative max-h-[600px] ">
-            <!-- Header rojo con importe pendiente -->
-            <ng-container *ngIf="selectedPlan; else noPlanSelectedHeader">
-                <div
-                    class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-48 bg-gradient-to-b from-[#12c2ae] to-[#12c2ae] rounded-lg text-white text-center py-3 shadow-md"
-                >
-                    <p class="text-xs uppercase font-semibold mb-1">Pendiente de pago</p>
-                    <p class="text-3xl font-extrabold">
-                        $ {{ selectedPlan.precioTotal | number: '1.0-2' }}
-                        USD
-                    </p>
-                    <p class="text-xs mt-1">
-                        Pedido: <span class="font-semibold">22354487</span><br/>
-                        Fecha: <span class="font-semibold">{{ today | date: 'dd/MM/yyyy' }}</span>
-                    </p>
-                </div>
-                <form #miFormulario="ngForm" novalidate autocomplete="off">
+            <form #miFormulario="ngForm" novalidate autocomplete="off">
+                <!-- Header rojo con importe pendiente -->
+                <ng-container *ngIf="selectedPlan; else noPlanSelectedHeader">
+                    <div
+                        class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-48 bg-gradient-to-b from-[#12c2ae] to-[#12c2ae] rounded-lg text-white text-center py-3 shadow-md"
+                    >
+                        <p class="text-xs uppercase font-semibold mb-1">Pendiente de pago</p>
+                        <p class="text-3xl font-extrabold">
+                            $ {{ selectedPlan.precioTotal | number: '1.0-2' }}
+                            USD
+                        </p>
+                        <p class="text-xs mt-1">
+                            Pedido: <span class="font-semibold">22354487</span><br/>
+                            Fecha: <span class="font-semibold">{{ today | date: 'dd/MM/yyyy' }}</span>
+                        </p>
+                    </div>
+
                     <div class="space-y-4">
                         <div class="grid grid-cols-12 gap-4">
 
@@ -210,50 +211,38 @@
                         </div>
                     </div>
 
-                </form>
-            </ng-container>
 
-            <ng-template #noPlanSelectedHeader>
-                <div
-                    class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-48 bg-gray-200 rounded-lg text-center py-3 shadow-md"
-                >
-                    <p class="text-xs uppercase font-semibold mb-1 text-gray-600">Pendiente de pago</p>
-                    <p class="text-3xl font-extrabold text-gray-400">--</p>
-                    <p class="text-xs mt-1 text-gray-400">Pedido: --<br/>Fecha: {{ today | date: 'dd/MM/yyyy' }}</p>
-                </div>
-            </ng-template>
-            <h3 class="mt-5 font-semibold text-xl mb-6 text-gray-800 border-b border-gray-300 pb-3 text-center">
-                Método de Pago
-            </h3>
+                </ng-container>
 
-            <ng-container *ngIf="selectedPlan; else noPlanSelected">
-                <div class="mb-4 text-center">
-                    <p class="font-semibold text-lg text-gray-700">{{ plans[selectedPlan].name }}</p>
-                    <p *ngIf="paymentMode === 'YEAR'" class="text-gray-600">
-                        Precio anual: <span class="text-red-600 font-bold">${{ plans[selectedPlan].anualPrice }}</span>
-                        USD
-                    </p>
-                    <p *ngIf="paymentMode === 'MONTH'" class="text-gray-600">
-                        Precio mensual: <span
-                        class="text-red-600 font-bold">${{ plans[selectedPlan].mensualPrice }}</span> USD
-                    </p>
-                </div>
+                <ng-template #noPlanSelectedHeader>
+                    <div
+                        class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-48 bg-gray-200 rounded-lg text-center py-3 shadow-md"
+                    >
+                        <p class="text-xs uppercase font-semibold mb-1 text-gray-600">Pendiente de pago</p>
+                        <p class="text-3xl font-extrabold text-gray-400">--</p>
+                        <p class="text-xs mt-1 text-gray-400">Pedido: --<br/>Fecha: {{ today | date: 'dd/MM/yyyy' }}</p>
+                    </div>
+                </ng-template>
+                <h3 class="mt-5 font-semibold text-xl mb-6 text-gray-800 border-b border-gray-300 pb-3 text-center">
+                    Checkout
+                </h3>
 
+                <ng-container *ngIf="selectedPlan; else noPlanSelected">
+                  
+                    <button
+                        class="bg-[#12c2ae] hover:bg-[#0f766e] text-white font-semibold rounded-lg py-3 w-full transition"
+                        (click)="iniciarPago()"
+                        type="button" [disabled]="!miFormulario.valid"
+                    >
+                        PAGAR
+                    </button>
 
-                <button
-                    class="bg-[#12c2ae] hover:bg-[#0f766e] text-white font-semibold rounded-lg py-3 w-full transition"
-                    (click)="iniciarPago()"
-                    type="button"
-                >
-                    PAGAR
-                </button>
-
-                <label class="flex items-center mt-4 text-gray-600 text-xs">
-                    <input type="checkbox" class="form-checkbox h-4 w-4 text-red-600" checked/>
-                    <span class="ml-2">He leído y acepto la política de privacidad.</span>
-                </label>
-            </ng-container>
-
+                    <label class="flex items-center mt-4 text-gray-600 text-xs">
+                        <input type="checkbox" class="form-checkbox h-4 w-4 text-red-600" checked/>
+                        <span class="ml-2">He leído y acepto la política de privacidad.</span>
+                    </label>
+                </ng-container>
+            </form>
             <ng-template #noPlanSelected>
                 <p class="text-gray-600 text-center text-sm min-h-[150px] pt-20">
                     Selecciona un plan para ver el método de pago.

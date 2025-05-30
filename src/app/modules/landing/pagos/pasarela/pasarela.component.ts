@@ -1,9 +1,12 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {PlanesService} from 'app/repository/services/PlanesService';
 import {PaypalLoaderService} from "./paypal-loader-service.service";
 import {MatLegacySnackBar as MatSnackBar} from "@angular/material/legacy-snack-bar";
 import {HttpParams} from '@angular/common/http';
 import {PlanesSuscriptions} from 'app/models/administration/PlanesSuscriptions';
+import {NgForm} from '@angular/forms';
+import {NotificationService} from 'app/modules/shared/service/service-notification.service';
+import {RegisterPagoPlanLanding} from "../../../../models/administration/RegisterPagoPlanLanding";
 
 declare var paypal: any;
 
@@ -13,6 +16,7 @@ declare var paypal: any;
     styleUrls: ['./pasarela.component.scss']
 })
 export class PasarelaComponent {
+    @ViewChild('miFormulario') miFormulario!: NgForm;
     selectedPlan: PlanesSuscriptions | null = null;
     mostrarBotonPaypal = false;
     correo = '';
@@ -26,29 +30,6 @@ export class PasarelaComponent {
                 private snackBar: MatSnackBar) {
     }
 
-    plans = {
-        basico: {
-            name: 'Plan Básico',
-            anualPrice: 29,
-            mensualPrice: 33,
-            methods: ['Tarjeta', 'PayPal', 'Transferencia bancaria'],
-            description: 'Pago mediante transferencia bancaria o tarjeta de crédito/débito.'
-        },
-        gold: {
-            name: 'Plan Gold',
-            anualPrice: 49,
-            mensualPrice: 57,
-            methods: ['Tarjeta', 'PayPal', 'Transferencia bancaria'],
-            description: 'Pago con tarjeta, PayPal o transferencia bancaria.'
-        },
-        premium: {
-            name: 'Plan Premium',
-            anualPrice: 59,
-            mensualPrice: 69,
-            methods: ['Tarjeta', 'PayPal', 'Transferencia bancaria'],
-            description: 'Pago con todos los métodos disponibles, incluyendo PayPal, tarjeta, transferencia y criptomonedas.'
-        }
-    };
 
     selectedPaymentMethod: string | null = null;
 
@@ -90,17 +71,37 @@ export class PasarelaComponent {
     paymentMode: 'MONTH' | 'YEAR' = 'MONTH';
 
     iniciarPago() {
-        this.modalAbierto = true;
+        if (this.miFormulario.valid && this.selectedPlan) {
 
-        // Esperar a que el div #paypal-button-container esté en el DOM
-        setTimeout(() => {
-            this.paypalLoader.loadSdk().then(() => {
+
+            const params = new HttpParams()
+                .set('correo', this.correo);
+            this.planesService.verifyExits(params, this.snackBar).then(response => {
                 debugger
-                this.renderPaypalButton();
-            }).catch((err) => {
-                console.error('Error cargando PayPal SDK:', err);
+                if (response && response.data) {
+                    debugger
+                    if (response.data) {
+                        NotificationService.error('El correo ya está registrado. Por favor, intentar con otro correo');
+                        return;
+                    }
+
+                    debugger
+                }
+                this.modalAbierto = true;
+                // Esperar a que el div #paypal-button-container esté en el DOM
+                setTimeout(() => {
+                    this.paypalLoader.loadSdk().then(() => {
+                        debugger
+                        this.renderPaypalButton();
+                    }).catch((err) => {
+                        console.error('Error cargando PayPal SDK:', err);
+                    });
+                }, 0);
+                debugger
             });
-        }, 0);
+        } else {
+            this.miFormulario.control.markAllAsTouched();
+        }
     }
 
     cerrarModal() {
@@ -108,56 +109,58 @@ export class PasarelaComponent {
     }
 
     renderPaypalButton() {
-        const precio = 59;
-
         const container = document.getElementById('paypal-button-container');
         if (!container) {
             console.error('No se encontró el contenedor de PayPal');
             return;
         }
 
-        // Evitar múltiples renderizados
+        let precioCobrar = this.selectedPlan?.precioTotal.toFixed(2) ?? '0.00';
         container.innerHTML = '';
 
         paypal.Buttons({
-            createOrder: function (data, actions) {
-                // Aquí creas la orden de pago única
+            createOrder: (data, actions) => {
                 return actions.order.create({
                     purchase_units: [{
                         amount: {
-                            value: '10.00' // monto a cobrar
+                            value: precioCobrar,
+                            currency_code: 'USD'
                         }
                     }]
                 });
             },
 
-            onApprove: function (data, actions) {
-                // Captura el pago
-                return actions.order.capture().then(function (details) {
-                    // Aquí recibes los detalles del pago completado
+            onApprove: (data, actions) => {
+                return actions.order.capture().then((details) => {
                     console.log('Pago completado por: ', details.payer.name.given_name);
+                    debugger
+                    const registerPagoPlanLanding: RegisterPagoPlanLanding = {
+                        orderId: data.orderID,
+                        payerId: data.payerID,
+                        payerEmail: details.payer.email_address,
+                        amount: details.purchase_units[0].amount.value,
+                        correo: this.correo,
+                        password: this.password,
+                        planId: this.selectedPlan?.id_planesSuscriptions
+                    }
+                    this.planesService.register(registerPagoPlanLanding, this.snackBar)
+                        .then(response => {
+                            NotificationService.success('Gracias por tu pago, ' + details.payer.name.given_name);
 
-                    // Guardar la info en tu backend para registrar este pago
-                    fetch('/guardar-pago', {
-                        method: 'POST',
-                        headers: {'Content-Type': 'application/json'},
-                        body: JSON.stringify({
-                            orderId: data.orderID,
-                            payerId: data.payerID,
-                            payerEmail: details.payer.email_address,
-                            amount: details.purchase_units[0].amount.value
-                        })
+                            this.modalAbierto = false;  // por ejemplo, cierras el modal si usas uno
+                            container.innerHTML = '';    // limpias el botón para que no vuelva a aparecer
+                        }).catch((err) => {
+                        console.error('Error guardando pago:', err);
                     });
-
-                    alert('Gracias por tu pago, ' + details.payer.name.given_name);
                 });
             },
 
-            onError: function (err) {
+            onError: (err) => {
                 console.error('Error en PayPal: ', err);
             }
 
         }).render('#paypal-button-container');
     }
+
 }
 
