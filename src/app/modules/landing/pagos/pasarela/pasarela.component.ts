@@ -7,6 +7,7 @@ import {PlanesSuscriptions} from 'app/models/administration/PlanesSuscriptions';
 import {NgForm} from '@angular/forms';
 import {NotificationService} from 'app/modules/shared/service/service-notification.service';
 import {RegisterPagoPlanLanding} from "../../../../models/administration/RegisterPagoPlanLanding";
+import {URL_TWODOMAIN} from "../../../../../environments/enviroment.conts";
 
 declare var paypal: any;
 
@@ -146,9 +147,11 @@ export class PasarelaComponent {
                     this.planesService.register(registerPagoPlanLanding, this.snackBar)
                         .then(response => {
                             NotificationService.success('Gracias por tu pago, ' + details.payer.name.given_name);
-
+                            const url = `${URL_TWODOMAIN}#/app/source/registerEnterprise?id_uneg=${response.data.id_uneg}&id_user=${response.data.id_user}&token=${encodeURIComponent(response.data.token)}`;
+                            debugger
                             this.modalAbierto = false;  // por ejemplo, cierras el modal si usas uno
                             container.innerHTML = '';    // limpias el botón para que no vuelva a aparecer
+                            window.location.href = url;
                         }).catch((err) => {
                         console.error('Error guardando pago:', err);
                     });

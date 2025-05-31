@@ -22,3 +22,7 @@ export const PAYPAL_CONFIG = {
     production: false,
     paypalClientId: 'AYjJfzKNn-HdePlhW4qvIoU4ogDPUayCyv5e9ewNbTlus5vAMw9rOUtthaSjEmoP-4VwFRgczFRp_g8c'
 };
+
+export const URL_TWODOMAIN = 'https://app.drlinkmed.com/'
+
+

@@ -10,6 +10,6 @@ export const hostSelected = {
     hostProd: HOST.prod,
 };
 
-
+export const URL_TWODOMAIN = 'http://localhost:4200/'
 
 
