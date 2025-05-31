@@ -37,264 +37,234 @@
             Anual
         </button>
     </div>
+<div class="mx-auto mt-16 grid sm:grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl px-6 py-0 rounded-3xl relative font-sans items-center ">
 
-    <div
-        class="lg:mx-auto mt-16 grid grid-cols-2 items-center gap-x-6 sm:mt-20 lg:max-w-5xl lg:grid-cols-3 md:grid-cols-1 tablet:grid-cols-1 sm:grid-cols-1 md:w-full md:px-10"
+  <!-- Plan Básico (izquierda) -->
+<div
+  class="max-w-xs mx-auto rounded-3xl overflow-hidden shadow-lg ring-2 ring-teal-500/70"
+>
+  <!-- Parte superior con gradiente -->
+  <div
+    class="bg-gradient-to-r from-teal-700 via-teal-500 to-teal-400 p-6 text-white flex flex-col items-center"
+  >
+    <h3
+      id="tier-basic"
+      class="text-base/7 font-extrabold drop-shadow-md mb-3"
     >
-        <!-- Plan Básico -->
-        <div
-            class="rounded-3xl bg-gradient-to-r from-red-600 via-orange-500 to-red-500 p-6 ring-2 ring-orange-400/70 py-7 shadow-lg hover:scale-[1.03] hover:shadow-2xl transition-transform duration-500 ease-in-out animate-fadeIn"
-        >
-            <h3
-                id="tier-basic"
-                class="text-base/7 font-extrabold text-white drop-shadow-md mb-3"
-            >
-                Plan Básico
-            </h3>
-            <p class="mt-4 flex items-baseline gap-x-2">
-                <span
-                    class="text-6xl font-extrabold tracking-tight text-yellow-200 animate-pulse"
-                    >{{
-                        prices.basico[planPeriod]
-                            | currency : "USD" : "symbol" : "1.0-0"
-                    }}</span
-                >
-            </p>
-            <p class="text-xs text-yellow-100 mb-6">Por mes</p>
+      Plan Básico
+    </h3>
 
-            <ul class="leading-loose text-yellow-100 space-y-2 mb-6">
-                <li class="flex items-center gap-2">
-                    <span class="text-yellow-300 text-xl animate-bounce"
-                        >✔️</span
-                    >
-                    Un usuario
-                </li>
-                <li class="flex items-center gap-2">
-                    <span
-                        class="text-yellow-300 text-xl animate-bounce delay-75"
-                        >✔️</span
-                    >
-                    5mil pacientes
-                </li>
-                <li class="flex items-center gap-2">
-                    <span
-                        class="text-yellow-300 text-xl animate-bounce delay-150"
-                        >✔️</span
-                    >
-                    Marketing: Segmentación inteligente
-                </li>
-                <li class="flex items-center gap-2">
-                    <span
-                        class="text-yellow-300 text-xl animate-bounce delay-200"
-                        >✔️</span
-                    >
-                    Agenda pacientes
-                </li>
-                <li class="flex items-center gap-2">
-                    <span
-                        class="text-yellow-300 text-xl animate-bounce delay-300"
-                        >✔️</span
-                    >
-                    Actualizaciones gratuitas
-                </li>
-            </ul>
+    <ul class="leading-loose space-y-2 mb-6 w-full max-w-xs">
+      <li class="flex items-center gap-2">
+        <span class="text-yellow-300 text-xl animate-bounce">✔️</span>
+        Un usuario
+      </li>
+      <li class="flex items-center gap-2">
+        <span class="text-yellow-300 text-xl animate-bounce delay-75">✔️</span>
+        5mil pacientes
+      </li>
+      <li class="flex items-center gap-2">
+        <span class="text-yellow-300 text-xl animate-bounce delay-150">✔️</span>
+        Marketing: Segmentación inteligente
+      </li>
+      <li class="flex items-center gap-2">
+        <span class="text-yellow-300 text-xl animate-bounce delay-200">✔️</span>
+        Agenda pacientes
+      </li>
+      <li class="flex items-center gap-2">
+        <span class="text-yellow-300 text-xl animate-bounce delay-300">✔️</span>
+        Actualizaciones gratuitas
+      </li>
+    </ul>
 
-            <button
-                routerLink="/pagos"
-                class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 px-12 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 w-full "
-            >
-                Empieza ahora
-            </button>
-        </div>
+    <!-- Precio centrado grande -->
+    <p class="flex items-baseline gap-x-2 justify-center -mb-5">
+      <span
+        class="text-9xl font-extrabold tracking-tight text-white animate-pulse leading-none"
+      >
+        {{
+          prices.basico[planPeriod]
+            | currency : "USD" : "symbol" : "1.0-0"
+        }}
+      </span>
+    </p>
+  </div>
 
-        <!-- Plan Pro -->
-        <div
-            class="relative rounded-3xl bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-400 p-6 ring-2 ring-cyan-400/70 py-7 shadow-2xl hover:scale-[1.03] hover:shadow-3xl transition-transform duration-500 ease-in-out animate-fadeIn"
-        >
-            <h3
-                id="tier-pro"
-                class="text-base/7 font-extrabold text-white drop-shadow-md mb-3"
-            >
-                Plan Gold
-            </h3>
-            <p class="mt-4 flex items-baseline gap-x-2">
-                <span
-                    class="text-6xl font-extrabold tracking-tight text-yellow-300 animate-pulse"
-                    >{{
-                        prices.pro[planPeriod]
-                            | currency : "$" : "symbol" : "1.0-0"
-                    }}</span
-                >
-            </p>
-            <p class="text-xs text-cyan-100 mb-6">Por mes</p>
+  <!-- Parte inferior blanca -->
+  <div class="bg-white p-6 flex flex-col items-center gap-4">
 
-            <ul class="leading-loose text-cyan-100 space-y-2 mb-6">
-                <li class="flex items-center gap-2">
-                    <span class="text-yellow-300 text-xl animate-bounce"
-                        >✔️</span
-                    >
-                    3 Usuarios
-                </li>
-                <li class="flex items-center gap-2">
-                    <span
-                        class="text-yellow-300 text-xl animate-bounce delay-75"
-                        >✔️</span
-                    >
-                    Ilimitado
-                </li>
-                <li class="flex items-center gap-2">
-                    <span
-                        class="text-yellow-300 text-xl animate-bounce delay-150"
-                        >✔️</span
-                    >
-                    Envia 100 recordatorios whatsapp
-                </li>
-                <li class="flex items-center gap-2">
-                    <span
-                        class="text-yellow-300 text-xl animate-bounce delay-200"
-                        >✔️</span
-                    >
-                    Soporte de imágenes y archivos
-                </li>
-                <li class="flex items-center gap-2">
-                    <span
-                        class="text-yellow-300 text-xl animate-bounce delay-250"
-                        >✔️</span
-                    >
-                    Marketing: Segmentación de cliente
-                </li>
-                <li class="flex items-center gap-2">
-                    <span
-                        class="text-yellow-300 text-xl animate-bounce delay-300"
-                        >✔️</span
-                    >
-                    Agenda pacientes
-                </li>
-                <li class="flex items-center gap-2">
-                    <span
-                        class="text-yellow-300 text-xl animate-bounce delay-350"
-                        >✔️</span
-                    >
-                    Actualizaciones gratuitas y automáticas
-                </li>
-            </ul>
+    <button
+      routerLink="/pagos"
+      class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 px-12 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 w-full"
+    >
+      Empieza ahora
+    </button>
+  </div>
+</div>
 
-            <button
-                routerLink="/pagos"
-                class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 px-12 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 w-full "
-            >
-                Empieza ahora
-            </button>
-        </div>
+  <!-- Plan Premium (centro, resaltado) -->
+<div
+  class="max-w-lg mx-auto rounded-3xl overflow-hidden shadow-lg ring-2 ring-[#1e4d73]/70 "
+>
+  <!-- Ribbon RECOMMENDED arriba -->
+  <div
+    class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-white rounded-full px-6 py-1 text-[#0a304f] font-bold shadow-md"
+    style="width: max-content;"
+  >
+    RECOMENDADO
+  </div>
 
-        <!-- Plan Enterprise -->
-        <!-- Plan Enterprise -->
-        <div
-            class="rounded-3xl bg-gradient-to-r from-orange-500 via-red-500 to-red-600 p-6 ring-2 ring-red-500/80 py-7 shadow-2xl hover:scale-[1.03] hover:shadow-3xl transition-transform duration-500 ease-in-out animate-fadeIn"
-        >
-            <h3
-                id="tier-enterprise"
-                class="text-base/7 font-extrabold text-white drop-shadow-md mb-3"
-            >
-                Plan Premium
-            </h3>
-            <p class="mt-4 flex items-baseline gap-x-2">
-                <span
-                    class="text-6xl font-extrabold tracking-tight text-yellow-200 animate-pulse"
-                >
-                    {{
-                        prices.enterprise[planPeriod]
-                            | currency : "$" : "symbol" : "1.0-0"
-                    }}
-                </span>
-            </p>
-            <p class="text-xs text-yellow-100 mb-6">
-                Por mes
-                {{
-                    planPeriod === "anual"
-                        ? "facturado S/ " + prices.enterprise.anualFacturado
-                        : ""
-                }}
-            </p>
+  <!-- Parte superior con gradiente azul oscuro y precio grande centrado -->
+  <div
+    class="bg-gradient-to-r from-[#0a304f] via-[#1e4d73] to-[#3b6c9a] p-6 pt-14 text-yellow-100 flex flex-col items-center"
+  >
+    <h3
+      id="tier-enterprise"
+      class="text-base/7 font-extrabold drop-shadow-md mb-3"
+    >
+      Plan Premium
+    </h3>
 
-            <ul class="leading-loose text-yellow-100 space-y-2 mb-6">
-                <li class="flex items-center gap-2">
-                    <span class="text-yellow-300 text-xl animate-bounce"
-                        >✔️</span
-                    >
-                    5 usuarios
-                </li>
-                <li class="flex items-center gap-2">
-                    <span
-                        class="text-yellow-300 text-xl animate-bounce delay-75"
-                        >✔️</span
-                    >
-                    Ilimitados
-                </li>
-                <li class="flex items-center gap-2">
-                    <span
-                        class="text-yellow-300 text-xl animate-bounce delay-150"
-                        >✔️</span
-                    >
-                    Agenda pacientes
-                </li>
-                <li class="flex items-center gap-2">
-                    <span
-                        class="text-yellow-300 text-xl animate-bounce delay-200"
-                        >✔️</span
-                    >
-                    Envia 200 recordatorios whatsapp
-                </li>
-                <li class="flex items-center gap-2">
-                    <span
-                        class="text-yellow-300 text-xl animate-bounce delay-250"
-                        >✔️</span
-                    >
-                    Marketing: Segmentación de cliente
-                </li>
-                <li class="flex items-center gap-2">
-                    <span
-                        class="text-yellow-300 text-xl animate-bounce delay-300"
-                        >✔️</span
-                    >
-                    Soporte de imagenes y archivos
-                </li>
-                <li class="flex items-center gap-2">
-                    <span
-                        class="text-yellow-300 text-xl animate-bounce delay-350"
-                        >✔️</span
-                    >
-                    App para pacientes
-                </li>
-                <li class="flex items-center gap-2">
-                    <span
-                        class="text-yellow-300 text-xl animate-bounce delay-400"
-                        >✔️</span
-                    >
-                    Modulo inventario
-                </li>
-                <li class="flex items-center gap-2">
-                    <span
-                        class="text-yellow-300 text-xl animate-bounce delay-450"
-                        >✔️</span
-                    >
-                    Soporte prioritario
-                </li>
-                <li class="flex items-center gap-2">
-                    <span
-                        class="text-yellow-300 text-xl animate-bounce delay-500"
-                        >✔️</span
-                    >
-                    Actualizaciones gratuitas y automáticas
-                </li>
-            </ul>
+    <ul class="leading-loose  mb-6 w-full max-w-md">
+      <li class="flex items-center gap-2">
+        <span class="text-yellow-300 text-xl animate-bounce">✔️</span>
+        5 usuarios
+      </li>
+      <li class="flex items-center gap-2">
+        <span class="text-yellow-300 text-xl animate-bounce delay-75">✔️</span>
+        Ilimitados
+      </li>
+      <li class="flex items-center gap-2">
+        <span class="text-yellow-300 text-xl animate-bounce delay-150">✔️</span>
+        Agenda pacientes
+      </li>
+      <li class="flex items-center gap-2">
+        <span class="text-yellow-300 text-xl animate-bounce delay-200">✔️</span>
+        Envia 200 recordatorios whatsapp
+      </li>
+      <li class="flex items-center gap-2">
+        <span class="text-yellow-300 text-xl animate-bounce delay-250">✔️</span>
+        Marketing: Segmentación de cliente
+      </li>
+      <li class="flex items-center gap-2">
+        <span class="text-yellow-300 text-xl animate-bounce delay-300">✔️</span>
+        Soporte de imagenes y archivos
+      </li>
+      <li class="flex items-center gap-2">
+        <span class="text-yellow-300 text-xl animate-bounce delay-350">✔️</span>
+        App para pacientes
+      </li>
+      <li class="flex items-center gap-2">
+        <span class="text-yellow-300 text-xl animate-bounce delay-400">✔️</span>
+        Modulo inventario
+      </li>
+      <li class="flex items-center gap-2">
+        <span class="text-yellow-300 text-xl animate-bounce delay-450">✔️</span>
+        Soporte prioritario
+      </li>
+      <li class="flex items-center gap-2">
+        <span class="text-yellow-300 text-xl animate-bounce delay-500">✔️</span>
+        Actualizaciones gratuitas y automáticas
+      </li>
+    </ul>
 
-            <button
-                routerLink="/pagos"
-                class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 px-12 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 w-full"
-            >
-                Empieza ahora
-            </button>
-        </div>
-    </div>
+    <!-- Precio grande centrado -->
+    <p class="flex items-baseline gap-x-2 justify-center -mb-5">
+      <span
+        class="text-9xl font-extrabold tracking-tight text-white animate-pulse leading-none"
+      >
+           {{
+          prices.enterprise[planPeriod]
+            | currency : "USD" : "symbol" : "1.0-0"
+        }}
+      </span>
+    </p>
+  </div>
+
+  <!-- Parte inferior blanca -->
+  <div class="bg-white p-6 flex flex-col items-center gap-4">
+
+    <button
+      routerLink="/pagos"
+      class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 px-12 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 w-full"
+    >
+      Empieza ahora
+    </button>
+  </div>
+</div>
+
+
+  <!-- Plan Gold (derecha) -->
+<div
+  class="max-w-xs mx-auto rounded-3xl overflow-hidden shadow-lg ring-2 ring-teal-500/70"
+>
+  <!-- Parte superior con gradiente y precio grande centrado -->
+  <div
+    class="bg-gradient-to-r from-teal-700 via-teal-500 to-teal-400 p-6 text-cyan-100 flex flex-col items-center"
+  >
+    <h3
+      id="tier-pro"
+      class="text-base/7 font-extrabold drop-shadow-md mb-3"
+    >
+      Plan Gold
+    </h3>
+
+    <ul class="leading-loose  mb-6 w-full max-w-xs">
+      <li class="flex items-center gap-2">
+        <span class="text-yellow-300 text-xl animate-bounce">✔️</span>
+        3 Usuarios
+      </li>
+      <li class="flex items-center gap-2">
+        <span class="text-yellow-300 text-xl animate-bounce delay-75">✔️</span>
+        Ilimitado
+      </li>
+      <li class="flex items-center gap-2">
+        <span class="text-yellow-300 text-xl animate-bounce delay-150">✔️</span>
+        Envia 100 recordatorios whatsapp
+      </li>
+      <li class="flex items-center gap-2">
+        <span class="text-yellow-300 text-xl animate-bounce delay-200">✔️</span>
+        Soporte de imágenes y archivos
+      </li>
+      <li class="flex items-center gap-2">
+        <span class="text-yellow-300 text-xl animate-bounce delay-250">✔️</span>
+        Marketing: Segmentación de cliente
+      </li>
+      <li class="flex items-center gap-2">
+        <span class="text-yellow-300 text-xl animate-bounce delay-300">✔️</span>
+        Agenda pacientes
+      </li>
+      <li class="flex items-center gap-2">
+        <span class="text-yellow-300 text-xl animate-bounce delay-350">✔️</span>
+        Actualizaciones gratuitas y automáticas
+      </li>
+    </ul>
+
+    <!-- Precio grande centrado -->
+    <p class="flex items-baseline gap-x-2 justify-center -mb-5">
+      <span
+        class="text-9xl font-extrabold tracking-tight text-white animate-pulse leading-none"
+      >
+          {{
+          prices.pro[planPeriod]
+            | currency : "USD" : "symbol" : "1.0-0"
+        }}
+      </span>
+    </p>
+  </div>
+
+  <!-- Parte inferior blanca -->
+  <div class="bg-white p-6 flex flex-col items-center gap-4">
+
+    <button
+      routerLink="/pagos"
+      class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 px-12 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 w-full"
+    >
+      Empieza ahora
+    </button>
+  </div>
+</div>
+
+</div>
+
 </div>
