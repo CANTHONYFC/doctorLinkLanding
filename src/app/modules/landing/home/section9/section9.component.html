@@ -11,32 +11,31 @@
     </p>
 
     <!-- Tabs -->
-    <div
-        class="flex justify-center mt-6 text-lg font-semibold rounded-md border border-gray-300 overflow-hidden w-max mx-auto"
+<div class="flex justify-center mt-6 text-lg font-semibold rounded-md border border-gray-300 overflow-hidden w-max mx-auto">
+    <button
+        (click)="setPlanPeriod('mensual')"
+        [ngClass]="
+            planPeriod === 'mensual'
+                ? 'bg-teal-400 text-white transform scale-105 shadow-lg'
+                : 'bg-white text-black hover:bg-teal-100 hover:text-teal-600 hover:scale-105 hover:shadow-xl transition-all duration-300 ease-in-out'
+        "
+        class="px-6 py-2 transition-colors duration-300 whitespace-nowrap"
     >
-        <button
-            (click)="setPlanPeriod('mensual')"
-            [ngClass]="
-                planPeriod === 'mensual'
-                    ? 'bg-teal-400 text-white'
-                    : 'bg-white text-black hover:text-teal-600'
-            "
-            class="px-6 py-2 transition-colors duration-300 whitespace-nowrap"
-        >
-            Mensual
-        </button>
-        <button
-            (click)="setPlanPeriod('anual')"
-            [ngClass]="
-                planPeriod === 'anual'
-                    ? 'bg-teal-400 text-white'
-                    : 'bg-white text-black hover:text-teal-600'
-            "
-            class="px-8 py-2 transition-colors duration-300 whitespace-nowrap"
-        >
-            Anual
-        </button>
-    </div>
+        Mensual
+    </button>
+    <button
+        (click)="setPlanPeriod('anual')"
+        [ngClass]="
+            planPeriod === 'anual'
+                ? 'bg-teal-400 text-white transform scale-105 shadow-lg'
+                : 'bg-white text-black hover:bg-teal-100 hover:text-teal-600 hover:scale-105 hover:shadow-xl transition-all duration-300 ease-in-out'
+        "
+        class="px-8 py-2 transition-colors duration-300 whitespace-nowrap"
+    >
+        Anual
+    </button>
+</div>
+
 <div class="mx-auto mt-16 grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8 max-w-7xl px-6 py-0 rounded-3xl relative font-sans items-center ">
 
   <!-- Plan Básico (izquierda) -->
