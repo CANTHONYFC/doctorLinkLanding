@@ -24,4 +24,6 @@ export class PaypalLoaderService {
             document.body.appendChild(script);
         });
     }
+
+  
 }

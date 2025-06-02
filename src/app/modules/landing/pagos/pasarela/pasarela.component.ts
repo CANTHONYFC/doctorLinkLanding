@@ -8,6 +8,7 @@ import {NgForm} from '@angular/forms';
 import {NotificationService} from 'app/modules/shared/service/service-notification.service';
 import {RegisterPagoPlanLanding} from "../../../../models/administration/RegisterPagoPlanLanding";
 import {URL_TWODOMAIN} from "../../../../../environments/enviroment.conts";
+import {Router} from '@angular/router';
 
 declare var paypal: any;
 
@@ -28,7 +29,8 @@ export class PasarelaComponent {
 
     constructor(private paypalLoader: PaypalLoaderService,
                 private planesService: PlanesService,
-                private snackBar: MatSnackBar) {
+                private snackBar: MatSnackBar,
+                private _router: Router) {
     }
 
 
@@ -36,8 +38,16 @@ export class PasarelaComponent {
 
     ngOnInit(): void {
         // Parámetros si necesitas enviar algo, si no, puedes mandar HttpParams vacío
+        this.listarPlanes();
+    }
+
+    irHome() {
+        this._router.navigateByUrl('/app');
+    }
+
+    listarPlanes() {
         const params = new HttpParams()
-            .set('type', 'MONTH');
+            .set('type', this.paymentMode);
         this.planesService.listPlanes(params, this.snackBar).then(response => {
             debugger
             if (response && response.data) {
@@ -69,7 +79,7 @@ export class PasarelaComponent {
 
     }
 
-    paymentMode: 'MONTH' | 'YEAR' = 'MONTH';
+    paymentMode: string = 'MONTH'; // Por defecto, puedes cambiarlo según tu lógica
 
     iniciarPago() {
         if (this.miFormulario.valid && this.selectedPlan) {
@@ -103,6 +113,11 @@ export class PasarelaComponent {
         } else {
             this.miFormulario.control.markAllAsTouched();
         }
+    }
+
+    changeInterval(interval_unit: string): any {
+        this.paymentMode = interval_unit
+        this.listarPlanes()
     }
 
     cerrarModal() {
@@ -147,7 +162,7 @@ export class PasarelaComponent {
                     this.planesService.register(registerPagoPlanLanding, this.snackBar)
                         .then(response => {
                             NotificationService.success('Gracias por tu pago, ' + details.payer.name.given_name);
-                            const url = `${URL_TWODOMAIN}#/app/source/registerEnterprise?id_uneg=${response.data.id_uneg}&id_user=${response.data.id_user}&token=${encodeURIComponent(response.data.token)}`;
+                            const url = `${URL_TWODOMAIN}#/sign-in?id_uneg=${response.data.id_uneg}&id_user=${response.data.id_user}&token=${encodeURIComponent(response.data.token)}`;
                             debugger
                             this.modalAbierto = false;  // por ejemplo, cierras el modal si usas uno
                             container.innerHTML = '';    // limpias el botón para que no vuelva a aparecer
