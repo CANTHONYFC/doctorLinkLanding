@@ -7,32 +7,26 @@
     </head>
     <!--class="bg-gradient-to-b from-[#1bc5b2] via-[#000000] to-[#000000] h-full min-h-screen"-->
     <body>
-        <app-nav></app-nav>
 
         <div
-            class="w-full bg-gradient-to-b from-slate-900 from-0% via-slate-900 via-50% to-teal-800 to-100%"
+            class="relative w-full bg-gradient-to-b from-slate-50 from- via-slate-100 via- to-slate-600 to-"
         >
+            <app-nav class="relative z-50"></app-nav>
+            <img
+                src="../../../../assets/images/esquina.png"
+                alt=""
+                class="absolute top-11 -right-11 w-[500px] h-auto origin-bottom-center -rotate-90 z-0"
+            />
             <app-section9></app-section9>
         </div>
 
         <div
-            class="w-full bg-gradient-to-t from-slate-900 from-0% via-slate-900 via-50% to-teal-800 to-100%"
+            class="bg-gradient-to-b from-slate-600 via-slate-700 to-black"
         >
             <app-pfrecuentes></app-pfrecuentes>
         </div>
-        <div
-            class="bg-gradient-to-b from-slate-900 from-0% via-slate-900 via-75% to-slate-900 to-100%"
-        ></div>
 
-        <div
-            class="bg-gradient-to-b from-slate-900 from- via-teal-900 via- to-slate-900 to-"
-        ></div>
 
-        <div
-            class="bg-gradient-to-b from-slate-900 from- via-slate-900 via- to-black to-"
-        ></div>
-
-        <div class="bg-black"></div>
         <div class="bg-black">
             <app-footer></app-footer>
         </div>

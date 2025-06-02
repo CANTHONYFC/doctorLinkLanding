@@ -68,16 +68,16 @@
             <div class="md:flex h-1/5 gap-4 sm:order-2 md:order-1">
                 <!-- gap entre los divs de la fila -->
                 <div
-                    class="md:w-1/2 bg-black rounded-[45px] flex flex-col items-center justify-center p-6 sm:mt-5 md:mt-0"
+                    class="md:w-1/2 bg-black rounded-[45px] flex flex-col items-center justify-center p-6 sm:mt-5 md:mt-0 "
                 >
                     <h1
-                        class="text-white font-bold text-3xl text-center md:mt-18 md:-mb-14"
+                        class="text-white font-bold text-3xl text-center  md:mt-2 md:-mb-14"
                     >
                         Firma tus recetas.
                     </h1>
-                    <div class="text-center md:p-14">
+                    <div class="text-center ">
                         <img
-                            class="sm:h-[120px] md:h-full"
+                            class="sm:h-[120px] md:mt-12"
                             src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQohh7dPVZu-Jh4k0TPWHWV0VBvDFn9UENHSLO2GGhLUeTy2BcW"
                             alt=""
                         />
@@ -139,11 +139,11 @@
                 <img
                     src="../../../../../assets/images/calendario1.png"
                     alt=""
-                    class="min-w-[200px] sm:min-h-[250px] p-36 absolute bottom-[-55%] right-[5%] transform transition-transform duration-500 hover:rotate-[-12deg] hover:scale-110 object-contain"
+                    class="min-w-[200px] sm:min-h-[250px] sm:p-20 md:px-12 lg:p-36 absolute sm:bottom-[-45%] md:bottom-[-35%] lg:bottom-[-55%] right-[5%] transform transition-transform duration-500 hover:rotate-[-12deg] hover:scale-110 object-contain"
                 />
                 <img
                     src="../../../../../assets/images/calendario2.png"
-                    class="min-w-[250px] sm:min-h-[250px] p-52 absolute bottom-[-50%] right-[-20%] transform transition-transform duration-500 hover:rotate-[-12deg] hover:scale-110 object-contain"
+                    class="min-w-[250px] sm:min-h-[250px] sm:p-32 lg:p-52 absolute bottom-[-50%] right-[-20%] transform transition-transform duration-500 hover:rotate-[-12deg] hover:scale-110 object-contain"
                     alt=""
                 />
 
@@ -153,51 +153,50 @@
     </div>
 
     <div
-        class="md:flex lg:flex w-full gap-4 md:-mt-[40%] tablet:-mt-[48%] lg:-mt-[28%] xxxxldesktop:-mt-[19%] xxxlgdesktop:-mt-[27%] xxxlggdesktop:-mt-[25%] xxxlgggdesktop:-mt-[23%] xxxlggggdesktop:-mt-[22%] xxxlgggggdesktop:-mt-[20%] h-[1000px]"
+        class="md:flex lg:flex w-full gap-4 md:-mt-[39%] tablet:-mt-[48%] lg:-mt-[30%] xl:-mt-[28%] xxxxldesktop:-mt-[19%] xxxlgdesktop:-mt-[27%] xxxlggdesktop:-mt-[25%] xxxlgggdesktop:-mt-[23%] xxxlggggdesktop:-mt-[22%] xxxlgggggdesktop:-mt-[20%] h-[1000px]"
     >
         <!-- Aquí agregamos gap pa push
          ra margen entre los divs -->
         <!-- Columna 1 -->
-        <div class="lg:w-1/2 flex flex-col">
-            <div
-                class="sm:h-[400px] tablet:h-[400px] md:h-2/5 sm:-mt-36 tablet:mt-[76%] md:mt-0 rounded-[45px] mb-4 bg-gradient-to-r from-[#fe135f] to-[#e55d20] bg-opacity-1 relative overflow-hidden"
-            >
-                <div class="p-12">
-                    <h1 class="font-bold text-3xl text-gray-300">
-                        Tu consultorio en tu bolsillo.
-                    </h1>
-                    <h2 class="text-xl text-gray-300 font-semibold">
-                        Atiende a un paciente desde cualquier lugar y a
-                        cualquier hora. Atiende cuando quieras, como quieras,
-                        donde quieras.
-                    </h2>
-                </div>
-                <img
-                    src="../../../../../assets/images/celular.png"
-                    alt=""
-                    class="absolute bottom-[-20%] transform transition-transform duration-500 hover:rotate-[-12deg] hover:scale-110 object-cover"
-                />
-            </div>
+<div class="lg:w-1/2 flex flex-col">
+    <div class="sm:h-[400px] tablet:h-[400px] md:h-2/5 sm:-mt-36 tablet:mt-[76%] md:mt-0 rounded-[45px] mb-4 bg-gradient-to-b from-[#133341] to-[#fff7aa] via-[#133341] bg-opacity-1 relative overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+        <div class="p-12 text-center">
+            <h1 class="font-bold text-3xl text-white mb-4 transition-all duration-300 transform hover:scale-110 hover:text-[#133341]">
+                Tu consultorio en tu bolsillo.
+            </h1>
+            <h2 class="text-xl text-white font-semibold mb-8 transition-all duration-300 transform hover:scale-105 hover:text-[#133341]">
+                Atiende a un paciente desde cualquier lugar y a cualquier hora. Atiende cuando quieras, como quieras, donde quieras.
+            </h2>
         </div>
+        
+        <!-- Imagen con animación -->
+        <img src="../../../../../assets/images/celular.png" alt="Consultorio móvil" class="absolute sm:bottom-[-20%] lg:bottom-[-34%] transform transition-transform duration-500 hover:rotate-[-12deg] hover:scale-110 object-cover ease-in-out" />
+    </div>
+</div>
+
+
+
 
         <!-- Columna 2 -->
-        <div class="lg:w-1/2 flex flex-col">
-            <div class="h-2/5 bg-[#100f10] rounded-[45px] sm:mt-[157%] tablet:mt-[120%] md:mt-0">
-                <div class="p-12">
-                    <h1 class="font-bold text-3xl text-orange-600">
-                        Escribe lo necesario
-                    </h1>
-                    <h2 class="text-xl text-gray-300 font-semibold">
-                        Podrás agregar tus propias plantillas médicas y atender
-                        más rápido a tus pacientes. DoctorLink se puede adaptar
-                        a cualquier médico.
-                    </h2>
-                    <div class="mt-15">
-                        <img src="../../../../../assets/images/inventario.png" alt="" />
-                    </div>
-                </div>
+       <div class="lg:w-1/2 flex flex-col">
+    <div class="h-2/5 bg-gradient-to-r from-[#100f10] to-[#133341] rounded-[45px] sm:mt-[157%] tablet:mt-[120%] md:mt-0 p-12 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 animate__animated animate__fadeIn animate__delay-0.5s">
+        <div class="text-center">
+            <h1 class="font-bold text-3xl text-orange-600 mb-4">
+                Escribe lo necesario
+            </h1>
+            <h2 class="text-xl text-gray-300 font-semibold mb-8">
+                Podrás agregar tus propias plantillas médicas y atender
+                más rápido a tus pacientes. DoctorLink se puede adaptar
+                a cualquier médico.
+            </h2>
+
+            <div class="mt-8 flex justify-center">
+                <img src="../../../../../assets/images/inventario.png" alt="" class="transition-transform duration-500 transform hover:scale-110 hover:rotate-[-8deg]" />
             </div>
         </div>
+    </div>
+</div>
+
     </div>
 
     <!-- 
@@ -252,56 +251,56 @@
     </div>
    -->
     <div
-        class="sm:-mt-[125%] md:flex lg:flex w-full gap-4 md:-mt-[65%] tablet:-mt-[74%] lg:-mt-[45%] xxxxldesktop:-mt-[29%] xxxlgdesktop:-mt-[43%] xxxlggdesktop:-mt-[40%] xxxlgggdesktop:-mt-[37%] xxxlggggdesktop:-mt-[35%] xxxlgggggdesktop:-mt-[32%] h-[1000px]"
+        class="sm:-mt-[125%] md:flex lg:flex w-full gap-4 md:-mt-[62%] tablet:-mt-[74%] lg:-mt-[48%]  xl:-mt-[45%]  xxxxldesktop:-mt-[29%] xxxlgdesktop:-mt-[43%] xxxlggdesktop:-mt-[40%] xxxlgggdesktop:-mt-[37%] xxxlggggdesktop:-mt-[35%] xxxlgggggdesktop:-mt-[32%] h-[1000px]"
     >
         <!-- Aquí agregamos gap para margen entre los divs -->
 
         <!-- Columna 1 -->
         <div class="lg:w-1/2 flex flex-col">
-            <div
-                class="sm:-mt-14 md:mt-0 bg-[#ffffff] sm:h-[400px] tablet:h-[400px] md:h-2/5 bg-opacity-1 rounded-[45px] relative overflow-hidden tablet:mt-[68%]"
-            >
-                <div class="px-10 pt-10">
-                    <h1 class="font-bold text-3xl">
-                        Búsqueda y CIE-10 integrado.
-                    </h1>
-                    <h2 class="text-2xl">
-                        Diseñada por médicos para médicos. Un sistema que piensa
-                        como tu, así puedes concentrarte en tus pacientes y no
-                        en los papeles.
-                    </h2>
-                </div>
-                <hr class="font-bold" />
-                <div class="px-10 text-xl font-semibold">
-                    <span>Apendicitis no especificada</span><br /><br />
-                    <span>Apendicitis aguda con absceso peritoneal</span
-                    ><br /><br />
-                    <span>Apendicitis aguda con peritonitis generalizada</span
-                    ><br /><br />
-                </div>
-            </div>
+    <div
+        class="sm:-mt-14 md:mt-0 bg-gradient-to-r from-[#fff7aa] to-[#f2f9f9] sm:h-[400px] tablet:h-[400px] md:h-2/5 rounded-[45px] relative overflow-hidden tablet:mt-[68%] shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 animate__animated animate__fadeIn animate__delay-0.5s"
+    >
+        <div class="px-10 pt-10">
+            <h1 class="font-bold text-3xl text-[#133341] tracking-tight mb-4">
+                Búsqueda y CIE-10 integrado.
+            </h1>
+            <h2 class="sm:text-lg lg:text-2xl text-[#133341]">
+                Diseñada por médicos para médicos. Un sistema que piensa
+                como tú, así puedes concentrarte en tus pacientes y no
+                en los papeles.
+            </h2>
         </div>
-        <!-- Columna 2 -->
-        <div class="lg:w-1/2 flex flex-col">
-            <div
-                class="md:h-2/5 sm:h-[400px] rounded-[45px] mb-4 bg-[#100f10] bg-opacity-1 relative overflow-hidden md:mt-0 sm:mt-5"
-            >
-                <div class="p-10">
-                    <h1 class="text-blue-400 text-3xl font-bold mb-4">
-                        Convierte tu clínica en un negocio
-                    </h1>
-                    <p class="text-gray-300 mb-6 text-xl">
-                        Maneja tu clínica como un negocio moderno con el módulo
-                        de finanzas y deja atrás las horas que pasas sacando las
-                        cuentas.
-                    </p>
-                </div>
+        <hr class="border-[#133341] mb-4" />
+        <div class="px-10 sm:text-lg lg:text-xl font-semibold text-[#133341]">
+            <span>Apendicitis no especificada</span><br /><br />
+            <span>Apendicitis aguda con absceso peritoneal</span><br /><br />
+            <span>Apendicitis aguda con peritonitis generalizada</span><br /><br />
+        </div>
+    </div>
+</div>
 
-                <div class="flex  justify-center px-10 -mt-5">
-                    <img src="../../../../../assets/images/productividad.png" alt="">
-                </div>
-            </div>
+        <!-- Columna 2 -->
+      <div class="lg:w-1/2 flex flex-col">
+    <div
+        class="md:h-2/5 sm:h-[400px] rounded-[45px] mb-4 bg-gradient-to-r from-[#100f10] to-[#133341] bg-opacity-1 relative overflow-hidden md:mt-0 sm:mt-5 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 animate__animated animate__fadeIn animate__delay-0.5s"
+    >
+        <div class="p-10">
+            <h1 class="text-blue-400 text-3xl font-bold mb-4">
+                Convierte tu clínica en un negocio
+            </h1>
+            <p class="text-gray-300 mb-6 text-xl">
+                Maneja tu clínica como un negocio moderno con el módulo
+                de finanzas y deja atrás las horas que pasas sacando las
+                cuentas.
+            </p>
         </div>
+
+        <div class="flex justify-center px-10 -mt-5">
+            <img src="../../../../../assets/images/productividad.png" alt="" class="transition-transform duration-500 transform hover:scale-110 hover:rotate-[-8deg]" />
+        </div>
+    </div>
+</div>
+
         <!-- Columna 2 
         <div class="lg:w-1/2 flex flex-col">
             <div class="sm:h-[400px] md:h-2/5 bg-[#ffffff] rounded-[45px] relative overflow-hidden">
@@ -363,26 +362,20 @@
         </div>
     </div>
  -->
-    <div
-        class="md:flex lg:flex w-full gap-4 sm:mt-[42%] sm:-mb-[110%] md:-mt-[65%] md:-mb-[30%] tablet:-mt-[15%] lg:-mt-[45%] lg:-mb-[55%] xxxxldesktop:-mt-[29%] xxxlgdesktop:-mt-[43%] xxxlggdesktop:-mt-[40%] xxxlgggdesktop:-mt-[37%] xxxlggggdesktop:-mt-[35%] xxxlgggggdesktop:-mt-[32%] xxxlgggggdesktop:-mb-[30%]  tablet:-mb-[65%] h-[1000px]"
-    >
-        <!-- Aquí agregamos gap para margen entre los divs -->
-        <!-- Columna 1 -->
-        <div class="w-full flex flex-col">
-            <div
-                class="sm:h-[400px] tablet:h-[400px] md:h-2/5 rounded-xl mb-4 bg-gradient-to-r from-[#1b1b1b] to-[#101010] relative overflow-hidden"
-            >
-                <div class="p-12">
-                    <h1 class="font-bold text-3xl text-orange-600">
-                        Ser médico nunca fue tan fácil.
-                    </h1>
-                </div>
-                <img
-                    src="../../../../../assets/images/lapto.png"
-                    alt=""
-                    class="px-24 absolute md:-mt-24 transform transition-transform duration-500 hover:rotate-[-12deg] hover:scale-110 object-cover sm:-mt-8"
-                />
+<div class="md:flex lg:flex w-full gap-4 sm:mt-[42%] sm:-mb-[110%] md:-mt-[62%] md:-mb-[30%] tablet:-mt-[15%] lg:-mt-[48%] xl:-mt-[45%] lg:-mb-[55%] xxxxldesktop:-mt-[29%] xxxlgdesktop:-mt-[43%] xxxlggdesktop:-mt-[40%] xxxlgggdesktop:-mt-[37%] xxxlggggdesktop:-mt-[35%] xxxlgggggdesktop:-mt-[32%] xxxlgggggdesktop:-mb-[30%] tablet:-mb-[65%] h-[1000px]">
+    <!-- Columna 1 -->
+    <div class="w-full flex flex-col animate__animated animate__fadeInLeft animate__delay-0.5s">
+        <div class="sm:h-[400px] tablet:h-[400px] md:h-2/5 rounded-xl mb-4 bg-gradient-to-r from-[#133341] to-[#7cfbc7] relative overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+            <div class="p-12">
+                <h1 class="font-bold text-3xl text-[#fff7aa] tracking-tight mb-4 animate__animated animate__fadeIn animate__delay-1s"> 
+                    Ser médico nunca fue tan fácil.
+                </h1>
             </div>
+            <!-- Imagen con animación -->
+            <img src="../../../../../assets/images/lapto.png" alt="" class="px-24 absolute md:-mt-24 transform transition-transform duration-500 hover:rotate-[-12deg] hover:scale-110 hover:translate-x-4 hover:translate-y-2 object-cover sm:-mt-8 shadow-lg rounded-xl" />
         </div>
     </div>
+</div>
+
+
 </div>

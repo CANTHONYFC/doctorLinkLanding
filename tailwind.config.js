@@ -90,8 +90,8 @@ const config = {
             smatphonet: '400px',       // Smartphones medianos
             sm: '600px',               // Tamaño base pequeño
             tablet: '768px',           // Tablets
-            laptop: '1024px',          // Laptops
             md: '960px',               // Mediano
+            laptop: '1024px',          // Laptops
             lg: '1280px',              // (Ya cubierto por "desktop", puede eliminarse)
             xl: '1440px',              // Extra grande
             xlargedesktop: '1600px',   // Muy grande
