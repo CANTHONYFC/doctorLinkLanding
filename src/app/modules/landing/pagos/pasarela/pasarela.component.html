@@ -1,276 +1,290 @@
 <div
-    class="w-full min-h-screen p-6 bg-gradient-to-b from-gray-100 to-gray-300 rounded-lg shadow-lg font-sans"
+  class="w-full min-h-screen p-4 sm:p-6 bg-gradient-to-b from-gray-100 to-gray-300 rounded-lg shadow-lg font-sans"
 >
-    <div class="flex flex-col items-center mb-6">
-        <div class="flex items-center space-x-2 mb-2" style="cursor:pointer;" (click)="irHome()">
-            <div class="text-4xl font-extrabold text-teal-700">D</div>
-            <div>
-                <h1 class="text-2xl font-bold text-teal-900">Dr.Link</h1>
-                <p class="text-sm text-teal-600 italic">AI Medical Records</p>
-            </div>
-        </div>
+  <div class="flex flex-col items-center mb-6">
+    <div
+      class="flex items-center space-x-2 mb-2 cursor-pointer"
+      (click)="irHome()"
+    >
+      <div class="text-3xl sm:text-4xl font-extrabold text-teal-700">D</div>
+      <div>
+        <h1 class="text-xl sm:text-2xl font-bold text-teal-900">Dr.Link</h1>
+        <p class="text-xs sm:text-sm text-teal-600 italic">AI Medical Records</p>
+      </div>
     </div>
+  </div>
 
-    <!-- Tabs mensual/anual -->
-    <div class="flex justify-center mb-6 space-x-4 text-2xl">
-        <button
+  <!-- Tabs mensual/anual -->
+  <div class="flex justify-center mb-6 space-x-4 text-xl sm:text-2xl">
+    <button
+      (click)="changeInterval('MONTH')"
+      [ngClass]="{
+        'border-b-2 border-teal-700 text-teal-700 font-semibold': paymentMode === 'MONTH',
+        'text-gray-500': paymentMode !== 'MONTH'
+      }"
+      class="px-3 py-2 focus:outline-none"
+    >
+      Mensual
+    </button>
+    <button
+      (click)="changeInterval('YEAR')"
+      [ngClass]="{
+        'border-b-2 border-teal-700 text-teal-700 font-semibold': paymentMode === 'YEAR',
+        'text-gray-500': paymentMode !== 'YEAR'
+      }"
+      class="px-3 py-2 focus:outline-none"
+    >
+      Anual
+    </button>
+  </div>
 
-            (click)="changeInterval('MONTH')"
-            [ngClass]="{
-                'border-b-2 border-teal-700 text-teal-700 font-semibold':
-                    paymentMode === 'MONTH',
-                'text-gray-500': paymentMode !== 'MONTH'
-            }"
-            class="px-4 py-2 focus:outline-none"
-        >
-            Mensual
-        </button>
-        <button
-            (click)="changeInterval('YEAR')"
-            [ngClass]="{
-                'border-b-2 border-teal-700 text-teal-700 font-semibold':
-                    paymentMode === 'YEAR',
-                'text-gray-500': paymentMode !== 'YEAR'
-            }"
-            class="px-4 py-2 focus:outline-none"
-        >
-            Anual
-        </button>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 w-full md:px-72">
-        <!-- Lista de planes -->
-        <div class="grid grid-cols-12 md:grid-cols-12 col-span-7 space-y-6">
-            <div class="col-span-12 md:col-span-12 " *ngFor="let plan of planes">
-                <!-- Plan Premium -->
-                <div
-                    (click)="selectPlan(plan)"
-                    [ngClass]="{
-                'border-teal-600 bg-teal-50 shadow-lg': selectedPlan === plan,
-                'border-transparent bg-white shadow-md': selectedPlan !== plan
-            }"
-                    class="relative cursor-pointer rounded-2xl border-2 transition-colors duration-300 max-w-3xl mx-auto p-6 bg-white"
-                >
-                    <div *ngIf="plan.flagPopular"
-                         class="absolute top-6 left-5 bg-pink-600 text-white text-xs font-bold px-3 py-1 shadow-lg"
-                         style="
-                    width: 100px;
-                    transform: rotate(-45deg) translate(-50%, -50%);
-                    transform-origin: 0 0;
-                "
-                    >
-                        MÁS POPULAR
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 w-full">
-                        <!-- Izquierda: precios apilados -->
-                        <div class="md:col-span-5 space-y-4">
-                            <div class="flex flex-col items-start -mb-2">
-                                <h2 class="font-semibold text-xl mb-6">{{ plan.nombre }}</h2>
-                            </div>
-
-                            <div class="flex items-center space-x-2">
-                                <span *ngIf="paymentMode=='MONTH'"
-                                      class="text-8xl font-extrabold text-teal-700 leading-none">{{ plan.precioTotal }}</span>
-                                <span *ngIf="paymentMode=='YEAR'"
-                                      class="text-8xl font-extrabold text-teal-700 leading-none">{{ plan.precioMensual }}</span>
-
-                                <div class="flex flex-col text-gray-500 font-semibold text-base leading-tight">
-                                    <span>USD</span>
-                                    <span>/ Mes</span>
-                                </div>
-
-                            </div>
-                            <span class="font-bold">Con Plan Mensual</span>
-
-                            <div class="-ml-[14%]">
-                                <div style="background-color: #2F6674 !important;"
-                                     class="bg-teal-700 w-44 h-14 rounded-r-3xl flex flex-col justify-center px-5">
-                                    <div class="flex items-baseline space-x-1">
-                                        <span
-                                            class="text-white font-bold text-3xl">{{ plan.precioMensualOferta }}</span>
-                                        <span class="text-white text-xs">USD</span>
-                                        <span class="text-white text-sm">/Mes</span>
-                                    </div>
-                                    <div *ngIf="paymentMode=='MONTH'"
-                                         class="text-yellow-400 text-xs font-semibold mt-0.5">
-                                        con Plan Anual
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Derecha: lista de características -->
-                        <ul class="md:col-span-7 text-gray-700 text-sm space-y-1 list-disc list-inside max-w-lg">
-                            <li>{{ plan.nroEmpleados }} usuarios</li>
-                            <li *ngIf="plan.flagPacienteIlimitados">Pacientes Ilimitados</li>
-                            <li *ngIf="!plan.flagPacienteIlimitados">{{ plan.nroPacientes }} Pacientes</li>
-                            <li *ngIf="plan.flagAgenta">Agenda pacientes</li>
-                            <li *ngIf="plan.nroRecordatorios>0">Envía {{ plan.nroRecordatorios }} Recordatorios WhatsApp
-                            </li>
-                            <li *ngIf="plan.flagMarketing">Marketing: Segmentación inteligente</li>
-                            <li *ngIf="plan.flagSoporteArchivos">Soporte de imágenes y archivos</li>
-                            <li *ngIf="plan.flagAppMovil">App para pacientes</li>
-                            <li *ngIf="plan.flagInventario">Módulo inventario</li>
-                            <li *ngIf="plan.flagSoporte">Soporte prioritario</li>
-                            <li *ngIf="plan.flagActualizaciones">Actualizaciones gratuitas y automáticas</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Método de pago -->
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-6 w-full md:px-12 lg:px-72">
+    <!-- Lista de planes -->
+    <div class="col-span-1 md:col-span-7 space-y-6">
+      <div class="w-full" *ngFor="let plan of planes">
+        <!-- Plan Premium -->
         <div
-            class="col-span-12 md:col-span-5 bg-white rounded-xl p-6 shadow-lg flex flex-col justify-center
-             min-h-[400px] relative max-h-[600px] ">
-            <form #miFormulario="ngForm" novalidate autocomplete="off">
-                <!-- Header rojo con importe pendiente -->
-                <ng-container *ngIf="selectedPlan; else noPlanSelectedHeader">
-                    <div
-                        class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-48 bg-gradient-to-b from-[#12c2ae] to-[#12c2ae] rounded-lg text-white text-center py-3 shadow-md"
-                    >
-                        <p class="text-xs uppercase font-semibold mb-1">Pendiente de pago</p>
-                        <p class="text-3xl font-extrabold">
-                            $ {{ selectedPlan.precioTotal | number: '1.0-2' }}
-                            USD
-                        </p>
-                        <p class="text-xs mt-1">
-                            Pedido: <span class="font-semibold">22354487</span><br/>
-                            Fecha: <span class="font-semibold">{{ today | date: 'dd/MM/yyyy' }}</span>
-                        </p>
-                    </div>
+          (click)="selectPlan(plan)"
+          [ngClass]="{
+            'border-teal-600 bg-teal-50 shadow-lg': selectedPlan === plan,
+            'border-transparent bg-white shadow-md': selectedPlan !== plan
+          }"
+          class="relative cursor-pointer rounded-2xl border-2 transition-colors duration-300 max-w-full mx-auto p-4 sm:p-6 bg-white"
+        >
+          <div
+            *ngIf="plan.flagPopular"
+            class="absolute top-4 left-4 bg-pink-600 text-white text-xs sm:text-sm font-bold px-2 py-1 shadow-lg"
+            style="
+              width: 100px;
+              transform: rotate(-45deg) translate(-50%, -50%);
+              transform-origin: 0 0;
+            "
+          >
+            MÁS POPULAR
+          </div>
 
-                    <div class="space-y-4">
-                        <div class="grid grid-cols-12 gap-4">
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-4 w-full">
+            <!-- Izquierda: precios apilados -->
+<!-- Izquierda: precios apilados -->
+<div class="sm:col-span-5 space-y-3">
+  <div class="flex flex-col items-start -mb-1">
+    <h2 class="font-semibold text-lg sm:text-xl mb-4">{{ plan.nombre }}</h2>
+  </div>
 
+  <!-- Precio grande arriba -->
+  <div class="flex items-center space-x-2">
+    <span
+      *ngIf="paymentMode=='MONTH'"
+      class="text-6xl sm:text-8xl font-extrabold text-teal-700 leading-none"
+      >{{ plan.precioTotal }}</span
+    >
+    <span
+      *ngIf="paymentMode=='YEAR'"
+      class="text-6xl sm:text-8xl font-extrabold text-teal-700 leading-none"
+      >{{ plan.precioMensualOferta }}</span
+    >
 
-                            <div class="flex-auto gt-xs:pr-3 col-span-12">
-                                <p class="w-full font-normal">Ingrese Correo (Preferencia Gmail)</p>
-                                <div class="w-full">
-                                    <mat-form-field class="flex-auto w-full gt-xs:pr-3" appearance="fill">
-                                        <input
-                                            matInput
-                                            #emailCtrl="ngModel"
-                                            name="email"
-                                            required
-                                            type="email"
-                                            autocomplete="off"
-                                            placeholder="Ingrese un Correo para su nueva Cuenta"
-                                            [(ngModel)]="correo"
-                                            email
-                                        >
-                                        <mat-error *ngIf="emailCtrl.errors?.['required']">
-                                            El correo es obligatorio.
-                                        </mat-error>
-                                        <mat-error *ngIf="emailCtrl.errors?.['email']">
-                                            Ingrese un correo electrónico válido.
-                                        </mat-error>
-                                    </mat-form-field>
-                                </div>
-                            </div>
-
-                            <div class="flex-auto gt-xs:pr-3 col-span-12">
-                                <p class="w-full font-normal">Password</p>
-                                <div class="w-full">
-                                    <mat-form-field class="flex-auto w-full gt-xs:pr-3" appearance="fill">
-                                        <input
-                                            matInput
-                                            [type]="hidePassword ? 'password' : 'text'"
-                                            #passCtrl="ngModel"
-                                            name="password"
-                                            required
-                                            minlength="10"
-                                            maxlength="13"
-                                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&._-]).{8,}$"
-                                            placeholder="Ingrese su nueva contraseña"
-                                            [(ngModel)]="password"
-                                            autocomplete="new-password"
-                                        >
-
-                                        <!-- Botón de ojito -->
-                                        <button
-                                            mat-icon-button
-                                            matSuffix
-                                            type="button"
-                                            (click)="hidePassword = !hidePassword"
-                                            [attr.aria-label]="'Ocultar o mostrar contraseña'"
-                                        >
-                                            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
-                                        </button>
-
-                                        <!-- Mensajes de error -->
-                                        <mat-error *ngIf="passCtrl.errors?.['required']">
-                                            La contraseña es obligatoria.
-                                        </mat-error>
-                                        <mat-error *ngIf="passCtrl.errors?.['minlength']">
-                                            La contraseña debe tener al menos 10 caracteres.
-                                        </mat-error>
-                                        <mat-error *ngIf="passCtrl.errors?.['minlength']">
-                                            La contraseña debe tener como maximo 13 caracteres.
-                                        </mat-error>
-                                        <mat-error *ngIf="passCtrl.errors?.['pattern']">
-                                            Debe incluir mayúsculas, minúsculas, números y caracteres especiales.
-                                        </mat-error>
-                                    </mat-form-field>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-
-                </ng-container>
-
-                <ng-template #noPlanSelectedHeader>
-                    <div
-                        class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-48 bg-gray-200 rounded-lg text-center py-3 shadow-md"
-                    >
-                        <p class="text-xs uppercase font-semibold mb-1 text-gray-600">Pendiente de pago</p>
-                        <p class="text-3xl font-extrabold text-gray-400">--</p>
-                        <p class="text-xs mt-1 text-gray-400">Pedido: --<br/>Fecha: {{ today | date: 'dd/MM/yyyy' }}</p>
-                    </div>
-                </ng-template>
-                <h3 class="mt-5 font-semibold text-xl mb-6 text-gray-800 border-b border-gray-300 pb-3 text-center">
-                    Checkout
-                </h3>
-
-                <ng-container *ngIf="selectedPlan; else noPlanSelected">
-
-                    <button
-                        class="bg-[#12c2ae] hover:bg-[#0f766e] text-white font-semibold rounded-lg py-3 w-full transition"
-                        (click)="iniciarPago()"
-                        type="button" [disabled]="!miFormulario.valid"
-                    >
-                        PAGAR
-                    </button>
-
-                    <label class="flex items-center mt-4 text-gray-600 text-xs">
-                        <input type="checkbox" class="form-checkbox h-4 w-4 text-red-600" checked/>
-                        <span class="ml-2">He leído y acepto la política de privacidad.</span>
-                    </label>
-                </ng-container>
-            </form>
-            <ng-template #noPlanSelected>
-                <p class="text-gray-600 text-center text-sm min-h-[150px] pt-20">
-                    Selecciona un plan para ver el método de pago.
-                </p>
-            </ng-template>
-        </div>
+    <div class="flex flex-col text-gray-500 font-semibold text-xs sm:text-base leading-tight">
+      <span>USD</span>
+      <span>/ Mes</span>
     </div>
+  </div>
 
+  <span class="font-bold text-sm sm:text-base">Con Plan Mensual</span>
+
+  <!-- Botón verde abajo -->
+  <div class="-ml-10 sm:-ml-[14%]">
+    <div
+      style="background-color: #2F6674 !important;"
+      class="bg-teal-700 w-36 sm:w-44 h-12 sm:h-14 rounded-r-3xl flex flex-col justify-center px-4 sm:px-5"
+    >
+      <div class="flex items-baseline space-x-1">
+        <span class="text-white font-bold text-2xl sm:text-3xl">
+          {{ paymentMode === 'MONTH' ? plan.precioMensualOferta : plan.precioMensual }}
+        </span>
+        <span class="text-white text-xs sm:text-sm">USD</span>
+        <span class="text-white text-xs sm:text-sm">/Mes</span>
+      </div>
+      <div class="text-yellow-400 text-xs sm:text-sm font-semibold mt-0.5">
+        con Plan Anual
+      </div>
+    </div>
+  </div>
 </div>
 
-<div *ngIf="modalAbierto" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md relative max-h-[80vh] overflow-y-auto">
-        <h2 class="text-xl font-semibold mb-4">Procesar pago</h2>
-        <!-- Contenedor del botón de PayPal -->
-        <div id="paypal-button-container" class="mb-4"></div>
 
-        <!-- Botón cerrar -->
-        <button
-            class="absolute top-2 right-2 text-gray-500 hover:text-red-500 text-xl"
-            (click)="cerrarModal()"
-            aria-label="Cerrar"
-        >&times;
-        </button>
+
+            <!-- Derecha: lista de características -->
+            <ul
+              class="sm:col-span-7 text-gray-700 text-xs sm:text-sm space-y-1 list-disc list-inside max-w-full"
+            >
+              <li>{{ plan.nroEmpleados }} usuarios</li>
+              <li *ngIf="plan.flagPacienteIlimitados">Pacientes Ilimitados</li>
+              <li *ngIf="!plan.flagPacienteIlimitados">{{ plan.nroPacientes }} Pacientes</li>
+              <li *ngIf="plan.flagAgenta">Agenda pacientes</li>
+              <li *ngIf="plan.nroRecordatorios > 0">
+                Envía {{ plan.nroRecordatorios }} Recordatorios WhatsApp
+              </li>
+              <li *ngIf="plan.flagMarketing">Marketing: Segmentación inteligente</li>
+              <li *ngIf="plan.flagSoporteArchivos">Soporte de imágenes y archivos</li>
+              <li *ngIf="plan.flagAppMovil">App para pacientes</li>
+              <li *ngIf="plan.flagInventario">Módulo inventario</li>
+              <li *ngIf="plan.flagSoporte">Soporte prioritario</li>
+              <li *ngIf="plan.flagActualizaciones">Actualizaciones gratuitas y automáticas</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- Método de pago -->
+    <div
+      class="col-span-1 md:col-span-5 bg-white rounded-xl p-4 sm:p-6 shadow-lg flex flex-col justify-center min-h-[400px] relative max-h-[600px]"
+    >
+      <form #miFormulario="ngForm" novalidate autocomplete="off">
+        <!-- Header rojo con importe pendiente -->
+        <ng-container *ngIf="selectedPlan; else noPlanSelectedHeader">
+          <div
+            class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-40 sm:w-48 bg-gradient-to-b from-[#12c2ae] to-[#12c2ae] rounded-lg text-white text-center py-2 sm:py-3 shadow-md"
+          >
+            <p class="text-[9px] sm:text-xs uppercase font-semibold mb-1">Pendiente de pago</p>
+            <p class="text-2xl sm:text-3xl font-extrabold">
+              $ {{ selectedPlan.precioTotal | number: '1.0-2' }} USD
+            </p>
+            <p class="text-[9px] sm:text-xs mt-1">
+              Pedido: <span class="font-semibold">22354487</span><br />
+              Fecha: <span class="font-semibold">{{ today | date: 'dd/MM/yyyy' }}</span>
+            </p>
+          </div>
+
+          <div class="space-y-4 mt-10">
+            <div class="grid grid-cols-12 gap-3">
+              <div class="flex-auto col-span-12">
+                <p class="w-full font-normal text-sm sm:text-base">Ingrese Correo (Preferencia Gmail)</p>
+                <div class="w-full">
+                  <mat-form-field class="flex-auto w-full" appearance="fill">
+                    <input
+                      matInput
+                      #emailCtrl="ngModel"
+                      name="email"
+                      required
+                      type="email"
+                      autocomplete="off"
+                      placeholder="Ingrese un Correo para su nueva Cuenta"
+                      [(ngModel)]="correo"
+                      email
+                    />
+                    <mat-error *ngIf="emailCtrl.errors?.['required']">El correo es obligatorio.</mat-error>
+                    <mat-error *ngIf="emailCtrl.errors?.['email']">Ingrese un correo electrónico válido.</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="flex-auto col-span-12">
+                <p class="w-full font-normal text-sm sm:text-base">Password</p>
+                <div class="w-full">
+                  <mat-form-field class="flex-auto w-full" appearance="fill">
+                    <input
+                      matInput
+                      [type]="hidePassword ? 'password' : 'text'"
+                      #passCtrl="ngModel"
+                      name="password"
+                      required
+                      minlength="10"
+                      maxlength="13"
+                      pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&._-]).{8,}$"
+                      placeholder="Ingrese su nueva contraseña"
+                      [(ngModel)]="password"
+                      autocomplete="new-password"
+                    />
+
+                    <!-- Botón de ojito -->
+                    <button
+                      mat-icon-button
+                      matSuffix
+                      type="button"
+                      (click)="hidePassword = !hidePassword"
+                      [attr.aria-label]="'Ocultar o mostrar contraseña'"
+                    >
+                      <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </button>
+
+                    <!-- Mensajes de error -->
+                    <mat-error *ngIf="passCtrl.errors?.['required']">La contraseña es obligatoria.</mat-error>
+                    <mat-error *ngIf="passCtrl.errors?.['minlength']">La contraseña debe tener al menos 10 caracteres.</mat-error>
+                    <mat-error *ngIf="passCtrl.errors?.['maxlength']">La contraseña debe tener como máximo 13 caracteres.</mat-error>
+                    <mat-error *ngIf="passCtrl.errors?.['pattern']">
+                      Debe incluir mayúsculas, minúsculas, números y caracteres especiales.
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-template #noPlanSelectedHeader>
+          <div
+            class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-40 sm:w-48 bg-gray-200 rounded-lg text-center py-2 sm:py-3 shadow-md"
+          >
+            <p class="text-[9px] sm:text-xs uppercase font-semibold mb-1 text-gray-600">Pendiente de pago</p>
+            <p class="text-2xl sm:text-3xl font-extrabold text-gray-400">--</p>
+            <p class="text-[9px] sm:text-xs mt-1 text-gray-400">
+              Pedido: --<br />Fecha: {{ today | date: 'dd/MM/yyyy' }}
+            </p>
+          </div>
+        </ng-template>
+
+        <h3
+          class="mt-5 font-semibold text-lg sm:text-xl mb-6 text-gray-800 border-b border-gray-300 pb-3 text-center"
+        >
+          Checkout
+        </h3>
+
+        <ng-container *ngIf="selectedPlan; else noPlanSelected">
+          <button
+            class="bg-[#12c2ae] hover:bg-[#0f766e] text-white font-semibold rounded-lg py-3 w-full transition disabled:opacity-50 disabled:cursor-not-allowed"
+            (click)="iniciarPago()"
+            type="button"
+            [disabled]="!miFormulario.valid"
+          >
+            PAGAR
+          </button>
+
+          <label class="flex items-center mt-4 text-gray-600 text-xs sm:text-sm">
+            <input type="checkbox" class="form-checkbox h-4 w-4 text-red-600" checked />
+            <span class="ml-2">He leído y acepto la política de privacidad.</span>
+          </label>
+        </ng-container>
+      </form>
+
+      <ng-template #noPlanSelected>
+        <p class="text-gray-600 text-center text-sm sm:text-base min-h-[150px] pt-20">
+          Selecciona un plan para ver el método de pago.
+        </p>
+      </ng-template>
+    </div>
+  </div>
+</div>
+
+<div
+  *ngIf="modalAbierto"
+  class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+>
+  <div
+    class="bg-white p-4 sm:p-6 rounded-lg shadow-lg w-full max-w-md relative max-h-[80vh] overflow-y-auto"
+  >
+    <h2 class="text-lg sm:text-xl font-semibold mb-4">Procesar pago</h2>
+    <!-- Contenedor del botón de PayPal -->
+    <div id="paypal-button-container" class="mb-4"></div>
+
+    <!-- Botón cerrar -->
+    <button
+      class="absolute top-2 right-2 text-gray-500 hover:text-red-500 text-xl"
+      (click)="cerrarModal()"
+      aria-label="Cerrar"
+    >
+      &times;
+    </button>
+  </div>
 </div>

@@ -105,17 +105,17 @@
                         </li>
                     </ul>
 
-                    <!-- Precio centrado grande -->
-<p class="flex items-baseline gap-x-2 justify-center -mb-5">
-    <span *ngIf="planPeriod === 'MONTH'"
-          class="text-4xl font-extrabold tracking-tight text-white animate-pulse leading-none">
-        $ {{ plan.precioTotal }} USD/Mes
-    </span>
-    <span *ngIf="planPeriod === 'YEAR'"
-          class="text-4xl font-extrabold tracking-tight text-white animate-pulse leading-none">
-        $ {{ plan.precioTotal }} USD/Anual
-    </span>
-</p>
+                   <p class="flex items-baseline gap-x-2 justify-center -mb-5">
+                    <span *ngIf="planPeriod === 'MONTH'" class="font-extrabold tracking-tight leading-none animate-pulse flex items-baseline gap-x-1">
+                        <span class="text-8xl text-white">$ {{ plan.precioTotal }}</span>
+                        <span class="text-yellow-400 text-lg">USD/Mes</span>
+                    </span>
+                    <span *ngIf="planPeriod === 'YEAR'" class="font-extrabold tracking-tight leading-none animate-pulse flex items-baseline gap-x-1">
+                        <span class="text-8xl text-white">$ {{ plan.precioTotal }}</span>
+                        <span class="text-yellow-400 text-lg">USD/Anual</span>
+                    </span>
+                    </p>
+
 
                 </div>
 
@@ -203,15 +203,17 @@
                         </li>
                     </ul>
                     <!-- Precio grande centrado -->
-         <p class="flex items-baseline gap-x-2 justify-center -mb-5">
-                        <span *ngIf="planPeriod==='MONTH'"
-                              class="text-8xl font-extrabold tracking-tight text-white animate-pulse leading-none">
-                            $ {{ plan.precioTotal }} </span>USD/Mes
-                        <span *ngIf="planPeriod==='YEAR'"
-                              class="text-4xl font-extrabold tracking-tight text-white animate-pulse leading-none">$ {{ plan.precioTotal }}</span>
-
-
+                   <p class="flex items-baseline gap-x-2 justify-center -mb-5">
+                    <span *ngIf="planPeriod === 'MONTH'" class="font-extrabold tracking-tight leading-none animate-pulse flex items-baseline gap-x-1">
+                        <span class="text-8xl text-white">$ {{ plan.precioTotal }}</span>
+                        <span class="text-yellow-400 text-lg">USD/Mes</span>
+                    </span>
+                    <span *ngIf="planPeriod === 'YEAR'" class="font-extrabold tracking-tight leading-none animate-pulse flex items-baseline gap-x-1">
+                        <span class="text-8xl text-white">$ {{ plan.precioTotal }}</span>
+                        <span class="text-yellow-400 text-lg">USD/Anual</span>
+                    </span>
                     </p>
+
                 </div>
 
                 <!-- Parte inferior blanca -->
