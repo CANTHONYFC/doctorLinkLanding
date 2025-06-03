@@ -47,7 +47,7 @@ import { FidelizaComponent } from './fideliza/fideliza.component';
         MatToolbarModule,
         MatMenuModule,
         MatDividerModule,
-    ]
+    ],
 })
 export class LandingHomeModule {
 }

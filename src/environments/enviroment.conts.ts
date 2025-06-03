@@ -1,15 +1,15 @@
 export const HOST = {
     local: 'https://localhost:7189/',
-    test: 'http://localhost:9040/',
-    prod: 'https://localhost:7189/',
+    test: 'https://web-doctorlink-service.itbcpwebservices.com/',
+    prod: 'https://doctor-link-back-673gca465q-uc.a.run.app/',
 
 };
 
 export const hostSelected = {
     host: HOST.local,
-    hostProd: HOST.test,
+    hostProd: HOST.prod,
 };
 
-
+export const URL_TWODOMAIN = 'http://localhost:4200/'
 
 

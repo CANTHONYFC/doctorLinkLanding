@@ -1,5 +1,5 @@
-import { Route } from '@angular/router';
-import { LayoutComponent } from 'app/layout/layout.component';
+import {Route} from '@angular/router';
+import {LayoutComponent} from 'app/layout/layout.component';
 
 export const appRoutes: Route[] = [
     // 👉 Redirección inicial al módulo 'landing'
@@ -15,7 +15,7 @@ export const appRoutes: Route[] = [
         // canActivate: [NoAuthGuard],
         // canActivateChild: [NoAuthGuard],
         component: LayoutComponent,
-        data: { layout: 'empty' },
+        data: {layout: 'empty'},
         children: [
             {
                 path: 'app',
@@ -24,14 +24,14 @@ export const appRoutes: Route[] = [
                         (m) => m.LandingHomeModule
                     ),
             },
-              {
+            {
                 path: 'precios',
                 loadChildren: () =>
                     import('app/modules/landing/precios/precios.module').then(
                         (m) => m.LandingPreciosModule
                     ),
             },
-               {
+            {
                 path: 'historia-clinica',
                 loadChildren: () =>
                     import('app/modules/landing/hclinica/hclinica.module').then(
@@ -80,27 +80,33 @@ export const appRoutes: Route[] = [
                         (m) => m.LandingBlogModule
                     ),
             },
-          
+            {
+                path: 'politicas-privacidad',
+                loadChildren: () =>
+                    import('app/modules/landing/policies/policies.module').then(
+                        (m) => m.PoliciesModule
+                    ),
+            },
             {
                 path: 'confirmation-required',
                 loadChildren: () =>
                     import(
                         'app/modules/auth/confirmation-required/confirmation-required.module'
-                    ).then((m) => m.AuthConfirmationRequiredModule),
+                        ).then((m) => m.AuthConfirmationRequiredModule),
             },
             {
                 path: 'forgot-password',
                 loadChildren: () =>
                     import(
                         'app/modules/auth/forgot-password/forgot-password.module'
-                    ).then((m) => m.AuthForgotPasswordModule),
+                        ).then((m) => m.AuthForgotPasswordModule),
             },
             {
                 path: 'reset-password',
                 loadChildren: () =>
                     import(
                         'app/modules/auth/reset-password/reset-password.module'
-                    ).then((m) => m.AuthResetPasswordModule),
+                        ).then((m) => m.AuthResetPasswordModule),
             },
             {
                 path: 'sign-in',
