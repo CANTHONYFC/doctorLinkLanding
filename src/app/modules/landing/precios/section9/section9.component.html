@@ -62,7 +62,7 @@
                         </li>
                         <li class="flex items-center gap-2" *ngIf="plan.flagPacienteIlimitados">
                             <span class="text-yellow-300 text-xl animate-bounce delay-75">✔️</span>
-                            Ilimitados
+                            Pacientes Ilimitados
                         </li>
                         <li class="flex items-center gap-2" *ngIf="!plan.flagPacienteIlimitados">
                             <span class="text-yellow-300 text-xl animate-bounce delay-75"
@@ -107,9 +107,10 @@
                     <!-- Precio centrado grande -->
                     <p class="flex items-baseline gap-x-2 justify-center -mb-5">
                         <span *ngIf="planPeriod==='MONTH'"
-                              class="text-9xl font-extrabold tracking-tight text-white animate-pulse leading-none">$ {{ plan.precioMensualOferta }}</span>
+                              class="text-7xl font-extrabold tracking-tight text-white animate-pulse leading-none">$ {{ plan.precioTotal }}</span>
+                        USD/Mes
                         <span *ngIf="planPeriod==='YEAR'"
-                              class="text-9xl font-extrabold tracking-tight text-white animate-pulse leading-none">$ {{ plan.precioTotal }}</span>
+                              class="text-7xl font-extrabold tracking-tight text-white animate-pulse leading-none">$ {{ plan.precioTotal }}</span>
 
 
                     </p>
@@ -141,7 +142,7 @@
 
                 <!-- Parte superior con gradiente azul oscuro y precio grande centrado -->
                 <div
-                    class="bg-gradient-to-r from-[#0a304f] via-[#1e4d73] to-[#3b6c9a] p-6 pt-14 text-yellow-100 flex flex-col items-center"
+                    class="bg-gradient-to-r from-[#0a304f] via-[#1e4d73] to-[#3b6c9a] p-6 pt-10 text-yellow-100 flex flex-col items-center"
                 >
                     <h3
                         id="tier-enterprise"
@@ -157,7 +158,7 @@
                         </li>
                         <li class="flex items-center gap-2" *ngIf="plan.flagPacienteIlimitados">
                             <span class="text-yellow-300 text-xl animate-bounce delay-75">✔️</span>
-                            Ilimitados
+                            Pacientes Ilimitados
                         </li>
                         <li class="flex items-center gap-2" *ngIf="!plan.flagPacienteIlimitados">
                             <span class="text-yellow-300 text-xl animate-bounce delay-75"
@@ -201,7 +202,7 @@
                     <!-- Precio grande centrado -->
                     <p class="flex items-baseline gap-x-2 justify-center -mb-5">
             <span *ngIf="planPeriod==='MONTH'"
-                  class="text-9xl font-extrabold tracking-tight text-white animate-pulse leading-none">$ {{ plan.precioMensualOferta }}</span>
+                  class="text-9xl font-extrabold tracking-tight text-white animate-pulse leading-none">$ {{ plan.precioTotal }}</span>
                         <span *ngIf="planPeriod==='YEAR'"
                               class="text-9xl font-extrabold tracking-tight text-white animate-pulse leading-none">$ {{ plan.precioTotal }}</span>
 

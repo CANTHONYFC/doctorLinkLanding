@@ -1,99 +1,124 @@
 <div class="sm:px-6 sm:mb-10">
-  <div class="max-w-5xl grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 gap-6 mx-auto">
+    <div class="max-w-5xl grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 gap-6 mx-auto">
 
-    <div #card class="bg-white rounded-xl shadow-md p-6"
-         [class.animate-zoom]="visibleCards[0]"
-         [class.delay-1]="visibleCards[0]">
-      <div class="text-3xl text-teal-500 mb-2">🔒</div>
-      <h3 class="font-bold sm:text-xl">Manejo de Cobranza</h3>
-      <p class="text-gray-600 text-sm">Imprime recibos y lleva cuentas pendientes del tratamiento.</p>
+        <div #card class="bg-white rounded-xl shadow-md p-6"
+             [class.animate-zoom]="visibleCards[0]"
+             [class.delay-1]="visibleCards[0]">
+            <div class="text-3xl text-teal-500 mb-2">🔒</div>
+            <h3 class="font-bold sm:text-xl">Manejo de Cobranza</h3>
+            <p class="text-gray-600 text-sm">Imprime recibos y lleva cuentas pendientes del tratamiento.</p>
+        </div>
+
+        <div #card class="bg-white rounded-xl shadow-md p-6"
+             [class.animate-zoom]="visibleCards[1]"
+             [class.delay-2]="visibleCards[1]">
+            <div class="text-3xl text-teal-500 mb-2">🌐</div>
+            <h3 class="font-bold sm:text-xl">En todos tus dispositivos</h3>
+            <p class="text-gray-600 text-sm">Atiende a un paciente desde cualquier lugar y a cualquier hora.</p>
+        </div>
+
+        <div #card class="bg-white rounded-xl shadow-md p-6"
+             [class.animate-zoom]="visibleCards[2]"
+             [class.delay-3]="visibleCards[2]">
+            <div class="text-3xl text-teal-500 mb-2">💬</div>
+            <h3 class="font-bold sm:text-xl">Catálogo de servicios</h3>
+            <p class="text-gray-600 text-sm">Crea un catálogo de tus procedimientos o productos, para que todo tu equipo
+                pueda trabajar de la misma manera.</p>
+        </div>
+
+        <div #card class="bg-white rounded-xl shadow-md p-6"
+             [class.animate-zoom]="visibleCards[3]"
+             [class.delay-4]="visibleCards[3]">
+            <div class="text-3xl text-teal-500 mb-2">🖼️</div>
+            <h3 class="font-bold sm:text-xl">Presupuestos</h3>
+            <p class="text-gray-600 text-sm">Genera presupuestos para entregar a tus pacientes antes que sean
+                atendidos.</p>
+        </div>
+
+        <div #card class="bg-white rounded-xl shadow-md p-6"
+             [class.animate-zoom]="visibleCards[4]"
+             [class.delay-5]="visibleCards[4]">
+            <div class="text-3xl text-teal-500 mb-2">☁️</div>
+            <h3 class="font-bold sm:text-xl">Pacientes ilimitados</h3>
+            <p class="text-gray-600 text-sm">En DoctorLink no hay límites para tus pacientes.</p>
+        </div>
+
+        <div #card class="bg-white rounded-xl shadow-md p-6"
+             [class.animate-zoom]="visibleCards[5]"
+             [class.delay-6]="visibleCards[5]">
+            <div class="text-3xl text-teal-500 mb-2">💬</div>
+            <h3 class="font-bold sm:text-xl">Soporte de primer nivel</h3>
+            <p class="text-gray-600 text-sm">Atención 24/7 dedicado para tu clínica.</p>
+        </div>
+
+        <div #card class="bg-white rounded-xl shadow-md p-6"
+             [class.animate-zoom]="visibleCards[6]"
+             [class.delay-7]="visibleCards[6]">
+            <div class="text-3xl text-teal-500 mb-2">⬆️</div>
+            <h3 class="font-bold sm:text-xl">Siempre actualizado</h3>
+            <p class="text-gray-600 text-sm">Mejoras y actualizaciones automáticas.</p>
+        </div>
+
+        <div #card class="bg-white rounded-xl shadow-md p-6"
+             [class.animate-zoom]="visibleCards[7]"
+             [class.delay-8]="visibleCards[7]">
+            <div class="text-3xl text-teal-500 mb-2">📄</div>
+            <h3 class="font-bold sm:text-xl">Archivos</h3>
+            <p class="text-gray-600 text-sm">Sube archivos en PDF, .doc y otros que quieras en tu consulta.</p>
+        </div>
+
     </div>
-
-    <div #card class="bg-white rounded-xl shadow-md p-6"
-         [class.animate-zoom]="visibleCards[1]"
-         [class.delay-2]="visibleCards[1]">
-      <div class="text-3xl text-teal-500 mb-2">🌐</div>
-      <h3 class="font-bold sm:text-xl">En todos tus dispositivos</h3>
-      <p class="text-gray-600 text-sm">Atiende a un paciente desde cualquier lugar y a cualquier hora.</p>
-    </div>
-
-    <div #card class="bg-white rounded-xl shadow-md p-6"
-         [class.animate-zoom]="visibleCards[2]"
-         [class.delay-3]="visibleCards[2]">
-      <div class="text-3xl text-teal-500 mb-2">💬</div>
-      <h3 class="font-bold sm:text-xl">Catálogo de servicios</h3>
-      <p class="text-gray-600 text-sm">Crea un catálogo de tus procedimientos o productos, para que todo tu equipo pueda trabajar de la misma manera.</p>
-    </div>
-
-    <div #card class="bg-white rounded-xl shadow-md p-6"
-         [class.animate-zoom]="visibleCards[3]"
-         [class.delay-4]="visibleCards[3]">
-      <div class="text-3xl text-teal-500 mb-2">🖼️</div>
-      <h3 class="font-bold sm:text-xl">Presupuestos</h3>
-      <p class="text-gray-600 text-sm">Genera presupuestos para entregar a tus pacientes antes que sean atendidos.</p>
-    </div>
-
-    <div #card class="bg-white rounded-xl shadow-md p-6"
-         [class.animate-zoom]="visibleCards[4]"
-         [class.delay-5]="visibleCards[4]">
-      <div class="text-3xl text-teal-500 mb-2">☁️</div>
-      <h3 class="font-bold sm:text-xl">Pacientes ilimitados</h3>
-      <p class="text-gray-600 text-sm">En Doctoc no hay límites para tus pacientes.</p>
-    </div>
-
-    <div #card class="bg-white rounded-xl shadow-md p-6"
-         [class.animate-zoom]="visibleCards[5]"
-         [class.delay-6]="visibleCards[5]">
-      <div class="text-3xl text-teal-500 mb-2">💬</div>
-      <h3 class="font-bold sm:text-xl">Soporte de primer nivel</h3>
-      <p class="text-gray-600 text-sm">Atención 24/7 dedicado para tu clínica.</p>
-    </div>
-
-    <div #card class="bg-white rounded-xl shadow-md p-6"
-         [class.animate-zoom]="visibleCards[6]"
-         [class.delay-7]="visibleCards[6]">
-      <div class="text-3xl text-teal-500 mb-2">⬆️</div>
-      <h3 class="font-bold sm:text-xl">Siempre actualizado</h3>
-      <p class="text-gray-600 text-sm">Mejoras y actualizaciones automáticas.</p>
-    </div>
-
-    <div #card class="bg-white rounded-xl shadow-md p-6"
-         [class.animate-zoom]="visibleCards[7]"
-         [class.delay-8]="visibleCards[7]">
-      <div class="text-3xl text-teal-500 mb-2">📄</div>
-      <h3 class="font-bold sm:text-xl">Archivos</h3>
-      <p class="text-gray-600 text-sm">Sube archivos en PDF, .doc y otros que quieras en tu consulta.</p>
-    </div>
-
-  </div>
 </div>
 <style>
-  @keyframes zoomEffect {
-    0% {
-      opacity: 0;
-      transform: scale(0.8);
+    @keyframes zoomEffect {
+        0% {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+        50% {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
     }
-    50% {
-      opacity: 1;
-      transform: scale(1.05);
-    }
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
 
-  .animate-zoom {
-    animation: zoomEffect 1.5s ease-out forwards;
-  }
+    .animate-zoom {
+        animation: zoomEffect 1.5s ease-out forwards;
+    }
 
-  /* Retrasos para cascada */
-  .delay-1 { animation-delay: 0.1s; }
-  .delay-2 { animation-delay: 0.3s; }
-  .delay-3 { animation-delay: 0.5s; }
-  .delay-4 { animation-delay: 0.7s; }
-  .delay-5 { animation-delay: 0.9s; }
-  .delay-6 { animation-delay: 1.1s; }
-  .delay-7 { animation-delay: 1.3s; }
-  .delay-8 { animation-delay: 1.5s; }
+    /* Retrasos para cascada */
+    .delay-1 {
+        animation-delay: 0.1s;
+    }
+
+    .delay-2 {
+        animation-delay: 0.3s;
+    }
+
+    .delay-3 {
+        animation-delay: 0.5s;
+    }
+
+    .delay-4 {
+        animation-delay: 0.7s;
+    }
+
+    .delay-5 {
+        animation-delay: 0.9s;
+    }
+
+    .delay-6 {
+        animation-delay: 1.1s;
+    }
+
+    .delay-7 {
+        animation-delay: 1.3s;
+    }
+
+    .delay-8 {
+        animation-delay: 1.5s;
+    }
 </style>

@@ -70,9 +70,9 @@
 
                             <div class="flex items-center space-x-2">
                                 <span *ngIf="paymentMode=='MONTH'"
-                                      class="text-8xl font-extrabold text-teal-700 leading-none">{{ plan.precioMensualOferta }}</span>
-                                <span *ngIf="paymentMode=='YEAR'"
                                       class="text-8xl font-extrabold text-teal-700 leading-none">{{ plan.precioTotal }}</span>
+                                <span *ngIf="paymentMode=='YEAR'"
+                                      class="text-8xl font-extrabold text-teal-700 leading-none">{{ plan.precioMensual }}</span>
 
                                 <div class="flex flex-col text-gray-500 font-semibold text-base leading-tight">
                                     <span>USD</span>
@@ -80,19 +80,20 @@
                                 </div>
 
                             </div>
-                            <span class="font-bold">Con Plan Anual</span>
+                            <span class="font-bold">Con Plan Mensual</span>
 
                             <div class="-ml-[14%]">
                                 <div style="background-color: #2F6674 !important;"
                                      class="bg-teal-700 w-44 h-14 rounded-r-3xl flex flex-col justify-center px-5">
                                     <div class="flex items-baseline space-x-1">
-                                        <span class="text-white font-bold text-3xl">{{ plan.precioMensual }}</span>
+                                        <span
+                                            class="text-white font-bold text-3xl">{{ plan.precioMensualOferta }}</span>
                                         <span class="text-white text-xs">USD</span>
                                         <span class="text-white text-sm">/Mes</span>
                                     </div>
                                     <div *ngIf="paymentMode=='MONTH'"
                                          class="text-yellow-400 text-xs font-semibold mt-0.5">
-                                        con Plan Mensual
+                                        con Plan Anual
                                     </div>
                                 </div>
                             </div>
@@ -101,7 +102,7 @@
                         <!-- Derecha: lista de características -->
                         <ul class="md:col-span-7 text-gray-700 text-sm space-y-1 list-disc list-inside max-w-lg">
                             <li>{{ plan.nroEmpleados }} usuarios</li>
-                            <li *ngIf="plan.flagPacienteIlimitados">Ilimitados</li>
+                            <li *ngIf="plan.flagPacienteIlimitados">Pacientes Ilimitados</li>
                             <li *ngIf="!plan.flagPacienteIlimitados">{{ plan.nroPacientes }} Pacientes</li>
                             <li *ngIf="plan.flagAgenta">Agenda pacientes</li>
                             <li *ngIf="plan.nroRecordatorios>0">Envía {{ plan.nroRecordatorios }} Recordatorios WhatsApp
