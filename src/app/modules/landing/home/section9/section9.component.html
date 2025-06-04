@@ -107,11 +107,11 @@
 
                    <p class="flex items-baseline gap-x-2 justify-center -mb-5">
                     <span *ngIf="planPeriod === 'MONTH'" class="font-extrabold tracking-tight leading-none animate-pulse flex items-baseline gap-x-1">
-                        <span class="text-8xl text-white">$ {{ plan.precioTotal }}</span>
+                        <span class="text-8xl text-white">$ {{ plan.precioMensual }}</span>
                         <span class="text-yellow-400 text-lg">USD/Mes</span>
                     </span>
                     <span *ngIf="planPeriod === 'YEAR'" class="font-extrabold tracking-tight leading-none animate-pulse flex items-baseline gap-x-1">
-                        <span class="text-8xl text-white">$ {{ plan.precioTotal }}</span>
+                        <span class="text-8xl text-white">$ {{ plan.precioMensualOferta }}</span>
                         <span class="text-yellow-400 text-lg">USD/Anual</span>
                     </span>
                     </p>
@@ -205,11 +205,11 @@
                     <!-- Precio grande centrado -->
                    <p class="flex items-baseline gap-x-2 justify-center -mb-5">
                     <span *ngIf="planPeriod === 'MONTH'" class="font-extrabold tracking-tight leading-none animate-pulse flex items-baseline gap-x-1">
-                        <span class="text-8xl text-white">$ {{ plan.precioTotal }}</span>
+                        <span class="text-8xl text-white">$ {{ plan.precioMensual }}</span>
                         <span class="text-yellow-400 text-lg">USD/Mes</span>
                     </span>
                     <span *ngIf="planPeriod === 'YEAR'" class="font-extrabold tracking-tight leading-none animate-pulse flex items-baseline gap-x-1">
-                        <span class="text-8xl text-white">$ {{ plan.precioTotal/12 }}</span>
+                        <span class="text-8xl text-white">$ {{ plan.precioMensualOferta }}</span>
                         <span class="text-yellow-400 text-lg">USD/Anual</span>
                     </span>
                     </p>
