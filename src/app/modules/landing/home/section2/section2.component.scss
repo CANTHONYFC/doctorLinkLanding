@@ -1,0 +1,8 @@
+.video-fade {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.video-fade.show {
+    opacity: 1;
+}

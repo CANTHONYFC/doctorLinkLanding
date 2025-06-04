@@ -148,6 +148,7 @@ export class PasarelaComponent {
 
             onApprove: (data, actions) => {
                 return actions.order.capture().then((details) => {
+                    NotificationService.Loader()
                     console.log('Pago completado por: ', details.payer.name.given_name);
                     debugger
                     const registerPagoPlanLanding: RegisterPagoPlanLanding = {
@@ -161,6 +162,7 @@ export class PasarelaComponent {
                     }
                     this.planesService.register(registerPagoPlanLanding, this.snackBar)
                         .then(response => {
+                            NotificationService.RemoveLoader();
                             NotificationService.success('Gracias por tu pago, ' + details.payer.name.given_name);
                             const url = `${URL_TWODOMAIN}#/sign-in?id_uneg=${response.data.id_uneg}&id_user=${response.data.id_user}&token=${encodeURIComponent(response.data.token)}`;
                             debugger

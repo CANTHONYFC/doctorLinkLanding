@@ -1,5 +1,5 @@
 export const HOST = {
-    local: 'https://web-doctorlink-service.itbcpwebservices.com/',
+    local: 'https://localhost:7189/',
     test: 'https://web-doctorlink-service.itbcpwebservices.com/',
     prod: 'https://doctor-link-back-673gca465q-uc.a.run.app/',
 
@@ -10,6 +10,6 @@ export const hostSelected = {
     hostProd: HOST.prod,
 };
 
-export const URL_TWODOMAIN = 'http://localhost:4200/'
+export const URL_TWODOMAIN = 'https://app.drlinkmed.com/'
 
 
