@@ -35,6 +35,7 @@ import {SharedModule} from "./shared/shared.module";
 import {FlexModule} from "@angular/flex-layout";
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
+import { FloatingWhatsappButtonComponent } from './modules/landing/floating-whatsapp-button/floating-whatsapp-button.component';
 
 moment.locale('es'); // Establece el idioma
 
@@ -50,7 +51,8 @@ const routerConfig: ExtraOptions = {
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        FloatingWhatsappButtonComponent
     ],
     imports: [
         TranslocoModule,

@@ -158,10 +158,15 @@
                                 {{ plan.nroPacientes }} Pacientes
                             </li>
                             <li *ngIf="plan.flagAgenta">Agenda pacientes</li>
-                            <li *ngIf="plan.nroRecordatorios > 0">
-                                Envía {{ plan.nroRecordatorios }} Recordatorios
-                                WhatsApp
-                            </li>
+                            <li *ngIf="plan.nroEmpleados === 3; else showRecordatorio">
+    Envía 100 Recordatorios WhatsApp
+</li>
+<ng-template #showRecordatorio>
+    <li *ngIf="plan.nroRecordatorios > 0">
+        Envía {{ plan.nroRecordatorios }} Recordatorios WhatsApp
+    </li>
+</ng-template>
+
                             <li *ngIf="plan.flagMarketing">
                                 Marketing: Segmentación inteligente
                             </li>

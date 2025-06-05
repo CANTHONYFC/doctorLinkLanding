@@ -45,6 +45,13 @@ export const appRoutes: Route[] = [
                         (m) => m.LandingPoliticasModule
                     ),
             },
+                {
+                path: 'contactanos',
+                loadChildren: () =>
+                    import('app/modules/landing/contactanos/contactanos.module').then(
+                        (m) => m.LandingContactanosModule
+                    ),
+            },
                {
                 path: 'pagos',
                 loadChildren: () =>
