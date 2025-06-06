@@ -92,7 +92,8 @@
                                 <span
                                     *ngIf="paymentMode == 'MONTH'"
                                     class="text-6xl sm:text-8xl font-extrabold text-teal-700 leading-none"
-                                    >        {{ plan.precioMensual }}</span
+                                >
+                                    {{ plan.precioMensual }}</span
                                 >
                                 <span
                                     *ngIf="paymentMode == 'YEAR'"
@@ -158,14 +159,21 @@
                                 {{ plan.nroPacientes }} Pacientes
                             </li>
                             <li *ngIf="plan.flagAgenta">Agenda pacientes</li>
-                            <li *ngIf="plan.nroEmpleados === 3; else showRecordatorio">
-    Envía 100 Recordatorios WhatsApp
-</li>
-<ng-template #showRecordatorio>
-    <li *ngIf="plan.nroRecordatorios > 0">
-        Envía {{ plan.nroRecordatorios }} Recordatorios WhatsApp
-    </li>
-</ng-template>
+                            <li
+                                *ngIf="
+                                    plan.nroEmpleados === 3;
+                                    else showRecordatorio
+                                "
+                            >
+                                Envía 100 Recordatorios WhatsApp
+                            </li>
+                            <ng-template #showRecordatorio>
+                                <li *ngIf="plan.nroRecordatorios > 0">
+                                    Envía
+                                    {{ plan.nroRecordatorios }} Recordatorios
+                                    WhatsApp
+                                </li>
+                            </ng-template>
 
                             <li *ngIf="plan.flagMarketing">
                                 Marketing: Segmentación inteligente
@@ -208,9 +216,7 @@
                         </p>
                         <p class="text-2xl sm:text-3xl font-extrabold">
                             $
-                            {{
-                                selectedPlan.precioTotal | number : "1.0-2"
-                            }}
+                            {{ selectedPlan.precioTotal | number : "1.0-2" }}
                             USD
                         </p>
                         <p class="text-[9px] sm:text-xs mt-1">
