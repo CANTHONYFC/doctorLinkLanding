@@ -7,8 +7,8 @@ import {PlanesSuscriptions} from 'app/models/administration/PlanesSuscriptions';
 import {NgForm} from '@angular/forms';
 import {NotificationService} from 'app/modules/shared/service/service-notification.service';
 import {RegisterPagoPlanLanding} from "../../../../models/administration/RegisterPagoPlanLanding";
-import {URL_TWODOMAIN} from "../../../../../environments/enviroment.conts";
 import {Router} from '@angular/router';
+import {environment} from 'environments/environment';
 
 declare var paypal: any;
 
@@ -49,11 +49,11 @@ export class PasarelaComponent {
         const params = new HttpParams()
             .set('type', this.paymentMode);
         this.planesService.listPlanes(params, this.snackBar).then(response => {
-            debugger
+
             if (response && response.data) {
 
                 this.planes = response.data;
-                debugger
+
             }
         });
     }
@@ -88,27 +88,27 @@ export class PasarelaComponent {
             const params = new HttpParams()
                 .set('correo', this.correo);
             this.planesService.verifyExits(params, this.snackBar).then(response => {
-                debugger
+
                 if (response && response.data) {
-                    debugger
+
                     if (response.data) {
                         NotificationService.error('El correo ya está registrado. Por favor, intentar con otro correo');
                         return;
                     }
 
-                    debugger
+
                 }
                 this.modalAbierto = true;
                 // Esperar a que el div #paypal-button-container esté en el DOM
                 setTimeout(() => {
                     this.paypalLoader.loadSdk().then(() => {
-                        debugger
+
                         this.renderPaypalButton();
                     }).catch((err) => {
                         console.error('Error cargando PayPal SDK:', err);
                     });
                 }, 0);
-                debugger
+
             });
         } else {
             this.miFormulario.control.markAllAsTouched();
@@ -150,7 +150,7 @@ export class PasarelaComponent {
                 return actions.order.capture().then((details) => {
                     NotificationService.Loader()
                     console.log('Pago completado por: ', details.payer.name.given_name);
-                    debugger
+
                     const registerPagoPlanLanding: RegisterPagoPlanLanding = {
                         orderId: data.orderID,
                         payerId: data.payerID,
@@ -164,8 +164,8 @@ export class PasarelaComponent {
                         .then(response => {
                             NotificationService.RemoveLoader();
                             NotificationService.success('Gracias por tu pago, ' + details.payer.name.given_name);
-                            const url = `${URL_TWODOMAIN}#/sign-in?id_uneg=${response.data.id_uneg}&id_user=${response.data.id_user}&token=${encodeURIComponent(response.data.token)}`;
-                            debugger
+                            const url = `${environment.URL_TWODOMAIN}#/sign-in?id_uneg=${response.data.id_uneg}&id_user=${response.data.id_user}&token=${encodeURIComponent(response.data.token)}`;
+
                             this.modalAbierto = false;  // por ejemplo, cierras el modal si usas uno
                             container.innerHTML = '';    // limpias el botón para que no vuelva a aparecer
                             window.location.href = url;

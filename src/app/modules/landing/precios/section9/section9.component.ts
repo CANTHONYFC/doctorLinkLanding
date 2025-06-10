@@ -50,11 +50,11 @@ export class Section9Component {
         const params = new HttpParams()
             .set('type', this.planPeriod);
         this.planesService.listPlanes(params, this.snackBar).then(response => {
-            debugger
+
             if (response && response.data) {
 
                 this.planes = response.data;
-                debugger
+
             }
         });
     }

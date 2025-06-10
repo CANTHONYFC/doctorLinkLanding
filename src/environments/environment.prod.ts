@@ -13,16 +13,17 @@ export const environment = {
     serviceQontrolsSetting: hostSelected.hostProd + 'setting-operation/',
     serviceSettingOperation: hostSelected.hostProd + 'setting-operation/',
     serviceCrmOperation: hostSelected.hostProd + 'crm-operation/',
+    PAYPAL_CONFIG: {
+        production: true,
+        paypalClientId: 'AQb39CfwlBbp_jOeDnF5OsE84a82Q6mcbJ2APDB7X4bIVPwmSy82vnkFIlHjH-P-fNTh8Bz-O1d13WN8'
+    },
+    URL_TWODOMAIN: 'https://app.drlinkmed.com/'
 };
 export const CONFIG_GOOGLE = {
     googleClientId: 'xxxxxxxxxxxxxxx',
     googleSecretId: 'xxxxxxxxxxxxxxxxxx'
 };
-export const PAYPAL_CONFIG = {
-    production: false,
-    paypalClientId: 'AYjJfzKNn-HdePlhW4qvIoU4ogDPUayCyv5e9ewNbTlus5vAMw9rOUtthaSjEmoP-4VwFRgczFRp_g8c'
-};
 
-export const URL_TWODOMAIN = 'https://app.drlinkmed.com/'
+
 
 
