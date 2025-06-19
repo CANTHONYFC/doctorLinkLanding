@@ -5,15 +5,16 @@ import {MatIconModule} from '@angular/material/icon';
 import {SharedModule} from 'app/shared/shared.module';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { MatMenuModule } from '@angular/material/menu'; // ← ESTE IMPORTANTE
-import { MatDividerModule } from '@angular/material/divider';
-import { LandingFinanzasComponent } from './finanzas.component';
-import { landingFinanzasRoutes } from './finanzas.routing';
-import { NavComponent } from './nav/nav.component';
-import { FooterComponent } from './footer/footer.component';
-import { Section1Component } from './section1/section1.component';
-import { Section2Component } from './section2/section2.component';
-import { Section3Component } from './section3/section3.component';
+import {MatMenuModule} from '@angular/material/menu'; // ← ESTE IMPORTANTE
+import {MatDividerModule} from '@angular/material/divider';
+import {LandingFinanzasComponent} from './finanzas.component';
+import {landingFinanzasRoutes} from './finanzas.routing';
+import {NavComponent} from './nav/nav.component';
+import {FooterComponent} from './footer/footer.component';
+import {Section1Component} from './section1/section1.component';
+import {Section2Component} from './section2/section2.component';
+import {Section3Component} from './section3/section3.component';
+import {NavMainModule} from "../nav-main/nav-main.module";
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import { Section3Component } from './section3/section3.component';
         Section1Component,
         Section2Component,
         Section3Component,
-     
+
     ],
     imports: [
         RouterModule.forChild(landingFinanzasRoutes),
@@ -34,6 +35,7 @@ import { Section3Component } from './section3/section3.component';
         MatToolbarModule,
         MatMenuModule,
         MatDividerModule,
+        NavMainModule,
     ]
 })
 export class LandingFinanzasModule {

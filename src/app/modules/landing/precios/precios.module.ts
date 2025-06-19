@@ -4,14 +4,15 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {SharedModule} from 'app/shared/shared.module';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { MatMenuModule } from '@angular/material/menu'; // ← ESTE IMPORTANTE
-import { MatDividerModule } from '@angular/material/divider';
-import { LandingPreciosComponent } from './precios.component';
-import { NavComponent } from './nav/nav.component';
-import { landingPreciosRoutes } from './precios.routing';
-import { FooterComponent } from './footer/footer.component';
-import { Section9Component } from './section9/section9.component';
-import { PfrecuentesComponent } from './pfrecuentes/pfrecuentes.component';
+import {MatMenuModule} from '@angular/material/menu'; // ← ESTE IMPORTANTE
+import {MatDividerModule} from '@angular/material/divider';
+import {LandingPreciosComponent} from './precios.component';
+import {NavComponent} from './nav/nav.component';
+import {landingPreciosRoutes} from './precios.routing';
+import {FooterComponent} from './footer/footer.component';
+import {Section9Component} from './section9/section9.component';
+import {PfrecuentesComponent} from './pfrecuentes/pfrecuentes.component';
+import {NavMainModule} from "../nav-main/nav-main.module";
 
 
 @NgModule({
@@ -21,7 +22,7 @@ import { PfrecuentesComponent } from './pfrecuentes/pfrecuentes.component';
         FooterComponent,
         Section9Component,
         PfrecuentesComponent,
-    
+
     ],
     imports: [
         RouterModule.forChild(landingPreciosRoutes),
@@ -31,6 +32,7 @@ import { PfrecuentesComponent } from './pfrecuentes/pfrecuentes.component';
         MatToolbarModule,
         MatMenuModule,
         MatDividerModule,
+        NavMainModule,
     ]
 })
 export class LandingPreciosModule {

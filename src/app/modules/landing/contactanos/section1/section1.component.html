@@ -12,82 +12,91 @@
         >
             Ponerse en contacto
         </h1>
-        <br />
+        <br/>
         <h1
             class="text-4xl sm:text-6xl md:text-8xl mb-4 animate__animated animate__fadeIn animate__delay-1s lobster-regular -mt-16 ml-16 text-[#133341]"
         >
             con nuestro equipo de ventas
         </h1>
-        <br />
+        <br/>
 
         <!-- Nuevo texto agregado -->
         <h1
             class="text-xl sm:text-2xl md:text-3xl mb-8 px-8 sm:px-16 animate__animated animate__fadeIn animate__delay-2s font-bold"
         >
-            Con gusto responderemos a tus preguntas <br />y te ayudaremos a
+            Con gusto responderemos a tus preguntas <br/>y te ayudaremos a
             familiarizarte con DrLink.
         </h1>
-        <br />
+        <br/>
         <!-- Listado con sombra -->
-<div class="flex flex-col sm:flex-row sm:space-x-8 mb-8 font-bold text-xl sm:text-2xl px-8 sm:px-16">
-    <div
-        class="p-4 rounded-lg bg-[#133341] text-white transition hover:scale-105 animate__animated animate__fadeIn animate__delay-3s flex flex-col items-center space-y-4"
-    >
-        <img
-            src="https://img.icons8.com/?size=100&id=13526&format=png&color=000000"
-            alt="Icono"
-            class="w-16 h-16"
-        />
-        <span>Programar una demostración</span>
-    </div>
-    <div
-        class="p-4 rounded-lg bg-[#133341] text-white transition hover:scale-105 animate__animated animate__fadeIn animate__delay-4s flex flex-col items-center space-y-4"
-    >
-        <img
-            src="https://img.icons8.com/?size=100&id=gPUqq4eklXLR&format=png&color=000000"
-            alt="Icono"
-            class="w-16 h-16"
-        />
-        <span>Obtén información sobre precios</span>
-    </div>
-    <div
-        class="p-4 rounded-lg bg-[#133341] text-white transition hover:scale-105 animate__animated animate__fadeIn animate__delay-5s flex flex-col items-center space-y-4"
-    >
-        <img
-            src="https://img.icons8.com/?size=100&id=rEQWmRe87t04&format=png&color=000000"
-            alt="Icono"
-            class="w-16 h-16"
-        />
-        <span>Explora casos de uso de tu equipo</span>
-    </div>
-</div>
+        <div class="flex flex-col sm:flex-row sm:space-x-8 mb-8 font-bold text-xl sm:text-2xl px-8 sm:px-16">
+            <div (click)="openLinkWhattsap()"
+                 class="p-4 rounded-lg bg-[#133341] text-white transition hover:scale-105 animate__animated animate__fadeIn animate__delay-3s flex flex-col items-center space-y-4"
+            >
+                <img
+                    src="https://img.icons8.com/?size=100&id=13526&format=png&color=000000"
+                    alt="Icono"
+                    class="w-16 h-16"
+                />
+                <span>Programar una demostración</span>
+            </div>
+            <div (click)="openLinkWhattsap()"
+                 class="p-4 rounded-lg bg-[#133341] text-white transition hover:scale-105 animate__animated animate__fadeIn animate__delay-4s flex flex-col items-center space-y-4"
+            >
+                <img
+                    src="https://img.icons8.com/?size=100&id=gPUqq4eklXLR&format=png&color=000000"
+                    alt="Icono"
+                    class="w-16 h-16"
+                />
+                <span>Obtén información sobre precios</span>
+            </div>
+            <div (click)="openLinkWhattsap()"
+                 class="p-4 rounded-lg bg-[#133341] text-white transition hover:scale-105 animate__animated animate__fadeIn animate__delay-5s flex flex-col items-center space-y-4"
+            >
+                <img
+                    src="https://img.icons8.com/?size=100&id=rEQWmRe87t04&format=png&color=000000"
+                    alt="Icono"
+                    class="w-16 h-16"
+                />
+                <span>Explora casos de uso de tu equipo</span>
+            </div>
+        </div>
 
     </div>
 </div>
 
 <!-- Redes sociales fuera de la imagen con fondo negro y divs blancos -->
 <div class="bg-[#000000] py-12 text-[#fff7aa] font-bold">
-    <div class="relative z-10 container mx-auto px-4 sm:px-16 lg:px-72 animate__animated animate__fadeIn animate__delay-4s">
+    <div
+        class="relative z-10 container mx-auto px-4 sm:px-16 lg:px-72 animate__animated animate__fadeIn animate__delay-4s">
         <h2 class="text-2xl font-semibold mb-8 text-center text-[#fff]">Síguenos en nuestras redes sociales</h2>
         <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-8 w-full">
             <!-- Facebook -->
-            <div class="p-6 border border-[#7cfbc7] rounded-lg bg-white text-black hover:bg-[#f1f1f1] transition transform hover:scale-105 animate__animated animate__fadeIn animate__delay-1s flex flex-col items-center justify-center text-center">
-                <a href="https://www.facebook.com" target="_blank" class="text-4xl text-[#133341] hover:text-[#fff7aa] mb-4">
-                    <img src="https://img.icons8.com/?size=100&id=13912&format=png&color=000000" alt="Facebook" class="w-12 h-12 inline-block"/>
+            <div
+                class="p-6 border border-[#7cfbc7] rounded-lg bg-white text-black hover:bg-[#f1f1f1] transition transform hover:scale-105 animate__animated animate__fadeIn animate__delay-1s flex flex-col items-center justify-center text-center">
+                <a href="https://www.facebook.com" target="_blank"
+                   class="text-4xl text-[#133341] hover:text-[#fff7aa] mb-4">
+                    <img src="https://img.icons8.com/?size=100&id=13912&format=png&color=000000" alt="Facebook"
+                         class="w-12 h-12 inline-block"/>
                 </a>
                 <p class="text-lg text-[#133341]">Facebook</p>
             </div>
             <!-- Instagram -->
-            <div class="p-6 border border-[#7cfbc7] rounded-lg bg-white text-black hover:bg-[#f1f1f1] transition transform hover:scale-105 animate__animated animate__fadeIn animate__delay-2s flex flex-col items-center justify-center text-center">
-                <a href="https://www.instagram.com" target="_blank" class="text-4xl text-[#133341] hover:text-[#fff7aa] mb-4">
-                    <img src="https://img.icons8.com/?size=100&id=Xy10Jcu1L2Su&format=png&color=000000" alt="Instagram" class="w-12 h-12 inline-block"/>
+            <div
+                class="p-6 border border-[#7cfbc7] rounded-lg bg-white text-black hover:bg-[#f1f1f1] transition transform hover:scale-105 animate__animated animate__fadeIn animate__delay-2s flex flex-col items-center justify-center text-center">
+                <a href="https://www.instagram.com" target="_blank"
+                   class="text-4xl text-[#133341] hover:text-[#fff7aa] mb-4">
+                    <img src="https://img.icons8.com/?size=100&id=Xy10Jcu1L2Su&format=png&color=000000" alt="Instagram"
+                         class="w-12 h-12 inline-block"/>
                 </a>
                 <p class="text-lg text-[#133341]">Instagram</p>
             </div>
             <!-- X (Twitter) -->
-            <div class="p-6 border border-[#7cfbc7] rounded-lg bg-white text-black hover:bg-[#f1f1f1] transition transform hover:scale-105 animate__animated animate__fadeIn animate__delay-3s flex flex-col items-center justify-center text-center">
+            <div
+                class="p-6 border border-[#7cfbc7] rounded-lg bg-white text-black hover:bg-[#f1f1f1] transition transform hover:scale-105 animate__animated animate__fadeIn animate__delay-3s flex flex-col items-center justify-center text-center">
                 <a href="https://www.x.com" target="_blank" class="text-4xl text-[#133341] hover:text-[#fff7aa] mb-4">
-                    <img src="https://img.icons8.com/?size=100&id=phOKFKYpe00C&format=png&color=000000" alt="X (Twitter)" class="w-12 h-12 inline-block"/>
+                    <img src="https://img.icons8.com/?size=100&id=phOKFKYpe00C&format=png&color=000000"
+                         alt="X (Twitter)" class="w-12 h-12 inline-block"/>
                 </a>
                 <p class="text-lg text-[#133341]">X</p>
             </div>

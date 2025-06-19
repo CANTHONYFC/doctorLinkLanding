@@ -10,6 +10,7 @@ import {PrivacyComponent} from "./policies/privacy/privacy.component";
 import {PoliciesRoutingModule} from "./policies-routing.module";
 import {FooterComponent} from "./policies/footer/footer.component";
 import {NavComponent} from "./policies/nav/nav.component";
+import {NavMainModule} from "../nav-main/nav-main.module";
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import {NavComponent} from "./policies/nav/nav.component";
         MatToolbarModule,
         MatMenuModule,
         MatDividerModule,
+        NavMainModule,
     ]
 })
 export class PoliciesModule {

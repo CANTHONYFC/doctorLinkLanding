@@ -4,14 +4,15 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {SharedModule} from 'app/shared/shared.module';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { MatMenuModule } from '@angular/material/menu'; // ← ESTE IMPORTANTE
-import { MatDividerModule } from '@angular/material/divider';
+import {MatMenuModule} from '@angular/material/menu'; // ← ESTE IMPORTANTE
+import {MatDividerModule} from '@angular/material/divider';
 
-import { LandingPoliticasComponent } from './politicas.component';
-import { landingPoliticasRoutes } from './politicas.routing';
-import { FooterComponent } from './footer/footer.component';
-import { Section1Component } from './section1/section1.component';
-import { NavComponent } from './nav/nav.component';
+import {LandingPoliticasComponent} from './politicas.component';
+import {landingPoliticasRoutes} from './politicas.routing';
+import {FooterComponent} from './footer/footer.component';
+import {Section1Component} from './section1/section1.component';
+import {NavComponent} from './nav/nav.component';
+import {NavMainModule} from "../nav-main/nav-main.module";
 
 
 @NgModule({
@@ -21,7 +22,7 @@ import { NavComponent } from './nav/nav.component';
         Section1Component,
         NavComponent
 
-    
+
     ],
     imports: [
         RouterModule.forChild(landingPoliticasRoutes),
@@ -31,6 +32,7 @@ import { NavComponent } from './nav/nav.component';
         MatToolbarModule,
         MatMenuModule,
         MatDividerModule,
+        NavMainModule,
     ]
 })
 export class LandingPoliticasModule {
