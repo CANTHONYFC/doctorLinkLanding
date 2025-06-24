@@ -1,0 +1,117 @@
+<body>
+<div
+    class="relative w-full bg-gradient-to-b from-slate-50 from- via-slate-100 via- to-slate-600 to-"
+>
+    <ng-container>
+        <app-nav-main class="relative z-50"></app-nav-main>
+    </ng-container>
+
+    <img
+        src="../../../../assets/images/esquina.png"
+        alt=""
+        class="absolute top-11 -right-11 w-[500px] h-auto origin-bottom-center -rotate-90 z-0"
+    />
+    <div class="max-w-6xl mx-auto px-4 lg:px-10 pt-10 pb-20">
+        <div class="bg-white p-6 md:p-10 rounded-2xl shadow-lg">
+            <!-- Título -->
+            <h2 class="text-4xl font-bold text-center text-blue-800 mb-8 font-pacifico">Solicita una demo</h2>
+
+            <!-- Intro -->
+            <p class="text-lg text-gray-800 text-center mb-6">
+                ¿Quieres conocer cómo <strong>Dr. Link</strong> puede transformar la gestión de tu consultorio o
+                clínica?
+            </p>
+
+            <div class="grid lg:grid-cols-2 gap-10">
+                <!-- Información -->
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-700 mb-2">Con nuestra demo guiada podrás:</h3>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1">
+                            <li>Explorar la plataforma en tiempo real.</li>
+                            <li>Resolver tus dudas con un asesor especializado.</li>
+                            <li>Conocer el plan ideal según tus necesidades.</li>
+                            <li>Ver cómo puedes ahorrar tiempo y mejorar tu atención médica.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-700 mb-2">¿A quién va dirigida?</h3>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1">
+                            <li>Profesionales de la salud independientes.</li>
+                            <li>Clínicas con uno o varios especialistas.</li>
+                            <li>Centros médicos con múltiples sedes.</li>
+                            <li>Equipos administrativos que buscan digitalizar procesos.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-700 mb-2">¿Cómo agendar la demo?</h3>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1">
+                            <li>Completa el formulario con tus datos.</li>
+                            <li>Elige el día y hora que más te convenga.</li>
+                            <li>Conéctate vía Google Meet.</li>
+                            <li>Recibe asesoría personalizada, sin compromiso.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Formulario -->
+                <form class="space-y-6 bg-gray-50 p-6 rounded-xl shadow-inner">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Nombre completo</label>
+                        <input type="text" placeholder="Ej. Dr. Ana Pérez"
+                               class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Especialidad o centro médico</label>
+                        <input type="text" placeholder="Ej. Clínica Sonríe o Dermatología"
+                               class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Correo electrónico</label>
+                        <input type="email" placeholder="Ej. contacto@tucorreo.com"
+                               class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Celular (con WhatsApp)</label>
+                        <input type="tel" placeholder="+51 999 999 999"
+                               class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">País / Ciudad</label>
+                        <input type="text" placeholder="Ej. Perú / Lima"
+                               class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">¿Qué te gustaría automatizar? <span
+                            class="text-sm text-gray-400">(opcional)</span></label>
+                        <textarea rows="3" placeholder="Ej. Agenda, recordatorios, historia clínica..."
+                                  class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                    </div>
+
+                    <button type="submit"
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition">
+                        Solicitar demo
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="bg-black">
+
+    <ng-container>
+        <app-footer-main></app-footer-main>
+    </ng-container>
+</div>
+</body>
+
+
