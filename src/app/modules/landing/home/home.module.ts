@@ -22,6 +22,7 @@ import {Section5Component} from './section5/section5.component';
 import {Section5aComponent} from './section5a/section5a.component';
 import {FidelizaComponent} from './fideliza/fideliza.component';
 import {NavMainModule} from "../nav-main/nav-main.module";
+import {FooterMainModule} from "../footer-main/footer-main.module";
 
 @NgModule({
     declarations: [
@@ -49,6 +50,7 @@ import {NavMainModule} from "../nav-main/nav-main.module";
         MatMenuModule,
         MatDividerModule,
         NavMainModule,
+        FooterMainModule,
     ],
 })
 export class LandingHomeModule {

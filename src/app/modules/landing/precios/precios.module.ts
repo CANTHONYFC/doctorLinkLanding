@@ -13,6 +13,7 @@ import {FooterComponent} from './footer/footer.component';
 import {Section9Component} from './section9/section9.component';
 import {PfrecuentesComponent} from './pfrecuentes/pfrecuentes.component';
 import {NavMainModule} from "../nav-main/nav-main.module";
+import {FooterMainModule} from "../footer-main/footer-main.module";
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import {NavMainModule} from "../nav-main/nav-main.module";
         MatMenuModule,
         MatDividerModule,
         NavMainModule,
+        FooterMainModule,
     ]
 })
 export class LandingPreciosModule {

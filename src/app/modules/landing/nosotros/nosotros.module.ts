@@ -15,6 +15,7 @@ import {Section10Component} from '../nosotros/section10/section10.component';
 import {Section2Component} from './section2/section2.component';
 import {Section3Component} from './section3/section3.component';
 import {NavMainModule} from "../nav-main/nav-main.module";
+import {FooterMainModule} from "../footer-main/footer-main.module";
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import {NavMainModule} from "../nav-main/nav-main.module";
         MatMenuModule,
         MatDividerModule,
         NavMainModule,
+        FooterMainModule,
     ]
 })
 export class LandingNosotrosModule {

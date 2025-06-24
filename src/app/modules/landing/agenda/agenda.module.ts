@@ -17,6 +17,7 @@ import {NavComponent} from './nav/nav.component';
 import {Section1Component} from './section1/section1.component';
 import {FooterComponent} from './footer/footer.component';
 import {NavMainModule} from "../nav-main/nav-main.module";
+import {FooterMainModule} from "../footer-main/footer-main.module";
 
 @NgModule({
     declarations: [
@@ -38,6 +39,7 @@ import {NavMainModule} from "../nav-main/nav-main.module";
         MatMenuModule,
         MatDividerModule,
         NavMainModule,
+        FooterMainModule,
     ],
 })
 export class LandingAgendaModule {

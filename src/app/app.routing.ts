@@ -38,35 +38,35 @@ export const appRoutes: Route[] = [
                         (m) => m.LandingHclinicaModule
                     ),
             },
-                {
+            {
                 path: 'politicas',
                 loadChildren: () =>
                     import('app/modules/landing/politicas/politicas.module').then(
                         (m) => m.LandingPoliticasModule
                     ),
             },
-                {
+            {
                 path: 'contactanos',
                 loadChildren: () =>
                     import('app/modules/landing/contactanos/contactanos.module').then(
                         (m) => m.LandingContactanosModule
                     ),
             },
-               {
+            {
                 path: 'pagos',
                 loadChildren: () =>
                     import('app/modules/landing/pagos/pagos.module').then(
                         (m) => m.LandingPagosModule
                     ),
             },
-                   {
+            {
                 path: 'finanzas',
                 loadChildren: () =>
                     import('app/modules/landing/finanzas/finanzas.module').then(
                         (m) => m.LandingFinanzasModule
                     ),
             },
-                {
+            {
                 path: 'agenda',
                 loadChildren: () =>
                     import('app/modules/landing/agenda/agenda.module').then(
@@ -107,6 +107,18 @@ export const appRoutes: Route[] = [
                     import(
                         'app/modules/auth/forgot-password/forgot-password.module'
                         ).then((m) => m.AuthForgotPasswordModule),
+            }, {
+                path: 'terminos-condiciones',
+                loadChildren: () =>
+                    import(
+                        './modules/landing/terminos-condiciones/terminos-condiciones.module'
+                        ).then((m) => m.TerminosCondicionesModule),
+            }, {
+                path: 'extras',
+                loadChildren: () =>
+                    import(
+                        './modules/landing/preguntas-frecuentes/preguntas-frecuentes.module'
+                        ).then((m) => m.PreguntasFrecuentesModule),
             },
             {
                 path: 'reset-password',

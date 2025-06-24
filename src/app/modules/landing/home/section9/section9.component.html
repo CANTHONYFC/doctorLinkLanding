@@ -38,197 +38,142 @@
     </div>
 
     <div
-        class="mx-auto mt-16 grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8 max-w-7xl px-6 py-0 rounded-3xl relative font-sans items-center ">
+        class="mx-auto mt-16 grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8 max-w-7xl px-10 py-0 rounded-3xl relative font-sans items-center ">
 
-        <ng-container *ngFor="let plan of planes">
-            <!-- Plan Básico (izquierda) -->
-            <div *ngIf="plan.flagPopular===false"
-                 class="max-w-xs mx-auto rounded-3xl overflow-hidden shadow-lg ring-2 ring-teal-500/70"
-            >
-                <!-- Parte superior con gradiente -->
+        <div class=" grid md:grid-cols-12 gap-18 col-span-1 md:col-span-9 ">
+            <div class="w-full col-span-4" *ngFor="let plan of planes">
+                <!-- Plan Premium -->
                 <div
-                    class="bg-gradient-to-r from-teal-700 via-teal-500 to-teal-400 p-6 text-white flex flex-col items-center"
+                    class="relative cursor-pointer rounded-2xl border-2 transition-colors duration-300 max-w-full mx-auto p-4 sm:p-6 bg-white"
                 >
-                    <h3
-                        id="tier-basic"
-                        class="text-base/7 font-extrabold drop-shadow-md mb-3"
+                    <div
+                        *ngIf="plan.flagPopular"
+                        class="absolute top-4 left-4 bg-pink-600 text-white text-xs sm:text-sm font-bold px-2 py-1 shadow-lg"
+                        style="
+                            width: 100px;
+                            transform: rotate(-45deg) translate(-50%, -50%);
+                            transform-origin: 0 0;
+                        "
                     >
-                        {{ plan.nombre }}
-                    </h3>
+                        MÁS POPULAR
+                    </div>
 
-                    <ul class="leading-loose space-y-2 mb-6 w-full max-w-xs">
-                        <li class="flex items-center gap-2">
-                            <span class="text-yellow-300 text-xl animate-bounce">✔️</span>
-                            {{ plan.nroEmpleados }} usuario
-                        </li>
-                        <li class="flex items-center gap-2" *ngIf="plan.flagPacienteIlimitados">
-                            <span class="text-yellow-300 text-xl animate-bounce delay-75">✔️</span>
-                            Pacientes Ilimitados
-                        </li>
-                        <li class="flex items-center gap-2" *ngIf="!plan.flagPacienteIlimitados">
-                            <span class="text-yellow-300 text-xl animate-bounce delay-75"
-                            >✔️</span>
-                            {{ plan.nroPacientes }} pacientes
-                        </li>
-                        <li class="flex items-center gap-2" *ngIf="plan.flagAgenta">
-                            <span class="text-yellow-300 text-xl animate-bounce delay-200">✔️</span>
-                            Agenda pacientes
-                        </li>
-                        <li class="flex items-center gap-2" *ngIf="plan.nroRecordatorios>0">
-                            <span class="text-yellow-300 text-xl animate-bounce delay-200">✔️</span>
-                            Envía {{ plan.nroRecordatorios }} Recordatorios WhatsApp
-                        </li>
-                        <li class="flex items-center gap-2" *ngIf="plan.flagMarketing">
-                            <span class="text-yellow-300 text-xl animate-bounce delay-150">✔️</span>
-                            Marketing: Segmentación inteligente
-                        </li>
+                    <div class="grid grid-cols-1 sm:grid-cols-12 gap-4 w-full">
+                        <!-- Izquierda: precios apilados -->
+                        <!-- Izquierda: precios apilados -->
+                        <div class="sm:col-span-12 space-y-3">
+                            <div class="flex flex-col items-start -mb-1">
+                                <h2
+                                    class="font-pacifico  font-semibold text-lg sm:text-xl mb-4"
+                                >
+                                    {{ plan.nombre }}
+                                </h2>
+                            </div>
 
-                        <li class="flex items-center gap-2" *ngIf="plan.flagSoporteArchivos">
-                            <span class="text-yellow-300 text-xl animate-bounce delay-300">✔️</span>
-                            Soporte de imágenes y archivos
-                        </li>
-                        <li class="flex items-center gap-2" *ngIf="plan.flagAppMovil">
-                            <span class="text-yellow-300 text-xl animate-bounce delay-300">✔️</span>
-                            App para pacientes
-                        </li>
-                        <li class="flex items-center gap-2" *ngIf="plan.flagInventario">
-                            <span class="text-yellow-300 text-xl animate-bounce delay-300">✔️</span>
-                            Módulo inventario
-                        </li>
-                        <li class="flex items-center gap-2" *ngIf="plan.flagSoporte">
-                            <span class="text-yellow-300 text-xl animate-bounce delay-300">✔️</span>
-                            Soporte prioritario
-                        </li>
-                        <li class="flex items-center gap-2" *ngIf="plan.flagActualizaciones">
-                            <span class="text-yellow-300 text-xl animate-bounce delay-300">✔️</span>
-                            Actualizaciones gratuitas y automáticas
-                        </li>
-                    </ul>
+                            <!-- Precio grande arriba -->
+                            <div class="flex items-center space-x-2">
+                                <span
+                                    *ngIf="planPeriod == 'MONTH'"
+                                    class=" text-6xl sm:text-8xl font-extrabold text-teal-700 leading-none"
+                                >        {{ plan.precioMensual }}</span
+                                >
+                                <span
+                                    *ngIf="planPeriod == 'YEAR'"
+                                    class="text-6xl sm:text-8xl font-extrabold text-teal-700 leading-none"
+                                >{{ plan.precioMensualOferta }}</span>
 
-                   <p class="flex items-baseline gap-x-2 justify-center -mb-5">
-                    <span *ngIf="planPeriod === 'MONTH'" class="font-extrabold tracking-tight leading-none animate-pulse flex items-baseline gap-x-1">
-                        <span class="text-8xl text-white">$ {{ plan.precioMensual }}</span>
-                        <span class="text-yellow-400 text-lg">USD/Mes</span>
-                    </span>
-                    <span *ngIf="planPeriod === 'YEAR'" class="font-extrabold tracking-tight leading-none animate-pulse flex items-baseline gap-x-1">
-                        <span class="text-8xl text-white">$ {{ plan.precioMensualOferta }}</span>
-                        <span class="text-yellow-400 text-lg">USD/Anual</span>
-                    </span>
-                    </p>
+                                <div
+                                    class="flex flex-col text-gray-500 font-semibold text-xs sm:text-base leading-tight"
+                                >
+                                    <span>USD</span>
+                                    <span>/ Mes</span>
+                                </div>
+                            </div>
 
+                            <span class="font-bold text-sm sm:text-base" *ngIf="planPeriod == 'MONTH'"
+                            >Con Plan Mensual</span
+                            > <span class="font-bold text-sm sm:text-base" *ngIf="planPeriod == 'YEAR'"
+                        >Con Plan Anual</span
+                        >
 
-                </div>
+                            <!-- Botón verde abajo -->
+                            <div class="-ml-10 sm:-ml-[14%]">
+                                <div
+                                    style="background-color: #2f6674 !important"
+                                    class="bg-teal-700 w-36 sm:w-44 h-12 sm:h-14 rounded-r-3xl flex flex-col justify-center px-4 sm:px-5"
+                                >
+                                    <div class="flex items-baseline space-x-1">
+                                        <span
+                                            class="text-white font-bold text-2xl sm:text-3xl"
+                                        >
+                                            {{
+                                                planPeriod === "MONTH"
+                                                    ? plan.precioMensualOferta
+                                                    : plan.precioMensual
+                                            }}
+                                        </span>
+                                        <span
+                                            class="text-white text-xs sm:text-sm"
+                                        >USD</span
+                                        >
+                                        <span
+                                            class="text-white text-xs sm:text-sm"
+                                        >/Mes</span
+                                        >
+                                    </div>
+                                    <div *ngIf="planPeriod == 'MONTH'"
+                                         class="text-yellow-400 text-xs sm:text-sm font-semibold mt-0.5"
+                                    >
+                                        con Plan Anual
+                                    </div>
+                                    <div *ngIf="planPeriod == 'YEAR'"
+                                         class="text-yellow-400 text-xs sm:text-sm font-semibold mt-0.5"
+                                    >
+                                        con Plan Mensual
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                <!-- Parte inferior blanca -->
-                <div
-                    class="bg-gradient-to-r from-teal-700 via-teal-500 to-teal-400  p-6 flex flex-col items-center gap-4"
-                >
-
-                    <button
-                        routerLink="/pagos"
-                        class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 px-12 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 w-full"
-                    >
-                        Empieza ahora
-                    </button>
+                        <!-- Derecha: lista de características -->
+                        <ul
+                            class="sm:col-span-12 text-gray-700 text-xs sm:text-sm space-y-1 list-disc list-inside max-w-full"
+                        >
+                            <li>{{ plan.nroEmpleados }} usuarios</li>
+                            <li *ngIf="plan.flagPacienteIlimitados">
+                                Pacientes Ilimitados
+                            </li>
+                            <li *ngIf="!plan.flagPacienteIlimitados">
+                                {{ plan.nroPacientes }} Pacientes
+                            </li>
+                            <li *ngIf="plan.flagAgenta">Agenda pacientes</li>
+                            <li *ngIf="plan.nroRecordatorios > 0">
+                                Envía {{ plan.nroRecordatorios }} Recordatorios
+                                WhatsApp
+                            </li>
+                            <li *ngIf="plan.flagMarketing">
+                                Marketing: Segmentación inteligente
+                            </li>
+                            <li *ngIf="plan.flagSoporteArchivos">
+                                Soporte de imágenes y archivos
+                            </li>
+                            <li *ngIf="plan.flagAppMovil">
+                                App para pacientes
+                            </li>
+                            <li *ngIf="plan.flagInventario">
+                                Módulo inventario
+                            </li>
+                            <li *ngIf="plan.flagSoporte">
+                                Soporte prioritario
+                            </li>
+                            <li *ngIf="plan.flagActualizaciones">
+                                Actualizaciones gratuitas y automáticas
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <div *ngIf="plan.flagPopular===true"
-                 class="max-w-lg mx-auto rounded-3xl overflow-hidden shadow-lg ring-2 ring-[#1e4d73]/70 "
-            >
-                <!-- Ribbon RECOMMENDED arriba -->
-                <div
-                    class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-white rounded-full px-6 py-1 text-[#0a304f] font-bold shadow-md"
-                    style="width: max-content;"
-                >
-                    RECOMENDADO
-                </div>
-
-                <!-- Parte superior con gradiente azul oscuro y precio grande centrado -->
-                <div
-                    class="bg-gradient-to-r from-[#0a304f] via-[#1e4d73] to-[#3b6c9a] p-6 pt-10 text-yellow-100 flex flex-col items-center"
-                >
-                    <h3
-                        id="tier-enterprise"
-                        class="text-base/7 font-extrabold drop-shadow-md mb-3"
-                    >
-                        {{ plan.nombre }}
-                    </h3>
-
-                    <ul class="leading-loose space-y-2 mb-6 w-full max-w-xs">
-                        <li class="flex items-center gap-2">
-                            <span class="text-yellow-300 text-xl animate-bounce">✔️</span>
-                            {{ plan.nroEmpleados }} usuario
-                        </li>
-                        <li class="flex items-center gap-2" *ngIf="plan.flagPacienteIlimitados">
-                            <span class="text-yellow-300 text-xl animate-bounce delay-75">✔️</span>
-                            Pacientes Ilimitados
-                        </li>
-                        <li class="flex items-center gap-2" *ngIf="!plan.flagPacienteIlimitados">
-                            <span class="text-yellow-300 text-xl animate-bounce delay-75"
-                            >✔️</span>
-                            {{ plan.nroPacientes }} pacientes
-                        </li>
-                        <li class="flex items-center gap-2" *ngIf="plan.flagAgenta">
-                            <span class="text-yellow-300 text-xl animate-bounce delay-200">✔️</span>
-                            Agenda pacientes
-                        </li>
-                        <li class="flex items-center gap-2" *ngIf="plan.nroRecordatorios>0">
-                            <span class="text-yellow-300 text-xl animate-bounce delay-200">✔️</span>
-                            Envía {{ plan.nroRecordatorios }} Recordatorios WhatsApp
-                        </li>
-                        <li class="flex items-center gap-2" *ngIf="plan.flagMarketing">
-                            <span class="text-yellow-300 text-xl animate-bounce delay-150">✔️</span>
-                            Marketing: Segmentación inteligente
-                        </li>
-
-                        <li class="flex items-center gap-2" *ngIf="plan.flagSoporteArchivos">
-                            <span class="text-yellow-300 text-xl animate-bounce delay-300">✔️</span>
-                            Soporte de imágenes y archivos
-                        </li>
-                        <li class="flex items-center gap-2" *ngIf="plan.flagAppMovil">
-                            <span class="text-yellow-300 text-xl animate-bounce delay-300">✔️</span>
-                            App para pacientes
-                        </li>
-                        <li class="flex items-center gap-2" *ngIf="plan.flagInventario">
-                            <span class="text-yellow-300 text-xl animate-bounce delay-300">✔️</span>
-                            Módulo inventario
-                        </li>
-                        <li class="flex items-center gap-2" *ngIf="plan.flagSoporte">
-                            <span class="text-yellow-300 text-xl animate-bounce delay-300">✔️</span>
-                            Soporte prioritario
-                        </li>
-                        <li class="flex items-center gap-2" *ngIf="plan.flagActualizaciones">
-                            <span class="text-yellow-300 text-xl animate-bounce delay-300">✔️</span>
-                            Actualizaciones gratuitas y automáticas
-                        </li>
-                    </ul>
-                    <!-- Precio grande centrado -->
-                   <p class="flex items-baseline gap-x-2 justify-center -mb-5">
-                    <span *ngIf="planPeriod === 'MONTH'" class="font-extrabold tracking-tight leading-none animate-pulse flex items-baseline gap-x-1">
-                        <span class="text-8xl text-white">$ {{ plan.precioMensual }}</span>
-                        <span class="text-yellow-400 text-lg">USD/Mes</span>
-                    </span>
-                    <span *ngIf="planPeriod === 'YEAR'" class="font-extrabold tracking-tight leading-none animate-pulse flex items-baseline gap-x-1">
-                        <span class="text-8xl text-white">$ {{ plan.precioMensualOferta }}</span>
-                        <span class="text-yellow-400 text-lg">USD/Anual</span>
-                    </span>
-                    </p>
-
-                </div>
-
-                <!-- Parte inferior blanca -->
-                <div
-                    class="bg-gradient-to-r from-[#0a304f] via-[#1e4d73] to-[#3b6c9a] p-6 flex flex-col items-center gap-4">
-
-                    <button
-                        routerLink="/pagos"
-                        class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 px-12 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 w-full"
-                    >
-                        Empieza ahora
-                    </button>
-                </div>
-            </div>
-        </ng-container>
+        </div>
         <!-- Plan Premium (centro, resaltado) -->
 
 

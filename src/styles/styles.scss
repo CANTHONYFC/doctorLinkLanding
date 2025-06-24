@@ -34,6 +34,22 @@
     }
 }
 
+.colorMainTextDark {
+    color: var(--app-resalt-1-color) !important;
+}
+
+.colorMainTextGreengA {
+    color: var(--app-color) !important;
+}
+
+.colorMainTextGreengB {
+    color: var(--app-resalt-2-color-short) !important;
+}
+
+.backgroundMainGreengAtransparent {
+    background-color: var(--app-resalt-2-color-transparent) !important;
+}
+
 .input-row {
     padding-top: 8px;
     @import url('https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap');
@@ -164,9 +180,11 @@ input[type="number"]::-webkit-outer-spin-button {
     background-color: white !important;
     color: var(--app-resalt-1-color) !important;
 }
+
 .custom_A_NavBarMainInverso {
     color: var(--app-resalt-1-color) !important;
 }
+
 .colorTextCalendar {
     color: #008BA1 !important;
 }
@@ -265,6 +283,7 @@ body {
         background-color: var(--app-color-botton) !important;
         color: var(--app-color-bottonText) !important;
     }
+
     .customButtonMainInverso {
         background-color: white !important;
         color: var(--app-resalt-1-color) !important;

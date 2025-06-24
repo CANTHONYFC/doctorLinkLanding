@@ -1,6 +1,6 @@
 :root {
     /*--app-color: #E0E6E6;*/
-    --app-color:#5ADEB7;
+    --app-color: #5ADEB7;
     --app-oscuro-neutro-color: #000000;
     --app-claro-neutro-color: #FFFFFF;
     --app-main-color: #141F2E;
@@ -8,6 +8,7 @@
     --app-resalt-1-color: #185769;
     --app-resalt-2-color: #62F7C9;
     --app-resalt-2-color-short: #34d6a4;
+    --app-resalt-2-color-transparent: #F6FEFF;
     --app-resalt-3-color: #E2E8F0;
     --app-resalt-4-color: #F1F5F9;
     --app-resalt-5-color: #384648;
@@ -71,10 +72,11 @@
 /*Estilos comunes*/
 
 /*loader*/
-.mydoc-spinner{
+.mydoc-spinner {
     margin-top: 3em;
     color: #44c1c8;
 }
+
 .mydoc-spinner,
 .mydoc-spinner div {
     box-sizing: border-box;
@@ -141,8 +143,9 @@
     color: var(--notify-color) !important;
     box-shadow: 1px 1p 2px lightgray;
 }
-.notiflix-notify-success svg.nx-message-icon > g > path{
-    color: var(--notify-color)!important; /* Verde para el ícono de éxito */
+
+.notiflix-notify-success svg.nx-message-icon > g > path {
+    color: var(--notify-color) !important; /* Verde para el ícono de éxito */
     fill: var(--notify-color) !important; /* Verde para el ícono de éxito */
 }
 
@@ -153,7 +156,8 @@
     color: var(--app-warn-color) !important;
     background-color: white !important;
 }
-.notiflix-notify-warning svg.nx-message-icon > g > path{
+
+.notiflix-notify-warning svg.nx-message-icon > g > path {
     color: var(--app-warn-color) !important; /* Verde para el ícono de éxito */
     fill: var(--app-warn-color) !important; /* Verde para el ícono de éxito */
 }
@@ -165,7 +169,8 @@
     color: var(--app-danger-color) !important;
     background-color: white !important;
 }
-.notiflix-notify-failure svg.nx-message-icon > g > path{
+
+.notiflix-notify-failure svg.nx-message-icon > g > path {
     color: var(--app-danger-color) !important; /* Verde para el ícono de éxito */
     fill: var(--app-danger-color) !important; /* Verde para el ícono de éxito */
 }
@@ -177,7 +182,8 @@
     color: var(--app-info-color) !important;
     background-color: white !important;
 }
-.notiflix-notify-info svg.nx-message-icon > g > path{
+
+.notiflix-notify-info svg.nx-message-icon > g > path {
     color: var(--app-info-color) !important; /* Verde para el ícono de éxito */
     fill: var(--app-info-color) !important; /* Verde para el ícono de éxito */
 }
@@ -189,10 +195,10 @@
 
 /*FULL CALENDAR*/
 
-body .fc .fc-list-table th{
+body .fc .fc-list-table th {
     background-color: var(--app-resalt-1-color) !important;
 }
 
-.alone + *{
+.alone + * {
     display: none;
 }
