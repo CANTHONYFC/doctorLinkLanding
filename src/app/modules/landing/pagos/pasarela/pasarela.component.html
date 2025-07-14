@@ -47,7 +47,7 @@
     </div>
 
     <div
-        class="grid grid-cols-1 md:grid-cols-12 gap-6 w-full md:px-12 lg:px-72"
+        class="grid grid-cols-1 md:grid-cols-12 gap-6 w-full md:px-12 lg:px-52 xl:px-72"
     >
         <!-- Lista de planes -->
         <div class="col-span-1 md:col-span-7 space-y-6">
@@ -65,11 +65,12 @@
                 >
                     <div
                         *ngIf="plan.flagPopular"
-                        class="absolute top-4 left-4 bg-pink-600 text-white text-xs sm:text-sm font-bold px-2 py-1 shadow-lg"
+                        class="absolute top-4 left-4
+                        bg-pink-600 text-white text-xs sm:text-sm font-bold px-2 py-1 shadow-lg"
                         style="
                             width: 100px;
                             transform: rotate(-45deg) translate(-50%, -50%);
-                            transform-origin: 0 0;
+                            transform-origin: 0 0;text-align: center;
                         "
                     >
                         MÁS POPULAR

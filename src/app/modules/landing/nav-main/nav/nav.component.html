@@ -1,8 +1,8 @@
 <nav class="w-full px-4 md:px-12 py-4 flex items-center justify-between shadow-sm ">
     <!-- Logo -->
     <div routerLink="/app" style="cursor:pointer;" class="flex items-center space-x-2">
-        <img src="https://web-doctorlink.itbcpwebservices.com/assets/images/logo/logo.png" alt="Logo"
-             class="h-10 w-auto"/>
+        <img src="assets/images/logo/logo.png" alt="Logo"
+             class="h-12 w-auto"/>
     </div>
 
     <!-- Menu Desktop -->
@@ -40,6 +40,16 @@
     </div>
 
     <!-- Botón hamburguesa para móvil -->
+    <div class="md:hidden px-4   space-y-2">
+        <a href="https://app.drlinkmed.com/" target="_blank"
+           class="text-sm px-4 py-1 bg-white text-teal-500 rounded-full border border-teal-500 rounded-full hover:bg-teal-600 font-bold">Iniciar
+            sesión</a>
+
+    </div>
+    <div class="md:hidden pr-2   space-y-2">
+        <a routerLink="/pagos"
+           class="text-sm px-4 py-1 bg-teal-500 text-white rounded-full hover:bg-teal-600 font-bold">Afiliate</a>
+    </div>
     <div class="md:hidden">
         <button (click)="toggleMenu()" class="focus:outline-none">
             <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -51,6 +61,7 @@
 
 <!-- Menú móvil -->
 <!-- Menú móvil -->
+
 <div *ngIf="isMobileMenuOpen" class="md:hidden px-4 pt-2 space-y-2">
 
     <!-- Funciones con dropdown móvil -->

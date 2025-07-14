@@ -9,7 +9,9 @@
     <img
         src="../../../../assets/images/esquina.png"
         alt=""
-        class="absolute top-11 -right-11 w-[500px] h-auto origin-bottom-center -rotate-90 z-0"
+        class="absolute right-8 top-12
+         md:top-14 lg:top-8 w-60 h:60 md:w-90 md:h-100 lg:w-80 lg:h-[420px] object-fill
+         origin-bottom-center -rotate-90 z-0"
     />
     <div class="max-w-6xl mx-auto px-4 lg:px-10 pt-10 pb-20">
         <div class="bg-white p-6 md:p-10 rounded-2xl shadow-lg">
@@ -57,46 +59,61 @@
                 </div>
 
                 <!-- Formulario -->
-                <form class="space-y-6 bg-gray-50 p-6 rounded-xl shadow-inner">
+                <form #miFormulario="ngForm" ngForm class="space-y-6 bg-gray-50 p-6 rounded-xl shadow-inner">
                     <div>
                         <label class="block text-sm font-medium text-gray-700">Nombre completo</label>
-                        <input type="text" placeholder="Ej. Dr. Ana Pérez"
+                        <input name="nombre" required
+                               [(ngModel)]="demoForm.nombreCompleto"
+                               type="text" placeholder="Ej. Dr. Ana Pérez"
                                class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700">Especialidad o centro médico</label>
-                        <input type="text" placeholder="Ej. Clínica Sonríe o Dermatología"
+                        <input name="especialidad" required
+                               [(ngModel)]="demoForm.especialidad"
+                               type="text" placeholder="Ej. Clínica Sonríe o Dermatología"
                                class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700">Correo electrónico</label>
-                        <input type="email" placeholder="Ej. contacto@tucorreo.com"
+                        <input name="correo" required
+                               [(ngModel)]="demoForm.correo"
+                               type="email" placeholder="Ej. contacto@tucorreo.com"
                                class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700">Celular (con WhatsApp)</label>
-                        <input type="tel" placeholder="+51 999 999 999"
+                        <input name="celular" required
+                               [(ngModel)]="demoForm.celular"
+                               type="tel" placeholder="+51 999 999 999"
                                class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700">País / Ciudad</label>
-                        <input type="text" placeholder="Ej. Perú / Lima"
+                        <input name="pais" required
+                               [(ngModel)]="demoForm.pais"
+                               type="text" placeholder="Ej. Perú / Lima"
                                class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700">¿Qué te gustaría automatizar? <span
                             class="text-sm text-gray-400">(opcional)</span></label>
-                        <textarea rows="3" placeholder="Ej. Agenda, recordatorios, historia clínica..."
+                        <textarea name="procesoAutomatizar" required
+                                  [(ngModel)]="demoForm.procesoAutomatizar"
+                                  rows="3" placeholder="Ej. Agenda, recordatorios, historia clínica..."
                                   class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
                     </div>
 
-                    <button type="submit"
-                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition">
+                    <button type="button"
+                            [disabled]="miFormulario?.invalid"
+                            (click)="enviarGenericInfo($event)"
+                            class="w-full bg-blue-600
+                            hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition">
                         Solicitar demo
                     </button>
                 </form>

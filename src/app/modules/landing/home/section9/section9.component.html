@@ -43,8 +43,10 @@
         <div class=" grid md:grid-cols-12 gap-18 col-span-1 md:col-span-9 ">
             <div class="w-full col-span-4" *ngFor="let plan of planes">
                 <!-- Plan Premium -->
-                <div
-                    class="relative cursor-pointer rounded-2xl border-2 transition-colors duration-300 max-w-full mx-auto p-4 sm:p-6 bg-white"
+                <div [routerLink]="'/pagos'"
+                     class="relative cursor-pointer rounded-2xl border-2  max-w-full mx-auto p-4 sm:p-6 bg-white
+                        zoom-card
+                        "
                 >
                     <div
                         *ngIf="plan.flagPopular"
@@ -52,7 +54,7 @@
                         style="
                             width: 100px;
                             transform: rotate(-45deg) translate(-50%, -50%);
-                            transform-origin: 0 0;
+                            transform-origin: 0 0;text-align: center;
                         "
                     >
                         MÁS POPULAR
@@ -64,7 +66,7 @@
                         <div class="sm:col-span-12 space-y-3">
                             <div class="flex flex-col items-start -mb-1">
                                 <h2
-                                    class="font-pacifico  font-semibold text-lg sm:text-xl mb-4"
+                                    class="font-pacifico  font-semibold text-1xl lg:text-xl  mb-4"
                                 >
                                     {{ plan.nombre }}
                                 </h2>
