@@ -9,8 +9,11 @@ import {NotificationService} from 'app/modules/shared/service/service-notificati
 import {RegisterPagoPlanLanding} from "../../../../models/administration/RegisterPagoPlanLanding";
 import {Router} from '@angular/router';
 import {environment} from 'environments/environment';
+import { NiubizLoaderService } from './niubiz-loader-service.service';
+import { NiubizSessionRequest } from 'app/models/administration/NiubizDto';
 
 declare var paypal: any;
+declare var niubiz: any;
 
 @Component({
     selector: 'app-pasarela',
@@ -24,21 +27,33 @@ export class PasarelaComponent {
     correo = '';
     password = '';
     modalAbierto = false;
+    modalAbiertoNiubiz = false;
     planes: PlanesSuscriptions[] = [];
     today: Date = new Date();
+    service2: string = `${environment.apiEngine}Niubiz/pagos`;
+    clientIp: string = "0.0.0.0";
 
+    
     constructor(private paypalLoader: PaypalLoaderService,
                 private planesService: PlanesService,
                 private snackBar: MatSnackBar,
+                private niubizLoader: NiubizLoaderService,
                 private _router: Router) {
     }
-
 
     selectedPaymentMethod: string | null = null;
 
     ngOnInit(): void {
         // Parámetros si necesitas enviar algo, si no, puedes mandar HttpParams vacío
         this.listarPlanes();
+        this.getClientIP().then(ip => this.clientIp = ip);
+    }
+
+    getClientIP(): Promise<string> {
+      return fetch('https://api.ipify.org?format=text')
+        .then(res => res.text())
+        .then(ip => ip.trim())
+        .catch(() => "0.0.0.0");
     }
 
     irHome() {
@@ -80,24 +95,41 @@ export class PasarelaComponent {
     }
 
     paymentMode: string = 'MONTH'; // Por defecto, puedes cambiarlo según tu lógica
+    purchaseNumber: string ;
+    amount: string ;
 
-    iniciarPago() {
+    generarPurchaseNumber(): string {
+      // Generar un número único de 12 dígitos
+      return Date.now().toString().slice(-12);
+    }
+
+    changeInterval(interval_unit: string): any {
+        this.paymentMode = interval_unit
+        this.listarPlanes()
+    }
+
+    cerrarModal() {
+        this.modalAbierto = false;
+    }
+
+    cerrarModalNiubiz() {
+        this.modalAbiertoNiubiz = false;
+    }
+
+    iniciarPagoPaypal() {
         if (this.miFormulario.valid && this.selectedPlan) {
-
 
             const params = new HttpParams()
                 .set('correo', this.correo);
             this.planesService.verifyExits(params, this.snackBar).then(response => {
 
                 if (response && response.data) {
-
                     if (response.data) {
                         NotificationService.error('El correo ya está registrado. Por favor, intentar con otro correo');
                         return;
                     }
-
-
                 }
+
                 this.modalAbierto = true;
                 // Esperar a que el div #paypal-button-container esté en el DOM
                 setTimeout(() => {
@@ -108,20 +140,10 @@ export class PasarelaComponent {
                         console.error('Error cargando PayPal SDK:', err);
                     });
                 }, 0);
-
             });
         } else {
             this.miFormulario.control.markAllAsTouched();
         }
-    }
-
-    changeInterval(interval_unit: string): any {
-        this.paymentMode = interval_unit
-        this.listarPlanes()
-    }
-
-    cerrarModal() {
-        this.modalAbierto = false;
     }
 
     renderPaypalButton() {
@@ -182,5 +204,86 @@ export class PasarelaComponent {
         }).render('#paypal-button-container');
     }
 
+    iniciarPagoNiubiz() {
+      if (!this.miFormulario.valid || !this.selectedPlan) {
+        this.miFormulario.control.markAllAsTouched();
+        return;
+      }
+
+      const params = new HttpParams().set('correo', this.correo);
+    
+        this.planesService.verifyExits(params, this.snackBar).then(response => {
+        if (response && response.data) {
+          NotificationService.error('El correo ya está registrado. Por favor, intente con otro correo');
+          return;
+        }
+        debugger
+        this.purchaseNumber = this.generarPurchaseNumber();
+        this.amount  = this.selectedPlan.precioTotal.toFixed(2);
+    
+        this.modalAbiertoNiubiz = true; 
+        
+        const sessionRequest = new NiubizSessionRequest({
+          amount: this.amount ,
+          antifraud: {
+            clientIp: this.clientIp,
+    
+            merchantDefineData: {
+              MDD4: 'integraciones@niubiz.com.pe',
+              MDD32: this.purchaseNumber,
+              MDD75: 'Registrado',
+              MDD77: '458'
+            }
+          },
+          dataMap: {
+            cardholderCity: 'LIMA',
+            cardholderCountry: 'PE',
+            cardholderAddress: 'Av. Ejemplo 123',
+            cardholderPostalCode: '15001',
+            cardholderState: 'LIMA',
+            cardholderPhoneNumber: '999999999'
+          }
+        });
+    
+        this.planesService.createNiubizSession(sessionRequest)
+          .then(sessionData => {
+            setTimeout(() => {
+                debugger
+              this.niubizLoader.loadNiubizSdk({
+                containerId: 'niubiz-button-container', 
+                sessiontoken: sessionData.sessionKey,
+                merchantid: environment.NIUBIZ_CONFIG.merchantId,
+                purchasenumber: this.purchaseNumber,
+                amount: this.amount ,
+                timeouturl: `${environment.URL_TWODOMAIN}/pago-expirado`,
+                merchantlogo: `${environment.URL_TWODOMAIN}/assets/logo.png`,
+                expirationminutes: 20,
+                formbuttoncolor: '#FF0000',
+                showamount: 'TRUE',
+                hidexbutton: 'FALSE'
+              }).then(() => {
+                console.log('Niubiz SDK cargado y botón visible');
+
+              }).catch(err => {
+                console.error('Error cargando Niubiz SDK:', err);
+                NotificationService.error('No se pudo cargar la pasarela de pago.');
+              });
+            }, 0);
+          })
+          .catch(err => {
+            console.error('Error creando SessionToken:', err);
+            NotificationService.error('No se pudo iniciar el pago.');
+          });
+      });
+    }
+
+    regresarHome(event){
+        debugger
+        event.preventDefault();
+        console.log(event)
+    }
+
+    
+ 
 }
 

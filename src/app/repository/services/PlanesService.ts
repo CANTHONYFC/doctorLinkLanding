@@ -9,12 +9,14 @@ import {PlanesSuscriptions} from "../../models/administration/PlanesSuscriptions
 import {List} from "lodash";
 import {ApiResponse} from "app/models/interface/api.response.entity";
 import {RegisterPagoPlanLanding} from "../../models/administration/RegisterPagoPlanLanding";
+import { NiubizSessionRequest } from "app/models/administration/NiubizDto";
 
 @Injectable({
     providedIn: 'root',
 })
 export class PlanesService {
     private service: string = `${environment.apiEngine}PlanesLanding`;
+    private service2: string = `${environment.apiEngine}Niubiz`;
     private getSubscription: Subscription;
 
     constructor(private _httpClient: HttpClient) {
@@ -69,4 +71,42 @@ export class PlanesService {
     unSub() {
         this.getSubscription?.unsubscribe();
     }
+
+createNiubizSession(data: NiubizSessionRequest): Promise<any> {
+  return new Promise((resolve, reject) => {
+    this._httpClient.post<any>(`${this.service2}/session`, data)
+      .subscribe({
+        next: (response) => resolve(response),
+        error: (err) => reject(err)
+      });
+  });
+}
+    
+    registerNiubiz(registro: {
+      transactionToken: string;
+      purchaseNumber: string;
+      amount: string;
+      correo: string;
+      password: string;
+      planId: number;
+    }): Promise<any> {
+      return new Promise((resolve, reject) => {
+        this._httpClient.post<any>(`${this.service2}/register-payment`, registro)
+          .subscribe({
+            next: (response) => resolve(response),
+            error: (err) => reject(err)
+          });
+      });
+    }
+    
+    verifyNiubizTransaction(purchaseNumber: string): Promise<any> {
+      return new Promise((resolve, reject) => {
+        this._httpClient.get<any>(`${this.service2}/verify/${purchaseNumber}`)
+          .subscribe({
+            next: (response) => resolve(response),
+            error: (err) => reject(err)
+          });
+      });
+    }
+
 }

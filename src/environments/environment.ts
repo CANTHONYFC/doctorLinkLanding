@@ -11,6 +11,13 @@ export const environment = {
         production: true,
         paypalClientId: 'AZEZkdMYDBPBzrov2Xe22rhV_wIcus85vld2-7IBkQvHGcvIMbKHyb2m_o1Lw2B4zuO73sOFbfHvAZ5u'
     },
+    NIUBIZ_CONFIG: {
+      production: true,
+      merchantId: '456879852', 
+      checkoutJsUrl: 'https://static-content-qas.vnforapps.com/v2/js/checkout.js',
+      endpointSession: 'https://apis.niubiz.com/api.ecommerce/v2/ecommerce/token/session/', 
+      endpointAuthorization: 'https://apis.niubiz.com/api.authorization/v3/authorization/ecommerce/'
+    },
     URL_TWODOMAIN: 'http://localhost:4200/'
     //drLink
 
