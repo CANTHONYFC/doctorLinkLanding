@@ -1,156 +1,149 @@
 <body>
-<div
-    class="relative w-full bg-gradient-to-b from-slate-50 from- via-slate-100 via- to-slate-600 to-"
->
+  <div class="relative w-full bg-gradient-to-b from-slate-50 from- via-slate-100 via- to-slate-600 to-">
     <ng-container>
-        <app-nav-main class="relative z-50"></app-nav-main>
+      <app-nav-main class="relative z-50"></app-nav-main>
     </ng-container>
 
     <img
-        src="../../../../assets/images/esquina.png"
-        alt=""
-        class="absolute right-8 top-12
-         md:top-14 lg:top-8 w-60 h:60 md:w-90 md:h-100 lg:w-80 lg:h-[420px] object-fill
-         origin-bottom-center -rotate-90 z-0
-         opacity-30 lg:opacity-100 md:opacity-100"
+      src="../../../../assets/images/esquina.png"
+      alt=""
+      class="absolute right-8 top-12
+        md:top-14 lg:top-8 w-60 h:60 md:w-90 md:h-100 lg:w-80 lg:h-[420px] object-fill
+        origin-bottom-center -rotate-90 z-0
+        opacity-30 lg:opacity-100 md:opacity-100"
     />
+
     <div class="max-w-5xl mx-auto px-4 py-10">
-        <div class="bg-white p-6 md:p-10 rounded-2xl shadow-md">
-            <!-- Título -->
-            <h2 class="text-4xl font-bold text-center text-red-700 mb-6 font-pacifico">Libro de Reclamaciones</h2>
+      <div class="bg-white p-6 md:p-10 rounded-2xl shadow-md">
+        <!-- Título -->
+        <h2 class="text-4xl font-bold text-center text-red-700 mb-6 font-pacifico">Libro de Reclamaciones</h2>
 
-            <!-- Introducción -->
-            <p class="text-gray-800 text-lg text-center mb-10">
-                En <strong>Dr. Link</strong>, tu opinión es importante. Puedes presentar un reclamo o queja conforme al
-                Código de Protección y Defensa del Consumidor – Ley N.º 29571.
-            </p>
+        <!-- Introducción -->
+        <p class="text-gray-800 text-lg text-center mb-10">
+          En <strong>Dr. Link</strong>, tu opinión es importante. Puedes presentar un reclamo o queja conforme al
+          Código de Protección y Defensa del Consumidor – Ley N.º 29571.
+        </p>
 
-            <!-- Diferencia -->
-            <div class="mb-8">
-                <h3 class="text-xl font-semibold text-gray-700 mb-2">¿Cuál es la diferencia entre Reclamo y Queja?</h3>
-                <ul class="list-disc list-inside text-gray-700 space-y-1">
-                    <li><strong>Reclamo:</strong> Disconformidad relacionada a un producto o servicio contratado (ej.
-                        funcionamiento, acceso, facturación).
-                    </li>
-                    <li><strong>Queja:</strong> Malestar o descontento no relacionado directamente a los productos o
-                        servicios (ej. atención al cliente, trato).
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Formulario -->
-            <form class="space-y-6 bg-gray-50 p-6 rounded-xl shadow-inner">
-                <h3 class="text-2xl font-bold text-gray-800 mb-4">Formulario del Libro de Reclamaciones</h3>
-
-                <!-- Datos del Usuario -->
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">Nombre completo</label>
-                    <input type="text" class="w-full mt-1 p-3 border rounded-lg focus:ring-2 focus:ring-red-500"
-                           placeholder="Ej. Ana López">
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">DNI / RUC</label>
-                        <input type="text" class="w-full mt-1 p-3 border rounded-lg focus:ring-2 focus:ring-red-500"
-                               placeholder="Ej. 12345678 o 20481234567">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Correo electrónico</label>
-                        <input type="email" class="w-full mt-1 p-3 border rounded-lg focus:ring-2 focus:ring-red-500"
-                               placeholder="correo@ejemplo.com">
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">Teléfono de contacto</label>
-                    <input type="tel" class="w-full mt-1 p-3 border rounded-lg focus:ring-2 focus:ring-red-500"
-                           placeholder="+51 999 999 999">
-                </div>
-
-                <!-- Datos del servicio -->
-                <div class="grid md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Plan adquirido</label>
-                        <input type="text" class="w-full mt-1 p-3 border rounded-lg focus:ring-2 focus:ring-red-500"
-                               placeholder="Básico, Gold, Premium">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Fecha de contratación</label>
-                        <input type="date" class="w-full mt-1 p-3 border rounded-lg focus:ring-2 focus:ring-red-500">
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">Medio de pago <span
-                        class="text-gray-400 text-sm">(opcional)</span></label>
-                    <input type="text" class="w-full mt-1 p-3 border rounded-lg focus:ring-2 focus:ring-red-500"
-                           placeholder="Ej. Tarjeta, Transferencia, Yape">
-                </div>
-
-                <!-- Tipo de solicitud -->
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Tipo de solicitud</label>
-                    <div class="flex items-center space-x-4">
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="tipo" class="form-radio text-red-600" checked>
-                            <span class="ml-2 text-gray-700">Reclamo</span>
-                        </label>
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="tipo" class="form-radio text-red-600">
-                            <span class="ml-2 text-gray-700">Queja</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Detalles -->
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">Detalle del Reclamo / Queja</label>
-                    <textarea rows="4" class="w-full mt-1 p-3 border rounded-lg focus:ring-2 focus:ring-red-500"
-                              placeholder="Describe tu reclamo o queja aquí..."></textarea>
-                </div>
-
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">Acción que solicita</label>
-                    <textarea rows="3" class="w-full mt-1 p-3 border rounded-lg focus:ring-2 focus:ring-red-500"
-                              placeholder="Describe qué solución esperas..."></textarea>
-                </div>
-
-                <!-- Botón -->
-                <div class="text-center">
-                    <button type="submit"
-                            class="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold transition">
-                        Enviar reclamo
-                    </button>
-                </div>
-            </form>
-
-            <!-- Importante -->
-            <div class="mt-10 text-gray-700">
-                <p class="font-semibold">Importante:</p>
-                <p class="mt-2">
-                    Una vez enviada tu solicitud, recibirás una confirmación automática por correo electrónico. Nuestro
-                    equipo revisará tu caso y te responderá en un plazo máximo de <strong>15 días hábiles</strong>, de
-                    acuerdo con la normativa vigente.
-                </p>
-
-                <p class="mt-6 font-semibold">¿Necesitas ayuda adicional?</p>
-                <p class="text-gray-800">Contáctanos a: <a href="mailto:dr.linkmedical@gmail.com"
-                                                           class="text-blue-600 hover:underline">dr.linkmedical@gmail.com</a>
-                    | WhatsApp: <a href="https://wa.me/51987306885" class="text-blue-600 hover:underline">+511 987 306
-                        885</a></p>
-            </div>
+        <!-- Diferencia -->
+        <div class="mb-8">
+          <h3 class="text-xl font-semibold text-gray-700 mb-2">¿Cuál es la diferencia entre Reclamo y Queja?</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1">
+            <li><strong>Reclamo:</strong> Disconformidad relacionada a un producto o servicio contratado (ej.
+              funcionamiento, acceso, facturación).
+            </li>
+            <li><strong>Queja:</strong> Malestar o descontento no relacionado directamente a los productos o
+              servicios (ej. atención al cliente, trato).
+            </li>
+          </ul>
         </div>
+
+        <!-- Formulario -->
+        <form (ngSubmit)="onSubmit()" class="space-y-6 bg-gray-50 p-6 rounded-xl shadow-inner" #form="ngForm">
+          <h3 class="text-2xl font-bold text-gray-800 mb-4">Formulario del Libro de Reclamaciones</h3>
+
+          <!-- Datos del Usuario -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Nombre completo</label>
+            <input type="text" class="w-full mt-1 p-3 border rounded-lg focus:ring-2 focus:ring-red-500"
+                   placeholder="Ej. Ana López" [(ngModel)]="libroReclamacion.nombreCompleto" name="nombreCompleto" required>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700">DNI / RUC</label>
+              <input type="text" class="w-full mt-1 p-3 border rounded-lg focus:ring-2 focus:ring-red-500"
+                     placeholder="Ej. 12345678 o 20481234567" [(ngModel)]="libroReclamacion.dniRuc" name="dniRuc" required>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Correo electrónico</label>
+              <input type="email" class="w-full mt-1 p-3 border rounded-lg focus:ring-2 focus:ring-red-500"
+                     placeholder="correo@ejemplo.com" [(ngModel)]="libroReclamacion.correoElectronico" name="correoElectronico" required>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Teléfono de contacto</label>
+            <input type="tel" class="w-full mt-1 p-3 border rounded-lg focus:ring-2 focus:ring-red-500"
+                   placeholder="+51 999 999 999" [(ngModel)]="libroReclamacion.telefonoContacto" name="telefonoContacto" required>
+          </div>
+
+          <!-- Datos del servicio -->
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Plan adquirido</label>
+              <input type="text" class="w-full mt-1 p-3 border rounded-lg focus:ring-2 focus:ring-red-500"
+                     placeholder="Básico, Gold, Premium" [(ngModel)]="libroReclamacion.planAdquirido" name="planAdquirido" required>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Fecha de contratación</label>
+              <input type="date" class="w-full mt-1 p-3 border rounded-lg focus:ring-2 focus:ring-red-500"
+                     [(ngModel)]="libroReclamacion.fechaContratacion" name="fechaContratacion" required>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Medio de pago <span class="text-gray-400 text-sm">(opcional)</span></label>
+            <input type="text" class="w-full mt-1 p-3 border rounded-lg focus:ring-2 focus:ring-red-500"
+                   placeholder="Ej. Tarjeta, Transferencia, Yape" [(ngModel)]="libroReclamacion.medioPago" name="medioPago">
+          </div>
+
+          <!-- Tipo de solicitud -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Tipo de solicitud</label>
+            <div class="flex items-center space-x-4">
+              <label class="inline-flex items-center">
+                <input type="radio" name="tipoSolicitud" class="form-radio text-red-600" [(ngModel)]="libroReclamacion.tipoSolicitud" value="Reclamo" checked>
+                <span class="ml-2 text-gray-700">Reclamo</span>
+              </label>
+              <label class="inline-flex items-center">
+                <input type="radio" name="tipoSolicitud" class="form-radio text-red-600" [(ngModel)]="libroReclamacion.tipoSolicitud" value="Queja">
+                <span class="ml-2 text-gray-700">Queja</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Detalles -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Detalle del Reclamo / Queja</label>
+            <textarea rows="4" class="w-full mt-1 p-3 border rounded-lg focus:ring-2 focus:ring-red-500"
+                      placeholder="Describe tu reclamo o queja aquí..." [(ngModel)]="libroReclamacion.detalleReclamoQueja" name="detalleReclamoQueja" required></textarea>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Acción que solicita</label>
+            <textarea rows="3" class="w-full mt-1 p-3 border rounded-lg focus:ring-2 focus:ring-red-500"
+                      placeholder="Describe qué solución esperas..." [(ngModel)]="libroReclamacion.accionSolicitada" name="accionSolicitada" required></textarea>
+          </div>
+
+          <!-- Botón -->
+          <div class="text-center">
+            <button type="submit"
+                    class="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold transition">
+              Enviar reclamo
+            </button>
+          </div>
+        </form>
+
+        <!-- Importante -->
+        <div class="mt-10 text-gray-700">
+          <p class="font-semibold">Importante:</p>
+          <p class="mt-2">
+            Una vez enviada tu solicitud, recibirás una confirmación automática por correo electrónico. Nuestro equipo revisará tu caso y te responderá en un plazo máximo de <strong>15 días hábiles</strong>, de acuerdo con la normativa vigente.
+          </p>
+
+          <p class="mt-6 font-semibold">¿Necesitas ayuda adicional?</p>
+          <p class="text-gray-800">Contáctanos a: <a href="mailto:dr.linkmedical@gmail.com"
+                                                     class="text-blue-600 hover:underline">dr.linkmedicalgmail.com</a>
+            | WhatsApp: <a href="https://wa.me/51987306885" class="text-blue-600 hover:underline">+511 987 306
+              885</a></p>
+        </div>
+      </div>
     </div>
+  </div>
 
-</div>
-
-<div class="bg-black">
-
+  <div class="bg-black">
     <ng-container>
-        <app-footer-main></app-footer-main>
+      <app-footer-main></app-footer-main>
     </ng-container>
-</div>
+  </div>
 </body>
-
-
