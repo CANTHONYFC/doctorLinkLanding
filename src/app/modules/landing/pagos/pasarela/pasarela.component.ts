@@ -135,6 +135,13 @@ export class PasarelaComponent {
         container.innerHTML = '';
 
         paypal.Buttons({
+            fundingSource: paypal.FUNDING.PAYPAL,  // 👈 solo botón PayPal
+            style: {
+                layout: 'vertical',
+                color: 'gold',
+                shape: 'rect',
+                label: 'paypal'
+            },
             createOrder: (data, actions) => {
                 return actions.order.create({
                     purchase_units: [{
