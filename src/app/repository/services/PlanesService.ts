@@ -9,7 +9,9 @@ import {PlanesSuscriptions} from "../../models/administration/PlanesSuscriptions
 import {List} from "lodash";
 import {ApiResponse} from "app/models/interface/api.response.entity";
 import {RegisterPagoPlanLanding} from "../../models/administration/RegisterPagoPlanLanding";
-import { NiubizSessionRequest } from "app/models/administration/NiubizDto";
+import {NiubizSessionRequest} from "app/models/administration/NiubizDto";
+import {PaymentIntentResponseStripe} from "../../models/administration/PaymentIntentResponseStripe";
+import {CreatePaymentIntentRequestStripe} from "../../models/administration/CreatePaymentIntentRequestStripe";
 
 @Injectable({
     providedIn: 'root',
@@ -52,7 +54,21 @@ export class PlanesService {
         });
     }
 
- 
+    StripepaymentIntent(project: CreatePaymentIntentRequestStripe, _snackBar: MatSnackBar): Promise<PaymentIntentResponseStripe> {
+        return new Promise((resolve) => {
+
+            this.getSubscription = this._httpClient.post<any>(`${this.service}/create-payment-intent`, project).subscribe({
+                next: (data) => {
+                    resolve(data)
+                },
+                error: () => {
+                    openSnackBarError(_snackBar);
+                }
+            })
+        });
+    }
+
+
     verifyExits(parameters: HttpParams, _snackBar: MatSnackBar): Promise<ApiResponse<Boolean>> {
         return new Promise((resolve) => {
             this.getSubscription = this._httpClient.get<any>(`${this.service}/verifyExits`, {
@@ -73,41 +89,41 @@ export class PlanesService {
         this.getSubscription?.unsubscribe();
     }
 
-createNiubizSession(data: NiubizSessionRequest): Promise<any> {
-  return new Promise((resolve, reject) => {
-    this._httpClient.post<any>(`${this.service2}/session`, data)
-      .subscribe({
-        next: (response) => resolve(response),
-        error: (err) => reject(err)
-      });
-  });
-}
-    
-    registerNiubiz(registro: {
-      transactionToken: string;
-      purchaseNumber: string;
-      amount: string;
-      correo: string;
-      password: string;
-      planId: number;
-    }): Promise<any> {
-      return new Promise((resolve, reject) => {
-        this._httpClient.post<any>(`${this.service2}/register-payment`, registro)
-          .subscribe({
-            next: (response) => resolve(response),
-            error: (err) => reject(err)
-          });
-      });
+    createNiubizSession(data: NiubizSessionRequest): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this._httpClient.post<any>(`${this.service2}/session`, data)
+                .subscribe({
+                    next: (response) => resolve(response),
+                    error: (err) => reject(err)
+                });
+        });
     }
-    
+
+    registerNiubiz(registro: {
+        transactionToken: string;
+        purchaseNumber: string;
+        amount: string;
+        correo: string;
+        password: string;
+        planId: number;
+    }): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this._httpClient.post<any>(`${this.service2}/register-payment`, registro)
+                .subscribe({
+                    next: (response) => resolve(response),
+                    error: (err) => reject(err)
+                });
+        });
+    }
+
     verifyNiubizTransaction(purchaseNumber: string): Promise<any> {
-      return new Promise((resolve, reject) => {
-        this._httpClient.get<any>(`${this.service2}/verify/${purchaseNumber}`)
-          .subscribe({
-            next: (response) => resolve(response),
-            error: (err) => reject(err)
-          });
-      });
+        return new Promise((resolve, reject) => {
+            this._httpClient.get<any>(`${this.service2}/verify/${purchaseNumber}`)
+                .subscribe({
+                    next: (response) => resolve(response),
+                    error: (err) => reject(err)
+                });
+        });
     }
 
 }

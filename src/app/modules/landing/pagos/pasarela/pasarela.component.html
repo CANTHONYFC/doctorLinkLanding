@@ -194,7 +194,7 @@
 
         <!-- Método de pago -->
         <div
-            class="col-span-1 md:col-span-5 bg-white rounded-xl p-4 sm:p-6 shadow-lg flex flex-col justify-center min-h-[400px] relative max-h-[600px]"
+            class="col-span-1 md:col-span-5 bg-white rounded-xl p-4 sm:p-6 shadow-lg flex flex-col justify-center min-h-[400px] relative max-h-[800px]"
         >
             <form #miFormulario="ngForm" novalidate autocomplete="off">
                 <!-- Header rojo con importe pendiente -->
@@ -372,55 +372,56 @@
                     Checkout
                 </h3>
 
-                <ng-container *ngIf="selectedPlan; else noPlanSelected">
-                    <!-- Selección de método de pago -->
-                    <div class="mb-4">
-                    <label class="block mb-2 font-semibold">Seleccionar método de pago</label>
-                    <select
-                        class="border rounded-lg p-2 w-full"
-                        [(ngModel)]="metodoPago"
-                    >
-                        <option value="">-- Seleccionar --</option>
-                        <option value="paypal">PayPal</option>
-                        <option value="niubiz">Niubiz</option>
-                    </select>
-                    </div>
+                <!--                <ng-container *ngIf="selectedPlan; else noPlanSelected">-->
+                <!--                    &lt;!&ndash; Selección de método de pago &ndash;&gt;-->
+                <!--                    <div class="mb-4">-->
+                <!--                        <label class="block mb-2 font-semibold">Seleccionar método de pago</label>-->
+                <!--                        <select-->
+                <!--                            class="border rounded-lg p-2 w-full"-->
+                <!--                            [(ngModel)]="metodoPago"-->
+                <!--                        >-->
+                <!--                            <option value="">&#45;&#45; Seleccionar &#45;&#45;</option>-->
+                <!--                            <option value="paypal">PayPal</option>-->
+                <!--                            <option value="niubiz">Niubiz</option>-->
+                <!--                            <option value="niubiz">Stripe</option>-->
+                <!--                        </select>-->
+                <!--                    </div>-->
 
-                    <!-- Botón de PayPal -->
-                    <button
-                    *ngIf="metodoPago === 'paypal'"
-                    class="bg-[#12c2ae] hover:bg-[#0f766e] text-white font-semibold rounded-lg py-3 w-full transition disabled:opacity-50 disabled:cursor-not-allowed"
-                    (click)="iniciarPagoPaypal()"
-                    type="button"
-                    [disabled]="!miFormulario.valid"
-                    >
-                    PAGAR CON PAYPAL
-                    </button>
+                <!--                    &lt;!&ndash; Botón de PayPal &ndash;&gt;-->
+                <!--                    <button-->
+                <!--                        *ngIf="metodoPago === 'paypal'"-->
+                <!--                        class="bg-[#12c2ae] hover:bg-[#0f766e] text-white font-semibold rounded-lg py-3 w-full transition disabled:opacity-50 disabled:cursor-not-allowed"-->
+                <!--                        (click)="iniciarPagoPaypal()"-->
+                <!--                        type="button"-->
+                <!--                        [disabled]="!miFormulario.valid"-->
+                <!--                    >-->
+                <!--                        PAGAR CON PAYPAL-->
+                <!--                    </button>-->
 
-                    <!-- Botón de Niubiz -->
-                    <button
-                    *ngIf="metodoPago === 'niubiz'"
-                    class="bg-[#fbbf24] hover:bg-[#b45309] text-white font-semibold rounded-lg py-3 w-full transition disabled:opacity-50 disabled:cursor-not-allowed"
-                    (click)="iniciarPagoNiubiz()"
-                    type="button"
-                    [disabled]="!miFormulario.valid"
-                    >
-                    PAGAR CON NIUBIZ
-                    </button>
+                <!--                    &lt;!&ndash; Botón de Niubiz &ndash;&gt;-->
+                <!--                    <button-->
+                <!--                        *ngIf="metodoPago === 'niubiz'"-->
+                <!--                        class="bg-[#fbbf24] hover:bg-[#b45309] text-white font-semibold rounded-lg py-3 w-full transition disabled:opacity-50 disabled:cursor-not-allowed"-->
+                <!--                        (click)="iniciarPagoNiubiz()"-->
+                <!--                        type="button"-->
+                <!--                        [disabled]="!miFormulario.valid"-->
+                <!--                    >-->
+                <!--                        PAGAR CON NIUBIZ-->
+                <!--                    </button>-->
 
-                    <label
-                        class="flex items-center mt-4 text-gray-600 text-xs sm:text-sm"
-                    >
-                        <input
-                            type="checkbox"
-                            class="form-checkbox h-4 w-4 text-red-600"
-                            checked
-                        />
-                        <span class="ml-2"
-                        >He leído y acepto la política de privacidad.</span
-                        >
-                    </label>
-                </ng-container>
+                <!--                    <label-->
+                <!--                        class="flex items-center mt-4 text-gray-600 text-xs sm:text-sm"-->
+                <!--                    >-->
+                <!--                        <input-->
+                <!--                            type="checkbox"-->
+                <!--                            class="form-checkbox h-4 w-4 text-red-600"-->
+                <!--                            checked-->
+                <!--                        />-->
+                <!--                        <span class="ml-2"-->
+                <!--                        >He leído y acepto la política de privacidad.</span-->
+                <!--                        >-->
+                <!--                    </label>-->
+                <!--                </ng-container>-->
             </form>
 
             <ng-template #noPlanSelected>
@@ -430,6 +431,81 @@
                     Selecciona un plan para ver el método de pago.
                 </p>
             </ng-template>
+            <div class="payment-form">
+                <form id="payment-form" (ngSubmit)="pagarStripe()" class="space-y-4">
+                    <!-- Nombre del titular -->
+                    <mat-form-field appearance="fill" class="w-full">
+                        <mat-label>Nombre del titular</mat-label>
+                        <input
+                            matInput
+                            id="card-holder-name"
+                            placeholder="Ej: Juan Pérez"
+                            required
+                        />
+                    </mat-form-field>
+
+                    <!-- Email -->
+                    <mat-form-field appearance="fill" class="w-full">
+                        <mat-label>Correo electrónico</mat-label>
+                        <input
+                            matInput
+                            type="email"
+                            id="card-holder-email"
+                            placeholder="Ej: correo@ejemplo.com"
+                            required
+                        />
+                    </mat-form-field>
+
+                    <!-- País -->
+                    <mat-form-field appearance="fill" class="w-full">
+                        <mat-label>País</mat-label>
+                        <mat-select id="billing-country" required>
+                            <mat-option value="PE">Perú</mat-option>
+                            <mat-option value="US">Estados Unidos</mat-option>
+                            <mat-option value="MX">México</mat-option>
+                            <mat-option value="CL">Chile</mat-option>
+                            <mat-option value="AR">Argentina</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <!-- Número de tarjeta -->
+                    <div class="form-group">
+                        <label class="block text-sm font-medium mb-2">Número de tarjeta</label>
+                        <div
+                            id="card-number"
+                            class="stripe-input border p-3 rounded-md bg-gray-50"
+                        ></div>
+                    </div>
+
+                    <!-- Exp y CVC -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Expiración</label>
+                            <div
+                                id="card-expiry"
+                                class="stripe-input border p-3 rounded-md bg-gray-50"
+                            ></div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">CVC</label>
+                            <div
+                                id="card-cvc"
+                                class="stripe-input border p-3 rounded-md bg-gray-50"
+                            ></div>
+                        </div>
+                    </div>
+
+                    <!-- Botón -->
+                    <button
+                        class="bg-[#12c2ae] hover:bg-[#0f766e] text-white font-semibold rounded-lg py-3 w-full transition disabled:opacity-50 disabled:cursor-not-allowed"
+                        type="submit"
+                        id="stripe-pay-button"
+                    >
+                        PAGAR CON TARJETA
+                    </button>
+                </form>
+            </div>
+
         </div>
     </div>
 </div>
@@ -458,29 +534,29 @@
     </div>
 </div>
 <div
-  *ngIf="modalAbiertoNiubiz"
-  class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+    *ngIf="modalAbiertoNiubiz"
+    class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
 >
-  <div
-    class="bg-white p-4 sm:p-6 rounded-lg shadow-lg w-full max-w-md relative max-h-[80vh] overflow-y-auto"
-  >
-    <h2 class="text-lg sm:text-xl font-semibold mb-4" >Procesar pago</h2>
+    <div
+        class="bg-white p-4 sm:p-6 rounded-lg shadow-lg w-full max-w-md relative max-h-[80vh] overflow-y-auto"
+    >
+        <h2 class="text-lg sm:text-xl font-semibold mb-4">Procesar pago</h2>
 
-    <form id="niubiz-button-container"
-      [attr.action]="service2+'?purchaseNumber='+purchaseNumber+'&amount='+amount+'&correo='+correo+'&password='+password+'&planId='+selectedPlan?.id_planesSuscriptions"
-      method="post"
-      class="mb-4" style="text-align: center;">
-</form>
+        <form id="niubiz-button-container"
+              [attr.action]="service2+'?purchaseNumber='+purchaseNumber+'&amount='+amount+'&correo='+correo+'&password='+password+'&planId='+selectedPlan?.id_planesSuscriptions"
+              method="post"
+              class="mb-4" style="text-align: center;">
+        </form>
 
 
-    <button
-  class="absolute top-2 right-2 text-gray-500 hover:text-red-500 text-xl"
-  (click)="cerrarModalNiubiz()"
-  aria-label="Cerrar"
->
-  &times;
-</button>
-  </div>
+        <button
+            class="absolute top-2 right-2 text-gray-500 hover:text-red-500 text-xl"
+            (click)="cerrarModalNiubiz()"
+            aria-label="Cerrar"
+        >
+            &times;
+        </button>
+    </div>
 </div>
 
 
